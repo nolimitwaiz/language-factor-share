@@ -1,65 +1,79 @@
-# RMFS — Robust Multilingual Factor Score
+# rmfs: the stress-test program
 
-> **Consolidation note (2026-08-16):** This campaign is now stored under the
-> canonical `multilingual-metrics/rmfs/` directory. Its frozen protocols,
-> code, results, and ledgers are preserved. Active submission framing lives in
-> the project-root `CLAUDE.md`, `MEMORY.md`, `CODEX.md`, and
-> `docs/SUBMISSION_DECISION_LFS_VS_RMFS.md`. The current decision is to submit
-> LFS as the core contribution and report RMFS as a stress-test campaign, not
-> as a superior scalar.
+The second phase of the project. It asked whether a single composite score (RMFS v1, a soft-minimum
+over four per-language components) could summarize multilingual representation quality better than
+LFS alone. The pre-registration was frozen on 2026-08-02 and the program was scored through the
+A9 grid expansion. The composite failed its pre-registered crash test and did not generalize from
+four to fourteen models, so the paper reports LFS as the core measurement and this program as the
+stress test that establishes the limits of any single score. The decision is recorded in
+`../docs/SUBMISSION_DECISION_LFS_VS_RMFS.md`.
 
-Successor-metric research for the Koehn–Murray NSF proposal on LLM
-multilinguality. Start with `CLAUDE.md` (rules; they override convenience),
-then `MEMORY.md` (history, numbers, artifact map), then
-`CLAUDE_CODE_PROMPT.md` (the phased build plan).
+What the paper still uses from here:
 
-**Status: prereg FROZEN (`prereg-rmfs-v1`, 2026-08-02). The full campaign was
-scored through the A9 grid expansion. The preregistered scalar failed its
-crash test and did not generalize from four to fourteen models; the individual
-readings and the validation protocol remain the scientific output.**
+* the non-negative REML variance-component estimator **LFS-VC** (`src/rmfs/components/variance.py`),
+  used for the 19-model expansion set and the content-transfer analysis;
+* the expanded benchmark panels (33 models, Belebele and INCLUDE) and the covariate-adjusted
+  validity analysis (`scripts/expanded_validity.py`, `src/rmfs/validity/`);
+* the profile and hub audits behind the paper's tables (`scripts/audit_lfs_headline_claims.py`);
+* the shared-preprocessing implementations of MEXA and AaR (`src/rmfs/metrics/baselines.py`);
+* the ledgers, which record every decision, error, and run.
 
-## Repository map — and where old code ends and new code begins
+## Layout
 
-**Old code lives in `legacy/` and only there** — byte-identical, read-only
-copies of the prior LFS-campaign pipeline (chmod a-w, sha256 per file in
-`ledgers/INVENTORY.md`). It is never edited; it is wrapped, ported, or
-cited. **New code lives in `src/rmfs/`** and is held to exact numerical
-parity with legacy where it ports it (`tests/test_ladder.py`).
+    RULES.md                the twelve working rules, compute policy, coding standard
+    pyproject.toml          package metadata; `pip install -e rmfs`
+    Makefile                test and lint targets
+    configs/
+      models.yaml           registry generated from stored results: HF id, revision, layers, precision, dip layer
+      datasets.yaml         NTREX with mandatory document ids; benchmark sources
+      experiments/          one YAML per experiment
+      new_models.tsv        the expansion-set candidates and the ones that ran
+    prereg/
+      PREREG_RMFS.md        the frozen pre-registration
+      signatures/           numeric signature matrices
+      addenda/              A2 to A9, dated, written before the affected runs
+    src/rmfs/
+      data/ntrex.py         loader that fails without document ids; purged splits
+      components/           variance.py (REML components, LFS-VC), gates.py (content-variance
+                            preservation, effective rank, norm), ladder.py (M0 to M5 map sequence,
+                            one-standard-error selection), transfer.py (behavioral transfer),
+                            shrinkage.py (Ledoit-Wolf)
+      metrics/              rmfs.py (soft-minimum aggregation), baselines.py (MEXA and AaR under
+                            shared preprocessing, plus the official-pooling MEXA column)
+      validity/             deflation.py (covariate-adjustment regression), tournament.py
+                            (model confidence set, orthogonalization, Romano-Wolf)
+      battery/              synthetic fault injection and signature scoring
+      utils/seeding.py      the single source of randomness
+    scripts/                command-line entry points (see below)
+      audit/                split-leakage and purged-decomposition audits
+      sbatch/               the cluster job scripts, kept for provenance
+    tests/                  unit tests for every component (`pytest rmfs/tests`)
+    legacy/                 byte-identical, read-only copies of the prior pipeline (see legacy/README.md)
+    ledgers/                DECISIONS.md, ERROR_LEDGER.md, INVENTORY.md (sha256 per legacy file), RUNS.md
+    results/
+      runs/<run_id>/        320 run directories, each with a manifest and its result.json
+      tables/               the summary tables read by the paper
+      figures/              figure PDFs
+      belebele_new/, include_native/, belebele_arms/, deflation/, submission_comparison/,
+      rmfs_v1_robustness/   benchmark scores and validity outputs
+    paper/                  FINDINGS.md, appendix/estimator_notes.md, and the internal report sources
 
-    CLAUDE.md               rules (12 non-negotiables) + proposal objectives
-    CLAUDE_CODE_PROMPT.md   the phased build plan (P0-P4)
-    MEMORY.md               project memory: history, campaign numbers, map
-    pyproject.toml          py>=3.11, ruff, pytest; cluster extra for torch
-    Makefile                reproduce-tables stub (populated in Phase 4)
+## Entry points
 
-    prereg/                 FROZEN pre-registration + signatures (75 cells)
-      addenda/              dated addenda only (A1 = capacity gates, pending)
-    configs/                models.yaml (17 models, GENERATED from committed
-                            results), datasets.yaml (doc IDs mandatory)
+| Script | Purpose | Writes |
+|---|---|---|
+| `scripts/audit_lfs_headline_claims.py` | profile summary, estimator parity, hub audit | `results/tables/lfs_*_audit.*` |
+| `scripts/layer_profiles.py`, `scripts/new_model_readings.py` | LFS-VC depth profiles for the expansion set | `results/runs/` |
+| `scripts/grid_components.py` | variance components on a stored grid | `results/runs/` |
+| `scripts/expanded_validity.py` | 33-model benchmark panel with covariate adjustment | `results/tables/expanded_validity.txt` |
+| `scripts/compare_lfs_rmfs_submission.py` | same-support comparison of LFS and RMFS v1 | `results/submission_comparison/` |
+| `scripts/translationese.py` | native-versus-translated check on WMT19 pairs | `results/runs/` |
+| `scripts/rmfs_v1_robustness_audit.py` | robustness of the composite across its temperature | `results/rmfs_v1_robustness/` |
 
-    src/rmfs/               NEW code, typed, tests-first
-      data/ntrex.py           loader (hard-fails w/o doc IDs) + purged splits
-      components/variance.py  REML components, LFS-VC, LDE, legacy floor
-      components/gates.py     C_pres, effective rank, norm, dPPL hook
-      components/shrinkage.py Ledoit-Wolf (typed wrapper)
-      components/ladder.py    M0-M5 port + GPA, purged cross-fit, one-SE K
-      metrics/  validity/  battery/  extraction/   (Phases 1.6-3)
+## Install and test
 
-    tests/                  live unit battery (44 green): closed forms,
-                            rung recovery, EXACT legacy parity, hard-fails
-    legacy/                 OLD code, read-only (see legacy/README.md)
-      prereg/               the six frozen prior-campaign preregs
-      tests/                prior tests, reference only
+    pip install -e rmfs
+    pytest rmfs/tests
 
-    scripts/
-      audit/                Phase-0 split-leakage audits (E1 evidence)
-      sbatch/               cluster job scripts (Claude submits them)
-      scaffold.sh           one-time repo bootstrap, kept for provenance
-    ledgers/                INVENTORY, ERROR_LEDGER (E1-E2), RUNS, DECISIONS
-    paper/appendix/         estimator_notes.md (N1-N4), grows as built
-    data/                   gitignored; external/ covariates + Belebele,
-                            embeddings/ is a POINTER to cluster dumps (65G)
-    results/                gitignored except runs/<id>/manifest.json
-
-Cluster mirror: `wkhan12@login.clsp.jhu.edu:~/rmfs` (rsync; no model
-compute happens locally, ever).
+The tests run on synthetic arrays and need no model or GPU. The rules the code follows are in
+`RULES.md`; the project-wide research rules are in `../docs/00_research_rules.md`.

@@ -5,7 +5,7 @@ campaign repo), frozen at copy time; per-file sha256 + provenance:
 `ledgers/INVENTORY.md`. One rename: `study_metrics.py` is
 `code/pilot_metrics.py` there (the name the kickoff references).
 
-Rules (CLAUDE.md rule 7):
+Rules (RULES.md rule 7):
 - NEVER edit these files. Fixes, typing, and improvements happen in ports
   under `src/rmfs/`; discrepancies get ledger entries first.
 - `gpa.py`, `ladder.py`, `subspace.py`, `inject.py` use package-relative

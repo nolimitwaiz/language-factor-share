@@ -8,7 +8,7 @@
 #SBATCH --output=cluster_logs/batgeo_%j.log
 # S2 battery, geometric components: 14 injected worlds + base + 3
 # sentence-resample floor worlds through the untouched grid pipeline.
-# CPU-only; a100acct short-walltime backfill routing (CLAUDE.md policy).
+# CPU-only; a100acct short-walltime backfill routing (RULES.md compute policy).
 set -o pipefail
 cd "$HOME/rmfs"
 mkdir -p cluster_logs results/runs

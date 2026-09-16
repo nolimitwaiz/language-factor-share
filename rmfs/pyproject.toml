@@ -16,7 +16,7 @@ dependencies = [
 
 [project.optional-dependencies]
 # Model-touching extras are installed ONLY in the cluster environment;
-# the local machine never runs a forward pass (CLAUDE.md, Environment).
+# the local machine never runs a forward pass (RULES.md, compute policy).
 cluster = ["torch>=2.3", "transformers>=4.46"]
 dev = ["pytest>=8", "ruff>=0.6"]
 

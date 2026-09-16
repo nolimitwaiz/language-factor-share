@@ -2,7 +2,7 @@
 
 Three strict conventions, each earned by a prior-campaign incident:
 
-1. SHARED PREPROCESSING (CLAUDE.md rule 6). `mexa_shared` and `aar_shared`
+1. SHARED PREPROCESSING (RULES.md rule 6). `mexa_shared` and `aar_shared`
    are exact ports of the legacy implementations and run on the identical
    embeddings every other candidate sees; the unit battery holds them to
    exact parity with `legacy/study_metrics.py`. The OFFICIAL-pooling MEXA

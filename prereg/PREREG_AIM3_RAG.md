@@ -5,7 +5,7 @@
 #
 # Author: Waiz Khan
 # Drafted: 2026-08-12
-# Sources: docs/NEXT_EXPERIMENTS.md; Codex Aim 3 Stage 0 audit + review protocol
+# Sources: docs/NEXT_EXPERIMENTS.md; Aim 3 Stage 0 audit + review protocol
 
 ## 0. Scope and non-goals
 

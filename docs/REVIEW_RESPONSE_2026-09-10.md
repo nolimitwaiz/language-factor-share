@@ -100,7 +100,7 @@ the 95 percent sentence-subsampling intervals.
 
 Figure 1 caption now matches the drawing (range band, median, Qwen3-8B; intervals in (b); no FLORES markers) and panel (a) is titled "every profile has an interior minimum". Figure 2 enlarged to 0.62 of the line width; caption states the plotted 0.77 versus the adjusted 0.51 and that gray lines are label connectors. Decomposition caption no longer says "annotated"; rotation shares are referenced to the per-model table. Definition now states LFS is defined when SS_lang + SS_con > 0. Pipeline diagram relabeled: layer axis 0 to K (K = depth, L stays the number of languages), dimension d with 4,096 given as the Qwen3-8B example. Title kept.
 
-## Fifth review: source-level audit (Codex, 15 September 2026), applied 15 September
+## Fifth review: source-level audit (15 September 2026), applied 15 September
 
 Every claim was checked against the producing code and saved results before editing. No reported number changed.
 

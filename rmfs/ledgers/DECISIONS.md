@@ -3,12 +3,12 @@
 ## Phase 0 report (2026-08-01)
 
 **Built.** Repo at ~/dev/rmfs (off iCloud; Desktop confirmed synced) +
-cluster mirror ~/rmfs. Scaffold per CLAUDE.md; pyproject/ruff/pytest;
+cluster mirror ~/rmfs. Scaffold per RULES.md; pyproject/ruff/pytest;
 configs generated from committed prior-campaign results (17 models, dip
 layers, precision rules); NTREX symlinked with document IDs; legacy copied
 byte-identical and read-only (14 modules, 8 tests, 6 preregs, sha256 in
-INVENTORY); MEMORY.md (history, numbers, D1-D10, artifact map); proposal
-objectives extracted from the 24pp PDF into CLAUDE.md; prereg finalized
+INVENTORY); project notes (history, numbers, D1-D10, artifact map); proposal
+objectives extracted from the 24pp PDF into the project notes; prereg finalized
 with zero TODOs and a 75-cell numeric signature matrix.
 
 **Passed.**

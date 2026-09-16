@@ -41,7 +41,7 @@ corpus) without re-checking its premise. NTREX adjacency was known — the
 §3.1.3 harness explicitly exploits same-document context — and the split
 code never consulted it.
 
-**Standing fix.** CLAUDE.md rule 4 (purged splits everywhere); every new
+**Standing fix.** RULES.md rule 4 (purged splits everywhere); every new
 loader carries document IDs; `purged_split` (documents stratified by median
 length-stratum, sentences follow their document) is the Phase-1 default.
 
@@ -77,7 +77,7 @@ is robust to marginal pair-set differences; its provenance note stands.
 data added, nothing modified). (b) New-stack rule, adopted now: RMFS
 loaders HARD-FAIL when document IDs are missing — the silent-degrade guard
 (`if os.path.exists`) is the direct cause here and is banned in new code
-(CLAUDE.md rule 4 enforcement detail). (c) Prior-campaign impact is noted
+(RULES.md rule 4 enforcement detail). (c) Prior-campaign impact is noted
 here rather than re-litigated; if the 3.1.3 harness is re-run in Phase 2,
 it runs with the filter and the delta gets measured, not assumed.
 

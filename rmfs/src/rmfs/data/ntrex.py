@@ -1,4 +1,4 @@
-"""NTREX loader with MANDATORY document IDs (CLAUDE.md rule 4, E2 rule).
+"""NTREX loader with MANDATORY document IDs (RULES.md rule 4, E2 rule).
 
 Every split over NTREX sentences must purge at the document level: the 1997
 sentences belong to 123 documents (~16 sentences each), and the Phase 0

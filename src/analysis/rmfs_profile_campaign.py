@@ -5,7 +5,7 @@ Read-only analysis of existing dumps. Emits no 0–100 composite. When
 ``--selector-results`` is supplied, MEXA from that file is labeled as an
 external comparison only (not an RMFS reading).
 
-Protocol matches the Codex audit job (selection [0,300), held-out [300,1500)
+Protocol matches the independent audit job (selection [0,300), held-out [300,1500)
 in 300-sentence blocks; z-score fit on selection, frozen on held-out; English
 pivot + fixed 12-language panel; float32 for memory).
 """

@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-05 (first pass; entries marked VERIFY need a primary-source check
 before the paper cites them).
-**Purpose:** the ICLR plan and CLAUDE.md forbid any priority claim before this table
+**Purpose:** the ICLR plan and the project rules (`00_research_rules.md`) forbid any priority claim before this table
 exists. For each neighbor: what it measures, on what, how it was validated, and the
 exact distinction from LFS. The paper claims the narrowest novelty this table supports.
 

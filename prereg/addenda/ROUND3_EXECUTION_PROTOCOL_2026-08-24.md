@@ -2,7 +2,7 @@
 
 **Date fixed:** 2026-08-24  
 **Owner authorization:** Waiz Khan approved proceeding after reviewing the
-corrected plan in the Codex research thread.  
+corrected plan in the research review thread.  
 **Status:** fixed before the new Round 3 result tables are computed  
 **Scope:** diagnostic evaluation and already-authorized sub-one-GPU-hour RMFS
 checkpoint audit; no change to frozen RMFS v1

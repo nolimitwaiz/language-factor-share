@@ -12,7 +12,7 @@ renamed; `legacy/` holds byte-identical copies (one renamed, noted below).
 2. **`study_metrics.py` never existed** in the prior repo; the file is
    `code/pilot_metrics.py` (the pilot→study rename touched prose, not
    filenames, because the module is imported everywhere). Copied
-   byte-identical here as `legacy/study_metrics.py`, the name CLAUDE.md and
+   byte-identical here as `legacy/study_metrics.py`, the name RULES.md and
    the kickoff reference.
 3. **"28 Aim-2 arms" = 25 trained + 3 frozen references.** The cluster holds
    75 checkpoints (25 arms × 3 seeds, 168G). A, CS-A and WA-A are the frozen
@@ -133,7 +133,7 @@ base/sweep/codeswitch/codeswitch_frozen/wordalign). Known gap: the
 - NTREX-128: `multilingual-metrics/data/NTREX/NTREX-128/` (128 language
   files) + `data/NTREX/DOCUMENT_IDS.tsv` (1997 lines, **123 unique
   documents**, ~16 sentences/document). Document IDs are mandatory in every
-  new loader (CLAUDE.md rule 4).
+  new loader (RULES.md rule 4).
 - Code-switch corpora (Aim-2 §3.2.1): cluster
   `~/multilingual-metrics/data/codeswitch/` — 6 configurations + manifest
   with per-language aligner agreement.

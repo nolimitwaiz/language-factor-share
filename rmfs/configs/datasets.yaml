@@ -1,5 +1,5 @@
 # Dataset registry. Document IDs are MANDATORY in every NTREX loader
-# (CLAUDE.md rule 4): 1997 sentences belong to 123 documents (~16
+# (RULES.md rule 4): 1997 sentences belong to 123 documents (~16
 # sentences/doc), and any split that ignores this leaks same-document
 # context across train/held-out (see ERROR_LEDGER, Phase 0.3 audit).
 

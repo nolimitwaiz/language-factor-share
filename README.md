@@ -109,7 +109,7 @@ data/            small metadata files and the language mapping; corpora are down
 * Reading and re-deriving every table and figure from the stored results needs only a CPU and
   `pip install -r requirements.txt`. See [`docs/08_reproduce.md`](docs/08_reproduce.md).
 * Regenerating the stored results needs the models: the `slurm/` and `cluster/` scripts ran on a
-  SLURM cluster with single GPUs (RTX 2080 Ti or A100). Inference precision is fp16 or bf16;
+  SLURM cluster with one GPU per job (an RTX-class partition for models up to about 4B parameters, an A100 partition for larger ones). Inference precision is fp16 or bf16;
   pooling and all statistics are fp32. BLOOM is never run in fp16.
 * Every discrepancy found during the project, with its cause and fix, is in
   [`docs/DISCREPANCY_LEDGER.md`](docs/DISCREPANCY_LEDGER.md) (summarized in
@@ -117,6 +117,9 @@ data/            small metadata files and the language mapping; corpora are down
 
 ## Guides
 
+The full documentation index, including the dated results write-ups, is [`docs/README.md`](docs/README.md).
+
+0. [`docs/00_research_rules.md`](docs/00_research_rules.md): the research and compute rules every run followed, and the measure boundaries
 1. [`docs/01_data.md`](docs/01_data.md): corpora, benchmarks, covariates, sizes, licenses
 2. [`docs/02_models.md`](docs/02_models.md): the 17 primary models, the 19 expansion models, the instruction-tuned pairs, the training model
 3. [`docs/03_pipeline.md`](docs/03_pipeline.md): the measurement, step by step, with the formulas and the code

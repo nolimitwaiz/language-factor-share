@@ -1,4 +1,4 @@
-"""Single source of randomness for the repository (CLAUDE.md rule 11).
+"""Single source of randomness for the repository (RULES.md rule 11).
 
 Every stochastic operation draws its generator from here, so a run's seed
 appears in exactly one place in its manifest and the default seed set is

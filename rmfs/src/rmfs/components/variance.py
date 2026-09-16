@@ -16,7 +16,7 @@ Two estimators, per the kickoff:
       sigma2_E = MS_E,
   with E[MS_L] = sigma2_E + N sigma2_L and E[MS_C] = sigma2_E + L sigma2_C.
   Negative per-dimension estimates are KEPT in the ANOVA aggregate and
-  counted in n_neg_* — never silently clipped (CLAUDE.md coding standard;
+  counted in n_neg_* — never silently clipped (RULES.md coding standard;
   the prior campaign's floors came from exactly this kind of hidden bias).
 
 * Nonnegative REML (primary). For a balanced design the interior REML

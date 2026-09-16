@@ -6,7 +6,7 @@
 # dip_layer: the LFS-VC dip under the frozen layer rule (prereg §2),
 #   computed once on the n=300 development protocol.
 # precision: inference dtype policy. Pooling/statistics are ALWAYS
-#   fp32 regardless (CLAUDE.md rule 5).
+#   fp32 regardless (RULES.md rule 5).
 # campaign_dump: whether an n=1500 embedding dump exists cluster-side.
 
 defaults:
