@@ -1,0 +1,151 @@
+{
+  "run_id": "aim1_axis_basis_sensitivity_14model",
+  "created_utc": "2026-08-24T21:03:41.086852+00:00",
+  "host": "c09",
+  "model_manifest_sha256": "5d9ebb38115538173fcabe86485f935271d24ed37b3e9e0ea434ec796a0720f4",
+  "part_hashes": {
+    "EuroLLM-1.7B": {
+      "csv_sha256": "e930abfc4faf4055d831af3cc66b2a5ca3bb3f28de22acc6cebff37215393135",
+      "manifest_sha256": "e7327a0d1708838a780a6e49709f6740d51f376cd9704a97719dd0108368f4e7",
+      "maximum_conservation_relative_error": 1.300830070072162e-15
+    },
+    "Falcon3-7B-Base": {
+      "csv_sha256": "1c0a91289a500741ad2d9c291442a6257215ba8d21c9d9984d4cb45805d3b4f2",
+      "manifest_sha256": "10886b63e8b71f26d09f2e5f63fe3c63a2ebaa5957ba43b16319889023120c02",
+      "maximum_conservation_relative_error": 8.897809060422875e-16
+    },
+    "Mistral-7B-v0.3": {
+      "csv_sha256": "484326e729a6b0b5f464bab2bd5a021d62c3168f954f947258b7d03d1d48a3f7",
+      "manifest_sha256": "ff25c44c182560cf50483f4bbbecfe0ef503167f1dc196ebc56dbc65b7a7f1db",
+      "maximum_conservation_relative_error": 9.53048493168987e-16
+    },
+    "OLMo-2-0425-1B": {
+      "csv_sha256": "dd4ec4b9f0b143a7d867048b5455b84523fdafb122557cd1d0493ca57b336073",
+      "manifest_sha256": "0b418743af934aa2e6aef1b71df5bf85f4e4a724fe20c7f6a9e8f5824d3739b5",
+      "maximum_conservation_relative_error": 4.109425862599535e-16
+    },
+    "OLMo-2-1124-7B": {
+      "csv_sha256": "d14c97ceb1fed23026e8654cd3a321c1a764965e00291f72892100c689432d23",
+      "manifest_sha256": "275eea8edff6e32e6989a3c7aeacd426085107423d5897ffc7af6b7dfec6b0a0",
+      "maximum_conservation_relative_error": 6.576143600376149e-16
+    },
+    "Qwen3-0.6B-Base": {
+      "csv_sha256": "f2697f57e0d55a30ba77146aab6d18efbe9e43d4bf50057144a338695c0ec35b",
+      "manifest_sha256": "e23352c83b8087d943e85c541319c2bdbaeb451ce7c517025a30d202509df944",
+      "maximum_conservation_relative_error": 1.0438194811374694e-15
+    },
+    "Qwen3-1.7B-Base": {
+      "csv_sha256": "06ff338665dcadf572e5b86feb8dbd49143b413594341d0464e1cea5db46e6e2",
+      "manifest_sha256": "a23d6dd9de409423dfd790ef7feb2774d970f867bc1294f842d5c3dd0d5460a8",
+      "maximum_conservation_relative_error": 1.1967939063941988e-15
+    },
+    "Qwen3-4B-Base": {
+      "csv_sha256": "996320b0372667f629c7309d96e5208432cdd1eec10d5d0dc02668d9e607baa6",
+      "manifest_sha256": "4a630bd82004ec9783a3e9c217f5d70e7d6a1ae80c46393f3fd27aae84fb1bc1",
+      "maximum_conservation_relative_error": 8.520065555245341e-16
+    },
+    "Qwen3-8B-Base": {
+      "csv_sha256": "060cf472516e9476f589fc031f6f0ba9aab7ab258168d09f323c7543fabe1db8",
+      "manifest_sha256": "d4f1552b0612d0c8122047c051b4d6ae50a1a980aeefc1678d6b4cc19924408e",
+      "maximum_conservation_relative_error": 1.4696844151620423e-15
+    },
+    "SmolLM2-1.7B": {
+      "csv_sha256": "f293ec500bf7165c7b1ead804b2de4e8120885435640da12653a007bd1931942",
+      "manifest_sha256": "0de646d1dc10d1b00268f0a9cd8e40661aa3ecd5135ba500d475cbc160de04e1",
+      "maximum_conservation_relative_error": 9.271583829682871e-16
+    },
+    "bloom-1b7": {
+      "csv_sha256": "949f11dce326696d2e6c6e5c5490361eff09c2c62a347c242d30d800115137a4",
+      "manifest_sha256": "4512277b4452ff567c0d3884bff3c95310c83164d35e1cbc47d7ed2f8b1ef9e7",
+      "maximum_conservation_relative_error": 1.153466929463273e-15
+    },
+    "bloom-7b1": {
+      "csv_sha256": "bf8885b5113b7eb6978fec055f4910799485653ef52fe1bcd0635b91ea593d46",
+      "manifest_sha256": "26f29a0dcfad024187514dcc2b67291bea7352f83c7b0776f70d4ee3ff9ea498",
+      "maximum_conservation_relative_error": 1.126641573484628e-15
+    },
+    "salamandra-2b": {
+      "csv_sha256": "ca0ea92d16a2d151fc30765c8bae38810b04c6ed474cfee2f3d9abb09ca59f19",
+      "manifest_sha256": "a4c9cf6713cf6c1559d2029b41e4b3f995c0dd6b5f3ff2e442065d2dc7ac04e3",
+      "maximum_conservation_relative_error": 7.570614471449053e-16
+    },
+    "salamandra-7b": {
+      "csv_sha256": "d320e49259f35ba541a8694de986d4370fb534d6c8dbe1c4fc48747e5d0b4ce3",
+      "manifest_sha256": "4b82f6b9bb18db648a39e893d105ff8631b592fd661ea810b3dc530372b0cd98",
+      "maximum_conservation_relative_error": 6.412200462913389e-16
+    }
+  },
+  "aggregate": {
+    "n_models": 14,
+    "n_model_layers": 69,
+    "n_random_seeds": 5,
+    "sweeps": [
+      0,
+      1,
+      4,
+      16
+    ],
+    "maximum_conservation_relative_error": 1.4696844151620425e-15,
+    "primary_native_to_sweep16_layer_deltas": {
+      "share_q50": {
+        "median": -0.014433893918127216,
+        "q25": -0.13933726359453358,
+        "q75": 0.011002153850035667,
+        "minimum": -0.3416374471370882,
+        "maximum": 0.22193076484022034
+      },
+      "fraction_language_heavy_by": {
+        "median": 0.0,
+        "q25": -4.882812499995559e-05,
+        "q75": 0.0,
+        "minimum": -0.00341796875,
+        "maximum": 0.003515625000000022
+      },
+      "gini_ss_language": {
+        "median": -0.17396965157046695,
+        "q25": -0.2569292797775443,
+        "q75": -0.10862757847025084,
+        "minimum": -0.5057933544001081,
+        "maximum": -0.001887419733585749
+      },
+      "top5_ss_language_fraction": {
+        "median": -0.31937962525007657,
+        "q25": -0.42843055397080454,
+        "q75": -0.16223316836229917,
+        "minimum": -0.688305414693678,
+        "maximum": -0.0015276810946961705
+      }
+    },
+    "primary_native_to_sweep16_model_median_deltas": {
+      "share_q50": {
+        "median": -0.06341691622326134,
+        "q25": -0.08754832127081241,
+        "q75": -0.01660876350991758,
+        "minimum": -0.17489954192385804,
+        "maximum": 0.018274043910975757
+      },
+      "fraction_language_heavy_by": {
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.0,
+        "minimum": -0.0001464843749999778,
+        "maximum": 0.0
+      },
+      "gini_ss_language": {
+        "median": -0.17041023513253029,
+        "q25": -0.19656560536073486,
+        "q75": -0.13661542184685382,
+        "minimum": -0.2569292797775443,
+        "maximum": -0.09688835654203098
+      },
+      "top5_ss_language_fraction": {
+        "median": -0.3372383572241216,
+        "q25": -0.3896677959441029,
+        "q75": -0.27920416219579136,
+        "minimum": -0.462208646280188,
+        "maximum": -0.11137067157858091
+      }
+    },
+    "interpretation_guard": "coordinate sensitivity only; no causal-neuron claim"
+  }
+}

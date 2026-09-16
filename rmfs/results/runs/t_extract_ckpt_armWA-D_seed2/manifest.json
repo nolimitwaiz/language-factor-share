@@ -1,0 +1,29 @@
+{
+ "run_id": "t_extract_ckpt_armWA-D_seed2",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-03T22:10:55",
+ "config": {
+  "model_tag": null,
+  "arm_ckpt": "ckpt_armWA-D_seed2",
+  "n_pairs": 60,
+  "langs": 40,
+  "diagnostic": false,
+  "dip": 8,
+  "rank": 64,
+  "n_train": 178,
+  "n_test": 122,
+  "dtype": "bf16",
+  "consensus": "leave-one-out (A3)",
+  "governance": [
+   "prereg",
+   "A2",
+   "A3",
+   "A4-injection"
+  ]
+ },
+ "inputs": {
+  "model": "/home/wkhan12/multilingual-metrics/results/aim2/ckpt_armWA-D_seed2",
+  "rungs_from": "Qwen3-0.6B-Base"
+ }
+}

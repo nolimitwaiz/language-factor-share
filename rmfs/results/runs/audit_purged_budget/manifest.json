@@ -1,0 +1,18 @@
+{
+ "run_id": "audit_purged_budget",
+ "git": "",
+ "host": "c25",
+ "when": "2026-08-01T17:40:29",
+ "config": {
+  "model_tag": "Qwen3-1.7B-Base",
+  "dip": 13,
+  "rank": 64,
+  "S": 20,
+  "skip_nulls": true
+ },
+ "inputs": {
+  "dump": "/home/wkhan12/multilingual-metrics/results/dumps/Qwen3-1.7B-Base/layer013.npz",
+  "published": "/home/wkhan12/multilingual-metrics/results/budget/Qwen3-1.7B-Base/budget.json"
+ },
+ "precision": "fp32 load, fp64 ladder (legacy convention)"
+}

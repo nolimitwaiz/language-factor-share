@@ -1,0 +1,60 @@
+{
+  "analysis_status": "retrospective_descriptive",
+  "axis_descriptives": {
+    "layers_with_all_axes_by_significant": 65,
+    "median_layer_fraction_language_heavy_by": 1.0,
+    "median_layer_gini_ss_language": 0.8547929579117683,
+    "median_layer_language_share": 0.8744229150314615,
+    "median_layer_spearman_share_vs_raw_variance": 0.6922242900960656,
+    "median_layer_top5_raw_variance_ss_language_fraction": 0.7962124659521842,
+    "minimum_layer_fraction_language_heavy_by": 0.996337890625
+  },
+  "counts": {
+    "axes": 195072,
+    "axis_layers": 69,
+    "axis_models": 14,
+    "checkpoint_profiles": 81,
+    "independent_noncontrol_analysis_units": 18,
+    "noncontrol_arm_rows_before_checkpoint_deduplication": 20,
+    "outcome_join_rows": 72,
+    "profiles_without_joined_outcomes": 21,
+    "studies": 4,
+    "study_seed_cells": 12
+  },
+  "input_sha256": {
+    "axes.csv": "f1890a9d95c80df0445a3e89b96e1a852e4b75b69d69bc78f713f6b402c34f2e",
+    "layers.csv": "f426560d8166de22cb0a2277fc0b7df58f371dc7ea0d9971fd56152bbfe921d4",
+    "profile_by_checkpoint.csv": "f3b59e34d27f56bdc68bfd8b972204acaeac5131062fc7817f7c846d5cd0ef0c",
+    "profile_with_outcomes.csv": "87be72cdaea47a96c47cd22601c52ceb14423564303c5d71e506d6e36f37525c"
+  },
+  "interpretive_guards": [
+    "No composite score was formed.",
+    "MEXA and AaR are convergent representation comparisons, not downstream-task outcomes.",
+    "The joined table contains no primary Belebele accuracy, so this analysis cannot establish downstream validity.",
+    "The coordinate-axis audit is basis dependent and does not identify causal neurons.",
+    "The Gaussian Beta reference is exact only under the stated i.i.d. isotropic null."
+  ],
+  "r4_frozen_contrast": {
+    "WA-B": {
+      "effective_rank_ratio_mean": 0.9381108274593098,
+      "n": 3,
+      "pass_count": 3,
+      "shared_ratio_mean": 1.0132855281429072,
+      "within_ratio_mean": 1.011473803377778
+    },
+    "WA-C": {
+      "effective_rank_ratio_mean": 5.555273151992869,
+      "n": 3,
+      "pass_count": 0,
+      "shared_ratio_mean": 0.05848168209865687,
+      "within_ratio_mean": 0.08580979682016664
+    },
+    "WA-G": {
+      "effective_rank_ratio_mean": 0.9315490647440171,
+      "n": 3,
+      "pass_count": 3,
+      "shared_ratio_mean": 1.0118426098451498,
+      "within_ratio_mean": 1.0107181547070954
+    }
+  }
+}

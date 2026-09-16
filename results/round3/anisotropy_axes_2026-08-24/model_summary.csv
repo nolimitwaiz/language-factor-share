@@ -1,0 +1,15 @@
+model,n_saved_layers,layers,spearman_lfs_vs_mean_cosine,pvalue_lfs_vs_mean_cosine_descriptive,spearman_lfs_vs_top_eigen_share,pvalue_lfs_vs_top_eigen_share_descriptive,warning
+EuroLLM-1.7B,5,"[0, 6, 14, 18, 24]",0.09999999999999999,0.8728885715695384,-0.6,0.28475697986529386,coarse five-layer audit; correlations are descriptive
+Falcon3-7B-Base,5,"[0, 7, 13, 21, 28]",-0.09999999999999999,0.8728885715695384,-0.8999999999999998,0.03738607346849874,coarse five-layer audit; correlations are descriptive
+Mistral-7B-v0.3,5,"[0, 2, 8, 24, 32]",-0.7999999999999999,0.10408803866182788,-0.8999999999999998,0.03738607346849874,coarse five-layer audit; correlations are descriptive
+OLMo-2-0425-1B,5,"[0, 4, 9, 12, 16]",-0.3,0.623837664781073,-0.6,0.28475697986529386,coarse five-layer audit; correlations are descriptive
+OLMo-2-1124-7B,5,"[0, 8, 12, 24, 32]",-0.8999999999999998,0.03738607346849874,0.19999999999999998,0.7470600781046621,coarse five-layer audit; correlations are descriptive
+Qwen3-0.6B-Base,5,"[0, 7, 8, 21, 28]",-0.7999999999999999,0.10408803866182788,-0.7999999999999999,0.10408803866182788,coarse five-layer audit; correlations are descriptive
+Qwen3-1.7B-Base,5,"[0, 7, 13, 21, 28]",-0.7999999999999999,0.10408803866182788,-0.6,0.28475697986529386,coarse five-layer audit; correlations are descriptive
+Qwen3-4B-Base,5,"[0, 9, 17, 27, 36]",-0.7999999999999999,0.10408803866182788,-0.7999999999999999,0.10408803866182788,coarse five-layer audit; correlations are descriptive
+Qwen3-8B-Base,5,"[0, 9, 19, 27, 36]",-0.7999999999999999,0.10408803866182788,-0.7999999999999999,0.10408803866182788,coarse five-layer audit; correlations are descriptive
+SmolLM2-1.7B,5,"[0, 6, 15, 18, 24]",-0.8999999999999998,0.03738607346849874,-0.8999999999999998,0.03738607346849874,coarse five-layer audit; correlations are descriptive
+bloom-1b7,5,"[0, 6, 14, 18, 24]",0.3,0.623837664781073,0.3,0.623837664781073,coarse five-layer audit; correlations are descriptive
+bloom-7b1,5,"[0, 8, 17, 22, 30]",0.3,0.623837664781073,-0.3,0.623837664781073,coarse five-layer audit; correlations are descriptive
+salamandra-2b,4,"[0, 6, 18, 24]",-0.7999999999999999,0.2000000000000001,-1.0,0.0,coarse five-layer audit; correlations are descriptive
+salamandra-7b,5,"[0, 8, 18, 24, 32]",-0.7,0.1881204043741873,-0.7,0.1881204043741873,coarse five-layer audit; correlations are descriptive

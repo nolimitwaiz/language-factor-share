@@ -1,0 +1,8 @@
+{
+ "run_id": "translationese_Mistral-7B-v0.3",
+ "script": "scripts/translationese.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-07T19:49:23.024532+00:00",
+ "wall_s": 293.5
+}

@@ -1,0 +1,13 @@
+file,line,matched_patterns,text
+/home/wkhan12/multilingual-metrics/paper/ANALYSIS_REPORT.tex,97,language[- ]agnostic,\mathrm{Var}_{\mathrm{concept}})$. Low mid-layer LFS $=$ language-agnostic core.
+/home/wkhan12/multilingual-metrics/paper/TECHNICAL_REPORT.tex,121,language[- ]agnostic,"models are not truly multilingual, or language-agnostic.''"
+/home/wkhan12/multilingual-metrics/paper/TECHNICAL_REPORT.tex,314,language[- ]agnostic,idiosyncratic noise level does not masquerade as language-agnosticism;
+/home/wkhan12/multilingual-metrics/paper/TECHNICAL_REPORT.tex,605,language[- ]agnostic,LFS is not by itself evidence of language-agnosticism.} The pure-noise
+/home/wkhan12/multilingual-metrics/paper/TECHNICAL_REPORT.tex,609,language[- ]agnostic,"does not vanish, a model approaching true language-agnosticism does not"
+/home/wkhan12/multilingual-metrics/paper/TECHNICAL_REPORT.tex,1826,language[- ]agnostic,Thought: Activation Patching Reveals Language-Agnostic Concept Representations
+/home/wkhan12/multilingual-metrics/METRIC_PROPOSAL.md,50,language[- ]agnostic,`LFS(l) = Var_language / (Var_language + Var_concept)`. Low mid-layer LFS = language-agnostic
+/home/wkhan12/multilingual-metrics/docs/AIM2_PILOT_PLAN.md,63,language[- ]agnostic,language-agnosticism drives LFS toward a value set by the residual
+/home/wkhan12/multilingual-metrics/docs/AIM2_STUDY_PLAN.md,63,language[- ]agnostic,language-agnosticism drives LFS toward a value set by the residual
+/home/wkhan12/multilingual-metrics/paper/KOEHN_EMAIL_DRAFT.md,193,language[- ]agnostic,"et al.'s language-specific versus language-agnostic SVD decomposition,"
+/home/wkhan12/multilingual-metrics/paper/KOEHN_EMAIL_DRAFT.md,299,language[- ]agnostic,of language-specific and language-agnostic components discussed in your
+/home/wkhan12/multilingual-metrics/paper/RESEARCH_ARC.md,22,language[- ]agnostic,language-agnostic concept structure should degrade gracefully — and

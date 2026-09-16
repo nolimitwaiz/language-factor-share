@@ -1,0 +1,8 @@
+{
+ "run_id": "translationese_bloom-7b1",
+ "script": "scripts/translationese.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-07T19:52:09.032594+00:00",
+ "wall_s": 665.8
+}

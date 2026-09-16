@@ -1,0 +1,76 @@
+injection,magnitude,component,expectation,value_base,value_inj,delta,threshold,passed,note
+identity,-,T,band,0.019012,0.016041,-0.002971,0.015304,True,
+identity,-,q_L,band,0.268459,0.298182,0.029723,0.038149,True,
+identity,-,q_K,band,0.600000,0.600000,0.000000,0.000000,True,
+identity,-,C_pres,band,1.000000,1.506214,0.506214,0.737608,True,
+identity,-,RMFS,band,0.149429,0.148609,-0.000819,0.013264,True,
+offset_per_language,calibrated,T,band,0.019012,0.019295,0.000283,0.015304,True,
+offset_per_language,calibrated,q_L,down,0.268459,0.166046,-0.102414,0.038149,True,
+offset_per_language,calibrated,q_K,rung_le,2.000000,2.000000,,1.000000,False,median_rung=M2 vs M1
+offset_per_language,calibrated,C_pres,band,1.000000,1.000000,-0.000000,0.737608,True,
+offset_per_language,calibrated,RMFS,ceiling,0.149429,0.136934,-0.012495,0.013264,True,
+scale_isotropic_per_language,calibrated,T,band,0.019012,0.035034,0.016021,0.015304,False,
+scale_isotropic_per_language,calibrated,q_L,down,0.268459,0.241412,-0.027047,0.038149,False,
+scale_isotropic_per_language,calibrated,q_K,rung_le,2.000000,2.000000,,2.000000,True,median_rung=M2 vs M2
+scale_isotropic_per_language,calibrated,C_pres,band,1.000000,1.116402,0.116402,0.737608,True,
+scale_isotropic_per_language,calibrated,RMFS,ceiling,0.149429,0.161392,0.011963,0.013264,True,
+rotation_global_shared,-,T,band,0.019012,-0.009056,-0.028068,0.015304,False,
+rotation_global_shared,-,q_L,band,0.693903,0.693903,-0.000000,0.127123,True,
+rotation_global_shared,-,q_K,band,0.600000,0.600000,0.000000,0.000000,True,
+rotation_global_shared,-,C_pres,band,1.000000,1.000000,-0.000000,0.737608,True,
+rotation_global_shared,-,RMFS,band,0.149429,0.138234,-0.011195,0.013264,True,
+rotation_per_language,0.1,T,down_mag,0.019012,0.045112,0.026100,0.015304,False,monotone=True
+rotation_per_language,0.1,q_L,ceiling,0.268459,0.163913,-0.104546,0.038149,True,
+rotation_per_language,0.1,q_K,rung_ge,2.000000,2.000000,,0.000000,True,median_rung=M2 vs M0
+rotation_per_language,0.1,C_pres,band,1.000000,0.990178,-0.009822,0.737608,True,
+rotation_per_language,0.1,RMFS,ceiling,0.149429,0.156831,0.007402,0.013264,True,
+rotation_per_language,0.4,T,down_mag,0.019012,0.046220,0.027208,0.015304,False,monotone=True
+rotation_per_language,0.4,q_L,ceiling,0.268459,0.033787,-0.234672,0.038149,True,
+rotation_per_language,0.4,q_K,rung_ge,2.000000,3.000000,,3.000000,True,median_rung=M3 vs M3
+rotation_per_language,0.4,C_pres,band,1.000000,0.850863,-0.149137,0.737608,True,
+rotation_per_language,0.4,RMFS,down,0.149429,0.107756,-0.041673,0.013264,True,
+rotation_per_language,0.8,T,down_mag,0.019012,0.059772,0.040760,0.015304,False,monotone=True
+rotation_per_language,0.8,q_L,ceiling,0.268459,0.020617,-0.247842,0.038149,True,
+rotation_per_language,0.8,q_K,rung_ge,2.000000,3.000000,,3.000000,True,median_rung=M3 vs M3
+rotation_per_language,0.8,C_pres,band,1.000000,0.493781,-0.506219,0.737608,True,
+rotation_per_language,0.8,RMFS,down,0.149429,0.105753,-0.043676,0.013264,True,
+shear_general_linear,calibrated,T,down,0.019012,0.068312,0.049300,0.015304,False,
+shear_general_linear,calibrated,q_L,ceiling,0.268459,0.251257,-0.017203,0.038149,True,
+shear_general_linear,calibrated,q_K,rung_ge,2.000000,2.000000,,4.000000,False,median_rung=M2 vs M4
+shear_general_linear,calibrated,C_pres,band,1.000000,0.971375,-0.028625,0.737608,True,
+shear_general_linear,calibrated,RMFS,down,0.149429,0.191624,0.042195,0.013264,False,
+lowrank_CxL_interaction,calibrated,T,down,0.019012,0.031579,0.012567,0.015304,False,
+lowrank_CxL_interaction,calibrated,q_L,band,0.268459,0.134193,-0.134267,0.038149,False,
+lowrank_CxL_interaction,calibrated,q_K,rung_ge,2.000000,3.000000,,4.000000,False,median_rung=M3 vs M4
+lowrank_CxL_interaction,calibrated,C_pres,band,1.000000,0.992998,-0.007002,0.737608,True,
+lowrank_CxL_interaction,calibrated,RMFS,down,0.149429,0.137741,-0.011687,0.013264,False,
+monotone_warp,calibrated,T,down,0.019012,0.001896,-0.017116,0.015304,True,
+monotone_warp,calibrated,q_L,band,0.268459,0.425465,0.157006,0.038149,False,
+monotone_warp,calibrated,q_K,rung_ge,2.000000,5.000000,,5.000000,True,median_rung=M5 vs M5
+monotone_warp,calibrated,C_pres,band,1.000000,0.101657,-0.898343,0.737608,False,
+monotone_warp,calibrated,RMFS,down,0.149429,0.052880,-0.096549,0.013264,True,
+uniform_collapse,0.9,T,down_mag,0.019012,0.013186,-0.005826,0.015304,False,monotone=True
+uniform_collapse,0.9,q_L,band,0.268459,0.268459,0.000000,0.038149,True,
+uniform_collapse,0.9,q_K,band,0.600000,0.600000,0.000000,0.000000,True,
+uniform_collapse,0.9,C_pres,exact,1.000000,0.010000,-0.990000,0.010000,True,expected=0.0100
+uniform_collapse,0.9,RMFS,down_mag,0.149429,0.077001,-0.072428,0.013264,True,monotone=True
+uniform_collapse,0.5,T,down_mag,0.019012,0.030097,0.011085,0.015304,False,monotone=True
+uniform_collapse,0.5,q_L,band,0.268459,0.268459,0.000000,0.038149,True,
+uniform_collapse,0.5,q_K,band,0.600000,0.600000,0.000000,0.000000,True,
+uniform_collapse,0.5,C_pres,exact,1.000000,0.250000,-0.750000,0.010000,True,expected=0.2500
+uniform_collapse,0.5,RMFS,down_mag,0.149429,0.149956,0.000527,0.013264,False,monotone=True
+uniform_collapse,0.1,T,down_mag,0.019012,0.034892,0.015880,0.015304,False,monotone=True
+uniform_collapse,0.1,q_L,band,0.268459,0.268459,0.000000,0.038149,True,
+uniform_collapse,0.1,q_K,band,0.600000,0.600000,0.000000,0.000000,True,
+uniform_collapse,0.1,C_pres,exact,1.000000,0.810000,-0.190000,0.010000,True,expected=0.8100
+uniform_collapse,0.1,RMFS,down_mag,0.149429,0.163928,0.014499,0.013264,False,monotone=True
+collapse_per_language,0.5,T,down,0.019012,0.026883,0.007871,0.015304,False,
+collapse_per_language,0.5,q_L,up,0.268459,0.265997,-0.002462,0.038149,False,
+collapse_per_language,0.5,q_K,band,0.600000,0.600000,0.000000,0.000000,True,
+collapse_per_language,0.5,C_pres,exact,1.000000,0.250000,-0.750000,0.010000,True,expected=0.2500
+collapse_per_language,0.5,RMFS,down,0.149429,0.156453,0.007024,0.013264,False,
+pairing_permutation,-,T,down,0.019012,0.003935,-0.015077,0.015304,False,
+pairing_permutation,-,q_L,down,0.268459,0.000414,-0.268046,0.038149,True,
+pairing_permutation,-,q_K,down,0.600000,0.000000,-0.600000,0.000000,True,
+pairing_permutation,-,C_pres,band,1.000000,0.000960,-0.999040,0.737608,False,
+pairing_permutation,-,RMFS,down,0.149429,0.001315,-0.148114,0.013264,True,

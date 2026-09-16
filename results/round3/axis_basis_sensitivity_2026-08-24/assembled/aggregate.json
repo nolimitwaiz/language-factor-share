@@ -1,0 +1,73 @@
+{
+  "n_models": 14,
+  "n_model_layers": 69,
+  "n_random_seeds": 5,
+  "sweeps": [
+    0,
+    1,
+    4,
+    16
+  ],
+  "maximum_conservation_relative_error": 1.4696844151620425e-15,
+  "primary_native_to_sweep16_layer_deltas": {
+    "share_q50": {
+      "median": -0.014433893918127216,
+      "q25": -0.13933726359453358,
+      "q75": 0.011002153850035667,
+      "minimum": -0.3416374471370882,
+      "maximum": 0.22193076484022034
+    },
+    "fraction_language_heavy_by": {
+      "median": 0.0,
+      "q25": -4.882812499995559e-05,
+      "q75": 0.0,
+      "minimum": -0.00341796875,
+      "maximum": 0.003515625000000022
+    },
+    "gini_ss_language": {
+      "median": -0.17396965157046695,
+      "q25": -0.2569292797775443,
+      "q75": -0.10862757847025084,
+      "minimum": -0.5057933544001081,
+      "maximum": -0.001887419733585749
+    },
+    "top5_ss_language_fraction": {
+      "median": -0.31937962525007657,
+      "q25": -0.42843055397080454,
+      "q75": -0.16223316836229917,
+      "minimum": -0.688305414693678,
+      "maximum": -0.0015276810946961705
+    }
+  },
+  "primary_native_to_sweep16_model_median_deltas": {
+    "share_q50": {
+      "median": -0.06341691622326134,
+      "q25": -0.08754832127081241,
+      "q75": -0.01660876350991758,
+      "minimum": -0.17489954192385804,
+      "maximum": 0.018274043910975757
+    },
+    "fraction_language_heavy_by": {
+      "median": 0.0,
+      "q25": 0.0,
+      "q75": 0.0,
+      "minimum": -0.0001464843749999778,
+      "maximum": 0.0
+    },
+    "gini_ss_language": {
+      "median": -0.17041023513253029,
+      "q25": -0.19656560536073486,
+      "q75": -0.13661542184685382,
+      "minimum": -0.2569292797775443,
+      "maximum": -0.09688835654203098
+    },
+    "top5_ss_language_fraction": {
+      "median": -0.3372383572241216,
+      "q25": -0.3896677959441029,
+      "q75": -0.27920416219579136,
+      "minimum": -0.462208646280188,
+      "maximum": -0.11137067157858091
+    }
+  },
+  "interpretation_guard": "coordinate sensitivity only; no causal-neuron claim"
+}

@@ -1,0 +1,8 @@
+{
+ "run_id": "layer_profiles_Qwen3-1.7B-Base",
+ "script": "scripts/layer_profiles.py",
+ "git": "",
+ "host": "e05",
+ "when": "2026-08-05T22:26:46.166841+00:00",
+ "wall_s": 5190.1
+}

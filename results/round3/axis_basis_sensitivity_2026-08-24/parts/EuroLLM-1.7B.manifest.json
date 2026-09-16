@@ -1,0 +1,54 @@
+{
+  "run_id": "aim1_axis_basis_sensitivity_EuroLLM-1.7B",
+  "created_utc": "2026-08-24T20:57:24.693542+00:00",
+  "host": "c04",
+  "slurm_job_id": "1761839",
+  "model": "EuroLLM-1.7B",
+  "layers": [
+    0,
+    6,
+    14,
+    18,
+    24
+  ],
+  "seeds": [
+    1729,
+    2718,
+    3141,
+    5772,
+    8111
+  ],
+  "sweeps": [
+    0,
+    1,
+    4,
+    16
+  ],
+  "n_concepts": 300,
+  "languages": [
+    "eng",
+    "deu",
+    "rus",
+    "arb",
+    "zho-CN",
+    "tur",
+    "vie",
+    "hin",
+    "ben",
+    "swa",
+    "amh",
+    "zul",
+    "khm"
+  ],
+  "source_manifest_sha256": "c069db9c3a217e6ae2e558535cc9a33924636b637f17e2407e519e7cfac06bcd",
+  "source_sha256": {
+    "0": "5eac41c5be4861ca4fa894ccb3101ba2efbed6600b8f76509338f0133da7590f",
+    "6": "405b4db397c936da9548a788e93f4da3ccc44d3332cda2c5b4187d4442ec0926",
+    "14": "f19a25e443a6a541d9df5ab5dfa566a360a5c3c04a0476ffbde0bd49ae5dc768",
+    "18": "aada5efbbad3181317863003c4ee621960dfacafbaf93275c1be345a4a157d25",
+    "24": "55b7fb2392192bc349cf0a8756c3831355904ecf759ad471096bdeb9efc0fc68"
+  },
+  "rows": 100,
+  "maximum_conservation_relative_error": 1.300830070072162e-15,
+  "wall_seconds": 570.626
+}

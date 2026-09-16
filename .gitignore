@@ -1,0 +1,20 @@
+# hidden-state dumps and checkpoints stay on the cluster
+results/dumps/
+*.npz
+*.npy
+*.pt
+*.safetensors
+# build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+# local environments
+.venv/
+venvs/

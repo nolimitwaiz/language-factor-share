@@ -1,0 +1,4 @@
+component,n_cells_controlling_min,fraction_controlling_min,mean_value,median_value,mean_softmin_weight_tau_0_1
+q_T,286,0.547893,0.144697,0.097528,0.464832
+q_L,77,0.147510,0.229089,0.221979,0.218557
+q_K,159,0.304598,0.207280,0.200000,0.316611

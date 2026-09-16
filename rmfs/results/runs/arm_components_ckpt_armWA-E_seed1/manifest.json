@@ -1,0 +1,13 @@
+{
+ "run_id": "arm_components_ckpt_armWA-E_seed1",
+ "script": "scripts/arm_components.py",
+ "git": "",
+ "host": "e03",
+ "when": "2026-08-04T04:42:17.377593+00:00",
+ "precision": "bf16 forward / fp32 pooling / fp64 REML",
+ "wall_s": 57.2,
+ "inputs": {
+  "model_path": "/home/wkhan12/multilingual-metrics/results/aim2/ckpt_armWA-E_seed1",
+  "doc_ids_sha16": "88a8b0ff1eae47e8"
+ }
+}

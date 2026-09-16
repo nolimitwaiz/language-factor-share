@@ -1,0 +1,14 @@
+{
+ "script": "src/analysis/dip_bootstrap.py",
+ "script_sha256": "0b7d84d4d475d8d833e6e1af70acdf1671e71c0a512bdf36f45149429093ec8b",
+ "inputs": {
+  "results/dumps/Falcon3-7B-Base/layer000.npz": "a054fc3fd3bfb16d55073f5201b7375f0718b00c91f2b7482553c3ed5d55d3e0",
+  "results/dumps/Falcon3-7B-Base/layer013.npz": "4a4fe23f6ed1813f7684fb77c3bb75589ae21954133845158f2b0ef6ef6866ae"
+ },
+ "grid_reference": "results/grid/Falcon3-7B-Base/metrics.json",
+ "host": "c25",
+ "python": "3.11.9",
+ "numpy": "1.26.4",
+ "wall_seconds": 8717.629325151443,
+ "finished_utc": "2026-09-05T10:40:30Z"
+}

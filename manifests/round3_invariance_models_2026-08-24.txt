@@ -1,0 +1,14 @@
+EuroLLM-1.7B
+Falcon3-7B-Base
+Mistral-7B-v0.3
+OLMo-2-0425-1B
+OLMo-2-1124-7B
+Qwen3-0.6B-Base
+Qwen3-1.7B-Base
+Qwen3-4B-Base
+Qwen3-8B-Base
+SmolLM2-1.7B
+bloom-1b7
+bloom-7b1
+salamandra-2b
+salamandra-7b

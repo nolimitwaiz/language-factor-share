@@ -1,0 +1,42 @@
+{
+  "run_id": "round3_lfs_raw_depth_14model",
+  "created_utc": "2026-08-24T08:15:20.768140+00:00",
+  "host": "c24",
+  "models": [
+    "EuroLLM-1.7B",
+    "Falcon3-7B-Base",
+    "Mistral-7B-v0.3",
+    "OLMo-2-0425-1B",
+    "OLMo-2-1124-7B",
+    "Qwen3-0.6B-Base",
+    "Qwen3-1.7B-Base",
+    "Qwen3-4B-Base",
+    "Qwen3-8B-Base",
+    "SmolLM2-1.7B",
+    "bloom-1b7",
+    "bloom-7b1",
+    "salamandra-2b",
+    "salamandra-7b"
+  ],
+  "model_manifest_sha256": "5d9ebb38115538173fcabe86485f935271d24ed37b3e9e0ea434ec796a0720f4",
+  "grid_metrics_sha256": {
+    "EuroLLM-1.7B": "85fa449597db7ea287796343bfec0b314456bbaf0e5176ed5033def282f5c106",
+    "Falcon3-7B-Base": "64f7584b29f19b92525b706fa4bd2c345565cc8e2d6b3bccec0733470de19377",
+    "Mistral-7B-v0.3": "2c842f881338fc26235b4c78debc16af5e5378603c643d9ead02ae7cb7df4ce8",
+    "OLMo-2-0425-1B": "0564b9d7f111b24734f24af3c47b8c2bca61df50308c2960bb5f2c75ffb5b5fc",
+    "OLMo-2-1124-7B": "10fb4118234481d8ad85ae5998b95c119f5050cc4c5748f371cf9a760f5ae480",
+    "Qwen3-0.6B-Base": "3ead482ea1c535594148b8fff9ddc9f8f1c1099fe43a4ae17d6c2a8f42ff4285",
+    "Qwen3-1.7B-Base": "ce00d0f9efb019d51fbfa923fb53c3dd7557a6ff3d42ff08a66e4058a302da03",
+    "Qwen3-4B-Base": "f10ad618c1b51f89dbecca93d546238b2b24518f6b7dd28296fbd82ef8c34dea",
+    "Qwen3-8B-Base": "0f53f6f775382b4b89a30c1698bbe21bdf2712379086ff1edd38e653ac8bce21",
+    "SmolLM2-1.7B": "01073d36890c36be755e103e4c3a3d638ada9e14330d20643a6ccde199a25d1b",
+    "bloom-1b7": "540ca75bb228dcfa9a30a099db7dd25351cec771e120388a427a486add8a7378",
+    "bloom-7b1": "69e81d945335706cac78be6eebd27d6c5d8ad8f0648c3d144bfbf571d3d1968d",
+    "salamandra-2b": "063f6c0edcfa99992e65b75f358fbbe4d072f88bb8c0ce5fcd6979485accd0ab",
+    "salamandra-7b": "8f853ea5a5937b1665d38c95539051205b0c3d40b02ed239d5a334fad5ecc8d9"
+  },
+  "dip_rows": 14,
+  "layer_rows": 408,
+  "flagged_claim_lines": 12,
+  "paper_text_modified": false
+}

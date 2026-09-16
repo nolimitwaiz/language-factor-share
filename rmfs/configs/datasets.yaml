@@ -1,0 +1,28 @@
+# Dataset registry. Document IDs are MANDATORY in every NTREX loader
+# (CLAUDE.md rule 4): 1997 sentences belong to 123 documents (~16
+# sentences/doc), and any split that ignores this leaks same-document
+# context across train/held-out (see ERROR_LEDGER, Phase 0.3 audit).
+
+ntrex:
+  root: data/raw/NTREX/NTREX-128            # symlink to the prior repo's copy
+  document_ids: data/raw/NTREX/DOCUMENT_IDS.tsv
+  n_sentences: 1997
+  n_documents: 123
+  protocols:
+    development: {n_sents: 300}
+    campaign:    {n_sents: 1500}
+  pivot: eng
+  source_file: newstest2019-src.eng.txt      # English is source; refs are translations
+  ref_pattern: "newstest2019-ref.{lang}.txt"
+  note: zho is zho-CN / zho-TW in NTREX (bare 'zho' does not exist)
+
+belebele:
+  results: data/external/belebele0/          # copied tree, 19 model dirs
+  layout: "<model_tag>/<hf_id_flattened>/... (as produced by the prior repo)"
+  n_questions_per_language: 300
+
+covariates:
+  culturax_tokens: data/external/tokens_proxy_culturax.csv
+  cc100_backstop: data/external/cc100_sizes.csv   # imputation flagged at use
+  language_meta: data/external/language_meta.csv  # macro-family, script
+  fertility: data/external/fertility.csv          # per-model tokenizer fertility

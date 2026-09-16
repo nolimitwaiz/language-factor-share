@@ -1,0 +1,54 @@
+{
+  "run_id": "aim1_axis_basis_sensitivity_Mistral-7B-v0.3",
+  "created_utc": "2026-08-24T21:01:40.033152+00:00",
+  "host": "c24",
+  "slurm_job_id": "1761841",
+  "model": "Mistral-7B-v0.3",
+  "layers": [
+    0,
+    2,
+    8,
+    24,
+    32
+  ],
+  "seeds": [
+    1729,
+    2718,
+    3141,
+    5772,
+    8111
+  ],
+  "sweeps": [
+    0,
+    1,
+    4,
+    16
+  ],
+  "n_concepts": 300,
+  "languages": [
+    "eng",
+    "deu",
+    "rus",
+    "arb",
+    "zho-CN",
+    "tur",
+    "vie",
+    "hin",
+    "ben",
+    "swa",
+    "amh",
+    "zul",
+    "khm"
+  ],
+  "source_manifest_sha256": "29a673782410dd5276ce92b2b30918642c56f5e6c5b41fb3db12b9636d982317",
+  "source_sha256": {
+    "0": "cb174f19f8bb84d75c0e22f59168c6d1b3d8e76e9a1ca0d1d43e01dfe519b05f",
+    "2": "dfc313009bca29388e98625448ef399d706a28534c93b159d3d8bfead43015f6",
+    "8": "b72c81cb9706e5327ded7b9f96907557239371b6c9525d470417dc6bf76805e5",
+    "24": "fe3a4d16496d053f63b4b716461c5f66b79c5ce5c1fa1fcb352753411130f35f",
+    "32": "07242ce4aef761da1a196069d38d088926569106cf273e82c48eddb0048d705f"
+  },
+  "rows": 100,
+  "maximum_conservation_relative_error": 9.53048493168987e-16,
+  "wall_seconds": 854.245
+}

@@ -1,0 +1,8 @@
+{
+ "run_id": "layer_profiles_salamandra-7b",
+ "script": "scripts/layer_profiles.py",
+ "git": "",
+ "host": "e05",
+ "when": "2026-08-05T22:39:27.068099+00:00",
+ "wall_s": 5951.2
+}

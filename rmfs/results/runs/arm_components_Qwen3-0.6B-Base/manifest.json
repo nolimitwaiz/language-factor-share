@@ -1,0 +1,13 @@
+{
+ "run_id": "arm_components_Qwen3-0.6B-Base",
+ "script": "scripts/arm_components.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-04T04:44:46.904990+00:00",
+ "precision": "bf16 forward / fp32 pooling / fp64 REML",
+ "wall_s": 27.5,
+ "inputs": {
+  "model_path": "Qwen/Qwen3-0.6B-Base",
+  "doc_ids_sha16": "88a8b0ff1eae47e8"
+ }
+}

@@ -1,0 +1,123 @@
+# Model registry for the 17-model grid. GENERATED from committed
+# prior-campaign results (results/budget/*/budget.json dip_layer;
+# grid metrics argmin where no budget primary exists) — never from
+# recollection. Regenerate rather than hand-edit numbers.
+#
+# dip_layer: the LFS-VC dip under the frozen layer rule (prereg §2),
+#   computed once on the n=300 development protocol.
+# precision: inference dtype policy. Pooling/statistics are ALWAYS
+#   fp32 regardless (CLAUDE.md rule 5).
+# campaign_dump: whether an n=1500 embedding dump exists cluster-side.
+
+defaults:
+  pooling_accumulation: fp32
+  inference_precision: fp16   # RTX 2080 Ti default; bf16 on A100
+
+models:
+  EuroLLM-1.7B:
+    hf_id: utter-project/EuroLLM-1.7B
+    n_layers: 24
+    dip_layer: 14
+    dip_source: budget_primary
+    campaign_dump: true
+  Falcon3-7B-Base:
+    hf_id: tiiuae/Falcon3-7B-Base
+    n_layers: 28
+    dip_layer: 13
+    dip_source: budget_primary
+    campaign_dump: true
+  Llama-3.1-8B:
+    hf_id: meta-llama/Llama-3.1-8B
+    n_layers: 32
+    dip_layer: 14
+    dip_source: grid_argmin
+    campaign_dump: false
+  Mistral-7B-v0.3:
+    hf_id: mistralai/Mistral-7B-v0.3
+    n_layers: 32
+    dip_layer: 2
+    dip_source: budget_primary
+    campaign_dump: true
+    note: budget-primary dip is unusually early (L2); flagged, kept as committed
+  OLMo-2-0425-1B:
+    hf_id: allenai/OLMo-2-0425-1B
+    n_layers: 16
+    dip_layer: 9
+    dip_source: grid_argmin
+    campaign_dump: true
+  OLMo-2-1124-7B:
+    hf_id: allenai/OLMo-2-1124-7B
+    n_layers: 32
+    dip_layer: 12
+    dip_source: budget_primary
+    campaign_dump: true
+  Qwen3-0.6B-Base:
+    hf_id: Qwen/Qwen3-0.6B-Base
+    n_layers: 28
+    dip_layer: 8
+    dip_source: budget_primary
+    campaign_dump: true
+  Qwen3-1.7B-Base:
+    hf_id: Qwen/Qwen3-1.7B-Base
+    n_layers: 28
+    dip_layer: 13
+    dip_source: budget_primary
+    campaign_dump: true
+  Qwen3-4B-Base:
+    hf_id: Qwen/Qwen3-4B-Base
+    n_layers: 36
+    dip_layer: 17
+    dip_source: budget_primary
+    campaign_dump: true
+  Qwen3-8B-Base:
+    hf_id: Qwen/Qwen3-8B-Base
+    n_layers: 36
+    dip_layer: 19
+    dip_source: budget_primary
+    campaign_dump: true
+  SmolLM2-1.7B:
+    hf_id: HuggingFaceTB/SmolLM2-1.7B
+    n_layers: 24
+    dip_layer: 15
+    dip_source: budget_primary
+    campaign_dump: true
+  Yi-1.5-9B:
+    hf_id: 01-ai/Yi-1.5-9B
+    n_layers: 48
+    dip_layer: 20
+    dip_source: grid_argmin
+    campaign_dump: false
+  bloom-1b7:
+    hf_id: bigscience/bloom-1b7
+    n_layers: 24
+    dip_layer: 14
+    dip_source: budget_primary
+    inference_precision: never_fp16   # bf16-trained; fp32 on 2080Ti, bf16 on A100
+    campaign_dump: true
+  bloom-7b1:
+    hf_id: bigscience/bloom-7b1
+    n_layers: 30
+    dip_layer: 17
+    dip_source: budget_primary
+    inference_precision: never_fp16   # bf16-trained; fp32 on 2080Ti, bf16 on A100
+    campaign_dump: true
+  granite-3.1-8b-base:
+    hf_id: ibm-granite/granite-3.1-8b-base
+    n_layers: 40
+    dip_layer: 14
+    dip_source: grid_argmin
+    campaign_dump: false
+  salamandra-2b:
+    hf_id: BSC-LT/salamandra-2b
+    n_layers: 24
+    dip_layer: 6
+    dip_source: budget_primary
+    inference_precision: never_fp16   # bf16-trained; fp32 on 2080Ti, bf16 on A100
+    campaign_dump: true
+  salamandra-7b:
+    hf_id: BSC-LT/salamandra-7b
+    n_layers: 32
+    dip_layer: 18
+    dip_source: budget_primary
+    inference_precision: never_fp16   # bf16-trained; fp32 on 2080Ti, bf16 on A100
+    campaign_dump: true

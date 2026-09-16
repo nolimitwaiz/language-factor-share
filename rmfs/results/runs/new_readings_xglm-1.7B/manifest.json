@@ -1,0 +1,8 @@
+{
+ "run_id": "new_readings_xglm-1.7B",
+ "script": "scripts/new_model_readings.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-09T02:58:58.717405+00:00",
+ "wall_s": 187.5
+}

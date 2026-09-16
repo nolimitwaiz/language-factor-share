@@ -1,0 +1,36 @@
+{
+  "analysis_status": "exploratory retrospective audit of frozen RMFS v1",
+  "changes_frozen_verdicts": false,
+  "selects_new_scalar": false,
+  "mexa_included": false,
+  "created_utc": "2026-08-16T22:52:51.313068+00:00",
+  "host": "c21",
+  "seed": 13,
+  "n_boot_requested": 2000,
+  "taus": [
+    0.025,
+    0.05,
+    0.1,
+    0.2,
+    0.5,
+    1.0
+  ],
+  "primary_tau": 0.1,
+  "tokens_gate_passed": true,
+  "candidates": [
+    "q_T",
+    "q_L",
+    "q_K",
+    "rmfs_tau_0.025",
+    "rmfs_tau_0.05",
+    "rmfs_tau_0.1",
+    "rmfs_tau_0.2",
+    "rmfs_tau_0.5",
+    "rmfs_tau_1",
+    "rmfs_no_T",
+    "rmfs_no_L",
+    "rmfs_no_K",
+    "component_mean"
+  ],
+  "multilingual_metrics_root": "/home/wkhan12/multilingual-metrics"
+}

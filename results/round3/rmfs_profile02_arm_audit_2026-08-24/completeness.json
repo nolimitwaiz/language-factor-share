@@ -1,0 +1,45 @@
+{
+  "analysis_status": "retrospective Aim 2 checkpoint audit",
+  "expected_checkpoint_profiles": 81,
+  "observed_checkpoint_profiles": 81,
+  "complete": true,
+  "reference_grid_hashes": [
+    "a673a1508d679ece31e54d8a2b3384898654eafe918a8f205172d2e02ddcac14"
+  ],
+  "one_reference_grid": true,
+  "frozen_reference_profile": "/home/wkhan12/rmfs/results/profile02_arms/reference/result.json",
+  "frozen_arms": [
+    "A",
+    "WA-A"
+  ],
+  "frozen_outcome_rows_joined": 6,
+  "outcome_rows": 72,
+  "joined_rows": 72,
+  "outcome_rows_missing_profile": [],
+  "profiles_without_outcome_row": [
+    "ckpt_armADV_seed0",
+    "ckpt_armADV_seed1",
+    "ckpt_armADV_seed2",
+    "ckpt_armADV-CVP_seed0",
+    "ckpt_armADV-CVP_seed1",
+    "ckpt_armADV-CVP_seed2",
+    "ckpt_armCS-B_s2000_seed0",
+    "ckpt_armCS-B_s2000_seed1",
+    "ckpt_armCS-B_s2000_seed2",
+    "ckpt_armCS-P25_s2000_seed0",
+    "ckpt_armCS-P25_s2000_seed1",
+    "ckpt_armCS-P25_s2000_seed2",
+    "ckpt_armCS-W10_s2000_seed0",
+    "ckpt_armCS-W10_s2000_seed1",
+    "ckpt_armCS-W10_s2000_seed2",
+    "ckpt_armCS-W25_s2000_seed0",
+    "ckpt_armCS-W25_s2000_seed1",
+    "ckpt_armCS-W25_s2000_seed2",
+    "ckpt_armCS-W50_s2000_seed0",
+    "ckpt_armCS-W50_s2000_seed1",
+    "ckpt_armCS-W50_s2000_seed2"
+  ],
+  "outcome_file": "/home/wkhan12/rmfs/data/external/aim2_all_arm_seed_metrics.csv",
+  "outcome_sha256": "3792ee2723b146172c2921782f622b4bae9486a361cc538d9b0e1550677d9c33",
+  "composite_score_computed": false
+}

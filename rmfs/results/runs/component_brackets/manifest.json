@@ -1,0 +1,49 @@
+{
+ "run_id": "component_brackets",
+ "git": "5204c20690896ec3f16c06da33fae7aaaaa608bc",
+ "host": "Waizs-MacBook-Pro.local",
+ "when": "2026-08-02T22:28:15",
+ "inputs": {
+  "quick": [
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_quick_EuroLLM-1.7B",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_quick_Falcon3-7B-Base",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_quick_Mistral-7B-v0.3",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_quick_OLMo-2-0425-1B",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_quick_OLMo-2-1124-7B",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_quick_Qwen3-0.6B-Base",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_quick_Qwen3-1.7B-Base",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_quick_Qwen3-4B-Base",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_quick_Qwen3-8B-Base",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_quick_SmolLM2-1.7B",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_quick_bloom-1b7",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_quick_bloom-7b1",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_quick_salamandra-2b",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_quick_salamandra-7b"
+  ],
+  "k": [
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_components_EuroLLM-1.7B",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_components_Falcon3-7B-Base",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_components_Mistral-7B-v0.3",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_components_OLMo-2-0425-1B",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_components_OLMo-2-1124-7B",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_components_Qwen3-0.6B-Base",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_components_Qwen3-1.7B-Base",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_components_Qwen3-4B-Base",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_components_Qwen3-8B-Base",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_components_SmolLM2-1.7B",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_components_bloom-1b7",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_components_bloom-7b1",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_components_salamandra-2b",
+   "/Users/waizkhan/dev/rmfs/results/runs/grid_components_salamandra-7b"
+  ],
+  "covariates": "/Users/waizkhan/Desktop/multilingual-metrics/results/deflation"
+ },
+ "config": {
+  "n_boot": 2000,
+  "seed": 13,
+  "candidates": [
+   "lde",
+   "q_K"
+  ]
+ }
+}

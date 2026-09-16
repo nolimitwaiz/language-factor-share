@@ -1,0 +1,111 @@
+{
+ "fit": {
+  "tokens_beta": 0.28619726027906667,
+  "tokens_beta_p": 1.487342602308825e-06,
+  "gate": true,
+  "r2": 0.8239522152914464,
+  "n_rows": 1241
+ },
+ "brackets": {
+  "lde": [
+   {
+    "candidate": "lde",
+    "target": "raw_acc",
+    "scheme": "raw_residual",
+    "spearman": -0.3360483501113235,
+    "ci_low": -0.38364120762086035,
+    "ci_high": -0.28136506278824536,
+    "n": 980,
+    "n_boot": 2000,
+    "tokens_gate_passed": true,
+    "flags": []
+   },
+   {
+    "candidate": "lde",
+    "target": "alpha",
+    "scheme": "raw_residual",
+    "spearman": 0.02459531328720072,
+    "ci_low": -0.045762393600345626,
+    "ci_high": 0.08974642326650445,
+    "n": 980,
+    "n_boot": 2000,
+    "tokens_gate_passed": true,
+    "flags": []
+   },
+   {
+    "candidate": "lde",
+    "target": "alpha",
+    "scheme": "family_demeaned",
+    "spearman": -0.00032026229914518305,
+    "ci_low": -0.07213154293090562,
+    "ci_high": 0.07745490703779039,
+    "n": 980,
+    "n_boot": 2000,
+    "tokens_gate_passed": true,
+    "flags": []
+   },
+   {
+    "candidate": "lde",
+    "target": "alpha",
+    "scheme": "disattenuated",
+    "spearman": 0.0428766955481664,
+    "ci_low": -0.07264064667943902,
+    "ci_high": 0.16242610313826517,
+    "n": 980,
+    "n_boot": 2000,
+    "tokens_gate_passed": true,
+    "flags": []
+   }
+  ],
+  "q_K": [
+   {
+    "candidate": "q_K",
+    "target": "raw_acc",
+    "scheme": "raw_residual",
+    "spearman": 0.09353308079118565,
+    "ci_low": 0.041737808935499825,
+    "ci_high": 0.14666548869787221,
+    "n": 980,
+    "n_boot": 2000,
+    "tokens_gate_passed": true,
+    "flags": []
+   },
+   {
+    "candidate": "q_K",
+    "target": "alpha",
+    "scheme": "raw_residual",
+    "spearman": -0.009249283594672293,
+    "ci_low": -0.06568826556843227,
+    "ci_high": 0.047343105142778216,
+    "n": 980,
+    "n_boot": 2000,
+    "tokens_gate_passed": true,
+    "flags": []
+   },
+   {
+    "candidate": "q_K",
+    "target": "alpha",
+    "scheme": "family_demeaned",
+    "spearman": -0.021988037824724985,
+    "ci_low": -0.08300320723636871,
+    "ci_high": 0.03370150043710528,
+    "n": 980,
+    "n_boot": 2000,
+    "tokens_gate_passed": true,
+    "flags": []
+   },
+   {
+    "candidate": "q_K",
+    "target": "alpha",
+    "scheme": "disattenuated",
+    "spearman": -0.0161241579684936,
+    "ci_low": -0.1195374861088562,
+    "ci_high": 0.08333828802870373,
+    "n": 980,
+    "n_boot": 2000,
+    "tokens_gate_passed": true,
+    "flags": []
+   }
+  ]
+ }
+}

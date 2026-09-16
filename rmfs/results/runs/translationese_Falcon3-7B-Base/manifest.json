@@ -1,0 +1,8 @@
+{
+ "run_id": "translationese_Falcon3-7B-Base",
+ "script": "scripts/translationese.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-07T19:49:19.283181+00:00",
+ "wall_s": 294.5
+}

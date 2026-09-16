@@ -1,0 +1,8 @@
+{
+ "run_id": "new_readings_mGPT",
+ "script": "scripts/new_model_readings.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-09T03:05:04.538925+00:00",
+ "wall_s": 265.2
+}

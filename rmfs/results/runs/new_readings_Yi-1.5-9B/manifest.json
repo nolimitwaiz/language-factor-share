@@ -1,0 +1,8 @@
+{
+ "run_id": "new_readings_Yi-1.5-9B",
+ "script": "scripts/new_model_readings.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-09T03:35:38.473868+00:00",
+ "wall_s": 1800.5
+}

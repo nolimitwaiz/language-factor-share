@@ -1,0 +1,26 @@
+\begin{table}[h]
+\caption{Misalignment decomposition at each model's dip layer for the 14-model study: mean held-out error-reduction share across 128 languages at the common rank 64, for the nested maps offset (M1), isotropic scale (M2), rotation (M3), general linear (M4), and nonlinear kernel (M5). A negative nonlinear share is held-out overfitting of the kernel map at 300 sentences, reported as measured.}
+\label{tab:budget_models}
+\begin{center}\small
+\begin{tabular}{lrrrrrrr}
+\toprule
+Model & Dip layer & Offset & Scale & Rotation & Linear & Nonlinear & Offset$+$scale \\
+\midrule
+BLOOM-1.7B & 14 & 54.1\% & 20.1\% & 0.6\% & 5.0\% & $-$6.3\% & 74.2\% \\
+BLOOM-7.1B & 17 & 52.4\% & 20.5\% & 0.7\% & 5.2\% & $-$7.0\% & 72.9\% \\
+EuroLLM-1.7B & 14 & 51.5\% & 25.8\% & 0.4\% & 3.6\% & $-$1.7\% & 77.4\% \\
+Falcon3-7B & 13 & 50.9\% & 31.4\% & 0.1\% & 3.0\% & 1.1\% & 82.3\% \\
+Mistral-7B-v0.3 & 2 & 35.7\% & 33.2\% & 0.0\% & 3.4\% & $-$10.5\% & 68.9\% \\
+OLMo-2-1B & 9 & 81.8\% & 15.4\% & $-$0.2\% & 0.3\% & 0.5\% & 97.2\% \\
+OLMo-2-7B & 12 & 78.4\% & 18.5\% & $-$0.2\% & 0.4\% & 0.7\% & 96.9\% \\
+Qwen3-0.6B & 8 & 33.8\% & 29.4\% & 0.0\% & 4.1\% & $-$12.4\% & 63.2\% \\
+Qwen3-1.7B & 13 & 37.2\% & 28.6\% & 0.1\% & 4.2\% & $-$10.8\% & 65.8\% \\
+Qwen3-4B & 17 & 34.5\% & 28.4\% & 0.1\% & 8.0\% & $-$12.1\% & 62.9\% \\
+Qwen3-8B & 19 & 35.9\% & 28.5\% & 0.1\% & 7.3\% & $-$9.5\% & 64.4\% \\
+Salamandra-2B & 6 & 45.2\% & 31.8\% & $-$0.1\% & 2.3\% & $-$1.2\% & 77.0\% \\
+Salamandra-7B & 18 & 48.2\% & 30.1\% & 0.1\% & 1.8\% & 1.2\% & 78.3\% \\
+SmolLM2-1.7B & 15 & 42.0\% & 31.0\% & 0.1\% & 2.1\% & $-$5.3\% & 73.0\% \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{table}

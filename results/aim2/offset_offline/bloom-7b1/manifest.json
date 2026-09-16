@@ -1,0 +1,19 @@
+{
+ "code": "src/aim2/offset_offline.py",
+ "code_sha256": "44cf21bfdd8292ee003305dcd84425b7f225512d695746b53d1c8acdbc984008",
+ "inputs": {
+  "layer000.npz": "421ffcdfde876ab59c6c7bffd480954cf56ef182cac8cacd1ba045ffd1012382",
+  "layer008.npz": "0ef2181f6f46a0a698fb6941fa41ff136ab3d97240077e9922d02ac6eff0fcda",
+  "layer017.npz": "1b7ee3ce3b6f24b5e554c45940b4a3d7aaec72f16b38d31e198d2003b47aecac",
+  "layer022.npz": "4aaaa0db1b94ea6dfbe31cf2b595070bfdaa5147054c2e9c9386c70bb7e1c0b5",
+  "layer030.npz": "ec9e53a1f891a9b4a795031c0f49be7aa197c115478e15843ee3b674ba44e497"
+ },
+ "grid_metrics": "/home/wkhan12/multilingual-metrics/results/grid/bloom-7b1/metrics.json",
+ "seed": 20260907,
+ "n_boot": 300,
+ "host": "c02",
+ "platform": "Linux-5.15.0-179-generic-x86_64-with-glibc2.35",
+ "numpy": "1.26.4",
+ "wall_s": 3321.6,
+ "created_utc": "2026-09-07T19:29:28Z"
+}

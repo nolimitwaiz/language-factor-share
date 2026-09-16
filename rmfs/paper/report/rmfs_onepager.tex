@@ -1,0 +1,75 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,booktabs,xcolor,enumitem,graphicx}
+\usepackage[hidelinks]{hyperref}
+\setlist{nosep,leftmargin=1.15em}
+\pagestyle{empty}
+
+\begin{document}
+\begin{center}
+{\LARGE\textbf{RMFS at a glance}}\\[2pt]
+{\small Robust Multilingual Factor Score --- Waiz Khan, JHU,
+August 2026}
+\end{center}
+\vspace{-4pt}\hrule\vspace{6pt}
+
+\textbf{What it is.} A report card for a model's multilingual
+representations: four readings per language, each with its own
+validated number, scored 0 to 100 against a reference grid of 14
+models. A score of 74 means better than 74 percent of the reference
+models.
+
+\textbf{How it is computed} (about four GPU minutes per model): embed
+300 parallel sentences in 41 languages at one layer, then take:
+\begin{itemize}
+\item \textbf{Meaning against language} --- the share of representation
+structure that encodes concepts rather than language identity.
+\item \textbf{Sentence matching} --- how reliably the model matches
+sentences to their English parallels.
+\item \textbf{Weakest aligned languages} --- behaviour in the poorest
+aligned tail, where training damage appears first.
+\item \textbf{Collapse flag} --- meaning structure against a reference
+checkpoint, for training settings.
+\end{itemize}
+
+\textbf{What each reading is worth.} Correlations with outside
+evidence, after removing training data volume, language family, script
+and tokenizer effects. No reading wins twice, which is why they are
+reported side by side rather than averaged into one score:
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+ & carrying content & downstream & trained variants\\
+ & across languages & exams & (75 checkpoints)\\
+\midrule
+Meaning against language & $\mathbf{+0.76}$ & $+0.07$ & $-0.10$\\
+Sentence matching & $+0.76$ & $\mathbf{+0.24}$ & $+0.36$\\
+Weakest languages & --- & $+0.09$ & $\mathbf{+0.51}$\\
+Collapse flag & --- & --- & detects exactly\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Scoreboard.} Qwen3-8B \textbf{90.5}, 4B \textbf{85.7}, 1.7B
+\textbf{73.8}; Salamandra-7B \textbf{69.0}; bloom-7b1 and Qwen3-0.6B
+\textbf{54.8}; OLMo-2-1B \textbf{28.6}. Scale and multilingual design
+orderings come out with no tuning.
+
+\textbf{Why four readings and not one number.} In a study of 25
+training variants (75 checkpoints), the variant trained on the word
+level alignment objective lost about 95 percent of its meaning
+structure and posted the best single score in the study; MEXA ranked it
+third of 25. A share cannot see a loss that shrinks both of its parts,
+and the same holds for any scale invariant ratio. That variant also
+kept its downstream ability, 0.395 against 0.390 for the untouched
+control, while the variants that did lose ability looked clean on every
+geometric measure.
+
+\textbf{What the numbers rest on.} Downstream prediction sits near 0.3
+after controls for every measure in this area. The 0.76 holds when
+whole language families are resampled (0.60 to 0.89) and rests on four
+models in that comparison, giving 0.12 to 0.84 when models are the
+unit. A panel of 69 languages carries the independent evidence of
+roughly two.
+
+\end{document}

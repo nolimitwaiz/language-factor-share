@@ -1,0 +1,8 @@
+{
+ "run_id": "layer_profiles_bloom-1b7",
+ "script": "scripts/layer_profiles.py",
+ "git": "",
+ "host": "e03",
+ "when": "2026-08-05T21:46:00.270785+00:00",
+ "wall_s": 2757.5
+}

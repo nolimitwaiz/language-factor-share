@@ -1,0 +1,12 @@
+{
+ "run_id": "rmfs_assembly_v1",
+ "script": "scripts/assemble_rmfs.py",
+ "git": "3cb9949c6407692768a9315ceefa140a5021d18e",
+ "host": "Waizs-MacBook-Pro.local",
+ "when": "2026-08-05T16:12:29.866361+00:00",
+ "tau": 0.1,
+ "analysis_seed": 13,
+ "pool_rule": "median primary, mean sensitivity, undefined excluded+counted (declared pre-assembly)",
+ "n_models": 89,
+ "n_arms_missing_components": 0
+}

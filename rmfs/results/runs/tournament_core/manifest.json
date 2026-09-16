@@ -1,0 +1,26 @@
+{
+ "run_id": "tournament_core",
+ "git": "3cb9949c6407692768a9315ceefa140a5021d18e",
+ "host": "Waizs-MacBook-Pro.local",
+ "when": "2026-08-05T16:14:59.734313+00:00",
+ "n_boot": 2000,
+ "seed": 13,
+ "family": [
+  "rmfs_obs",
+  "texcl",
+  "q_T",
+  "q_L",
+  "q_K",
+  "lde",
+  "legacy_lfs",
+  "mexa_shared",
+  "aar_shared",
+  "mexa_leg",
+  "aar10_leg"
+ ],
+ "not_computed": [
+  "cka",
+  "probe_mdl"
+ ],
+ "tokens_gate": true
+}

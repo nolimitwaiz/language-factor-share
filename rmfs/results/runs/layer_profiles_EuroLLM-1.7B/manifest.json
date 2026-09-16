@@ -1,0 +1,8 @@
+{
+ "run_id": "layer_profiles_EuroLLM-1.7B",
+ "script": "scripts/layer_profiles.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-05T22:13:12.131225+00:00",
+ "wall_s": 4389.4
+}

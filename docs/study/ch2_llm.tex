@@ -1,0 +1,215 @@
+\section{How a large language model works}
+\label{ch:llm}
+
+A large language model (LLM) is a function that takes a sequence of tokens
+and returns a probability distribution over the next token. Everything
+else, chat, translation, reasoning, is that function applied repeatedly.
+Figure~\ref{fig:pipeline} is the whole pipeline; the rest of the chapter
+walks through each box, and says at each step what LFS reads.
+
+\begin{figure}[h]\centering\includegraphics[width=\linewidth]{fig_llm_pipeline.png}
+\caption{Text in, next-token probabilities out. LFS is computed from the hidden states in the middle and never asks the model to generate.}\label{fig:pipeline}\end{figure}
+
+\subsection{Tokenization and fertility}
+
+Text is split into \emph{tokens}: pieces of words drawn from a fixed
+vocabulary of 30{,}000 to 250{,}000 entries, learned by byte-pair encoding
+(BPE) or a similar scheme so that frequent strings become single tokens.
+``The'' is one token; ``schläft'' may be two; an Arabic or Persian word may be
+five or six because the vocabulary saw little of those scripts.
+
+\emph{Fertility} is the number of tokens per word (or per character),
+usually reported relative to English. High fertility means a language pays
+more tokens for the same meaning, gets less content into a fixed context
+window, and costs more per sentence. Fertility matters for LFS in two ways.
+Mean pooling averages a different number of tokens per language, and the
+tokenizer itself carries language identity into the embedding layer. That is
+why fertility is a control variable in every validity analysis, and why the
+paper reports that per-language contributions to the language variance
+correlate with fertility at $+0.42$ to $+0.64$.
+
+\subsection{Embeddings and the residual stream}
+
+Each token id selects a row of the embedding matrix $E \in \R^{V\times D}$.
+The resulting $D$-dimensional vector is the starting value of the
+\emph{residual stream} for that position. Modern models add position
+information through rotary embeddings inside attention rather than by adding
+a position vector, but the picture is the same: position $t$ has a vector
+$\mathbf x^{(0)}_t \in \R^D$.
+
+The residual stream is a running sum. Each of the $n$ blocks reads the
+stream, computes an update, and adds it back:
+\[
+\mathbf x^{(k)} = \mathbf x^{(k-1)} + \mathrm{Attn}_k\!\big(\mathrm{norm}(\mathbf x^{(k-1)})\big) + \mathrm{MLP}_k\!\big(\mathrm{norm}(\cdot)\big).
+\]
+The \emph{hidden state at layer $k$} is $\mathbf x^{(k)}$. Hugging Face
+returns $n+1$ hidden states per token: index 0 is the embedding output and
+index $k$ is the stream after block $k$. In the project's results a 28-block
+model therefore has 29 ``layers'', and layer 0 is the embedding layer. This
+additive structure is why it is meaningful to compare states across layers at
+all: they all live in the same $D$-dimensional space and each layer is an
+increment.
+
+\begin{figure}[h]\centering\includegraphics[width=0.9\linewidth]{fig_llm_block.png}
+\caption{One transformer block. The horizontal line is the residual stream; the two branches add their outputs back into it.}\label{fig:block}\end{figure}
+
+\subsection{Attention}
+
+Attention is how a position pulls information from earlier positions. For
+each position compute a query $\mathbf q$, a key $\mathbf k$, and a value
+$\mathbf v$ (three matrix multiplications). The score between position $i$
+and an earlier position $j$ is $\mathbf q_i\cdot\mathbf k_j/\sqrt{d}$; a
+softmax over $j$ turns the scores into weights (Figure~\ref{fig:attn}); the
+output is the weighted sum of the values $\sum_j w_{ij}\mathbf v_j$. A
+\emph{causal mask} forbids looking at later positions, which is what makes
+the model a left-to-right predictor. Multi-head attention runs this several
+times in parallel with smaller $d$ and concatenates.
+
+\begin{figure}[h]\centering\includegraphics[width=0.62\linewidth]{fig_llm_attention.png}
+\caption{Causal attention weights for one head: each row sums to one and only looks left.}\label{fig:attn}\end{figure}
+
+The content-transfer experiment in the paper is attention in action: a
+context sentence in Russian lowers the loss on an English target only if
+attention at some layer moves information from the Russian tokens into the
+English positions. The attention analysis measured exactly that mass, and
+found it peaks just below the LFS minimum.
+
+\begin{exercise}{single-head causal attention in numpy}
+\begin{lstlisting}
+T, D, d = 6, 32, 16
+X = rng.normal(size=(T, D))                     # residual stream for 6 positions
+Wq, Wk, Wv = (rng.normal(0, D**-0.5, (D, d)) for _ in range(3))
+Q, K, V = X @ Wq, X @ Wk, X @ Wv
+scores = Q @ K.T / np.sqrt(d)
+scores[np.triu_indices(T, 1)] = -np.inf         # causal mask: no looking ahead
+W = np.exp(scores - scores.max(1, keepdims=True)); W /= W.sum(1, keepdims=True)
+out = W @ V                                     # (T, d): what each position gathered
+print(np.round(W, 2))                           # lower-triangular, rows sum to 1
+\end{lstlisting}
+Now apply the same $W$ to \texttt{V} scaled by 100 and confirm \texttt{W} does
+not change: attention weights depend on $Q$ and $K$, not on the scale of $V$.
+\end{exercise}
+
+\subsection{The MLP and normalization}
+
+The MLP in each block is the two-matrix network of Chapter~\ref{ch:ml}, applied
+to each position separately, with a hidden width of about $4D$ (SwiGLU
+variants use a gated form). It is where much of a model's factual knowledge
+appears to be stored, and it is the part that does not mix positions.
+
+Normalization (LayerNorm or RMSNorm) rescales each position's vector to a
+standard size before each branch. Modern models are \emph{pre-norm}: the
+branch sees a normalized copy, but the residual stream itself is not
+normalized, which is why a few coordinates of the stream can grow into
+\emph{massive activations}, values hundreds of times larger than their
+neighbors. Those coordinates dominate any unstandardized distance, overflow
+fp16 sums, and are the reason LFS z-scores every coordinate jointly before
+decomposing.
+
+\subsection{From the last layer to a probability}
+
+After the last block, a final norm and the \emph{unembedding} matrix $W_U \in
+\R^{D\times V}$ turn the $D$-vector at each position into $V$ logits; softmax
+gives the next-token distribution. Some models tie $W_U$ to the embedding
+matrix. The \emph{logit lens} applies $W_U$ to an intermediate hidden state
+and reads off the top token; it is a heuristic that presumes intermediate
+states already live near the output space. The project measured that
+presumption: mid-stack states reach a maximum cosine of about 0.10 to any
+row of $W_U$ (0.20 at the final layer). Logit-lens readouts of middle layers,
+including the ``LLMs think in English'' measure, rest on weak geometry.
+
+\subsection{Training, base models, and post-training}
+
+Training (Figure~\ref{fig:training}) is gradient descent on the next-token
+cross-entropy over trillions of tokens, in batches, with Adam and a learning
+rate that warms up and then decays. The model is always shown the true prefix
+(\emph{teacher forcing}), so training is fully parallel across positions. The
+output is a \emph{base} checkpoint: a next-token predictor, not a chatbot.
+Post-training adds \emph{supervised fine-tuning} on instruction--response
+pairs and often \emph{preference optimization} (RLHF, DPO) to produce an
+\emph{instruct} model. Every model measured in the paper is a base checkpoint;
+whether instruction tuning moves the LFS profile is an open, cheap
+experiment.
+
+\begin{figure}[h]\centering\includegraphics[width=\linewidth]{fig_llm_training.png}
+\caption{The training loop. Nothing in it mentions languages; multilinguality is whatever the data induces.}\label{fig:training}\end{figure}
+
+Two consequences for multilinguality. First, the data mix decides what is
+learned: models trained mostly on English are English-centric by
+construction, and the proposal's Aim 2 is about changing the data or the loss
+to fix that. Second, ``scale'' (parameters and tokens) and ``recipe'' (mix,
+tokenizer, curriculum) are confounded across labs, which is why the paper
+calls the recipe-over-scale finding descriptive.
+
+\subsection{Inference and scoring}
+
+At inference the model produces a distribution at each step; you pick a
+token (greedy, or sampling with a temperature) and repeat. For evaluation
+you often do not generate at all: you feed a fixed continuation and read off
+its probability. The teacher-forced NLL of a target sentence given a context
+is exactly what the content-transfer test measures, and Belebele scoring
+compares the log-likelihoods of the four answer options.
+
+\subsection{Precision}
+
+fp32 uses 32 bits per number; fp16 uses 16 with a small exponent range (max
+about 65{,}000); bf16 uses 16 with fp32's exponent range but fewer digits.
+Models are run in bf16 or fp16 for speed. Sums of squares of massive
+activations overflow fp16, so pooling and every statistic in the project are
+accumulated in fp32, and BLOOM, which was trained in bf16, is never run in
+fp16. Two documented errors in the discrepancy ledger came from exactly
+this; be ready to tell them.
+
+\subsection{Interpretability handles you will use}
+
+\begin{description}[leftmargin=2.6cm, style=nextline, itemsep=1pt]
+\item[hidden states] the residual stream per layer, via \texttt{output\_hidden\_states=True}. The raw material of LFS.
+\item[pooling] collapsing a sentence's token states into one vector: mean over tokens (used here), last token, or unit-normalized mean. Pooling is part of the measurement definition; absolute LFS values change with it, rankings much less.
+\item[linear probe] a logistic regression trained on hidden states to predict a label (here: which language). High accuracy means the information is linearly present. Language stays decodable at 0.875 to 0.886 at every layer even where LFS is lowest.
+\item[logit lens] unembed an intermediate state; see above for its limits.
+\item[activation patching] copy a hidden state from one run into another and measure what changes; the causal tool Dumas et al.\ use to separate language from concept.
+\item[CKA] a similarity index between two sets of representations, invariant to rotation and scale; used as a comparator in the fault test suite.
+\end{description}
+
+\begin{exercise}{hidden states for one sentence in three languages (run on CLSP)}
+\begin{lstlisting}
+# sbatch to a 2080Ti node; ~/venvs/mlm has transformers
+import torch, numpy as np
+from transformers import AutoTokenizer, AutoModel
+name = "Qwen/Qwen3-0.6B-Base"
+tok = AutoTokenizer.from_pretrained(name); model = AutoModel.from_pretrained(name, output_hidden_states=True).eval()
+sents = {"eng": "The bat flew through the air.", "deu": "Die Fledermaus flog durch die Luft.", "fra": "La chauve-souris a volé dans les airs.", "spa": "El murciélago voló por el aire.", "rus": "<paste the Russian NTREX translation here>", "arb": "<paste the Arabic NTREX translation here>", "fas": "<paste the Persian NTREX translation here>"}
+pooled = {}
+for lang, s in sents.items():
+    enc = tok(s, return_tensors="pt")
+    with torch.no_grad(): hs = model(**enc).hidden_states       # tuple of (1, T, D), length n_layers+1
+    pooled[lang] = np.stack([h[0].float().mean(0).numpy() for h in hs])  # (n_layers+1, D)
+def cos(a, b): return a @ b / (np.linalg.norm(a) * np.linalg.norm(b))
+for k in range(pooled["eng"].shape[0]):
+    print(k, *[round(cos(pooled["eng"][k], pooled[l][k]), 3) for l in ("deu", "fra", "spa", "rus", "arb", "fas")])
+\end{lstlisting}
+You will see cosines that are high everywhere (anisotropy), which is why raw
+cosine is a poor instrument and why the project standardizes and uses a
+balanced grid instead of one sentence.
+\end{exercise}
+
+\subsection{The models in the paper, in one table}
+
+\begin{center}\small
+\begin{tabular}{llll}
+\toprule
+Family & Sizes measured & Training emphasis & Why it is in the grid \\
+\midrule
+Qwen3 & 0.6B, 1.7B, 4B, 8B & 119 languages, about 36T tokens & the within-family scaling series \\
+OLMo-2 & 1B, 7B, 13B & mostly English, fully open data & English-centric control with known data \\
+Mistral & 7B, Nemo 12B & English and European web & independent English-centric recipe \\
+Llama-3.1 & 8B & English-heavy generalist & deepest dip in the grid \\
+BLOOM & 1.7B, 7.1B & 46 languages, balanced, 2022 & the flat profile: coverage without convergence \\
+Salamandra & 2B, 7B & 35 European languages, balanced, 2024 & modern balanced model; shallows with scale \\
+EuroLLM & 1.7B & 35 European languages & targeted multilinguality \\
+SmolLM2, Falcon3 & 360M, 1.7B; 3B, 7B & English-centric & the frozen held-out prospective test \\
+granite, Yi & 8B; 9B & mixed & added under frozen predictions \\
+Qwen2.5, XGLM, Sailor, Tower, Occiglot, mGPT & various & various & the 19-model expansion set \\
+\bottomrule
+\end{tabular}
+\end{center}

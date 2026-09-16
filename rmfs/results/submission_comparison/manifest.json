@@ -1,0 +1,27 @@
+{
+  "analysis_status": "retrospective synthesis of frozen/scored artifacts",
+  "n_boot": 2000,
+  "seed": 13,
+  "multilingual_metrics_root": "/home/wkhan12/multilingual-metrics",
+  "direction": "all candidates recoded so higher is more favorable",
+  "supports": {
+    "alpha": {
+      "n_rows": 522,
+      "n_models": 14,
+      "n_languages": 40
+    },
+    "r_content": {
+      "n_rows": 128,
+      "n_models": 4,
+      "n_languages": 34
+    }
+  },
+  "candidate_definitions": {
+    "lfs_legacy_concept": "1 - committed direct-SS LFS",
+    "lfs_vc_concept": "1 - later REML LFS-VC (q_L)",
+    "rmfs_v1": "preregistered soft-min observational RMFS scalar",
+    "rmfs_no_t": "soft-min of q_L and q_K; excludes behavioral T",
+    "mexa_external": "published MEXA baseline under shared preprocessing",
+    "aar_external": "project tail diagnostic under shared preprocessing"
+  }
+}

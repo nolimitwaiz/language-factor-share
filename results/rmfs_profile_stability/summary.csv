@@ -1,0 +1,4 @@
+reading,n_models,n_heldout_blocks,selection_vs_heldout_spearman,pairwise_block_spearman_median,pairwise_block_spearman_min,icc_1_1,median_within_model_sd_over_between_model_sd,max_rank_range_across_blocks,median_rank_range_across_blocks
+R1_concept_dominance,14,4,0.934066,0.989011,0.978022,0.996018,0.061549,2.000000,0.500000
+R2_mean_alignment_margin,14,4,0.973626,0.978022,0.960440,0.993662,0.070536,3.000000,1.000000
+R3_weak_language_tail,14,4,0.960440,0.885714,0.793407,0.988033,0.074930,6.000000,3.000000

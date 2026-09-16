@@ -1,0 +1,8 @@
+{
+ "run_id": "new_readings_Mistral-Nemo-Base-2407",
+ "script": "scripts/new_model_readings.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-09T03:52:45.217283+00:00",
+ "wall_s": 540.4
+}

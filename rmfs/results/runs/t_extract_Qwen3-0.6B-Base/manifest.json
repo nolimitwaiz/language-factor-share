@@ -1,0 +1,29 @@
+{
+ "run_id": "t_extract_Qwen3-0.6B-Base",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-03T19:14:16",
+ "config": {
+  "model_tag": "Qwen3-0.6B-Base",
+  "arm_ckpt": null,
+  "n_pairs": 60,
+  "langs": 40,
+  "diagnostic": false,
+  "dip": 8,
+  "rank": 64,
+  "n_train": 178,
+  "n_test": 122,
+  "dtype": "bf16",
+  "consensus": "leave-one-out (A3)",
+  "governance": [
+   "prereg",
+   "A2",
+   "A3",
+   "A4-injection"
+  ]
+ },
+ "inputs": {
+  "model": "Qwen/Qwen3-0.6B-Base",
+  "rungs_from": "Qwen3-0.6B-Base"
+ }
+}

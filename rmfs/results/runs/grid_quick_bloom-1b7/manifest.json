@@ -1,0 +1,20 @@
+{
+ "run_id": "grid_quick_bloom-1b7",
+ "git": "",
+ "host": "e03",
+ "when": "2026-08-02T18:44:11",
+ "config": {
+  "model_tag": "bloom-1b7",
+  "S": 20,
+  "seed": 13,
+  "rank": null,
+  "tracks": "native=z-scored for LFS-VC/LDE/baselines; raw for gates"
+ },
+ "inputs": {
+  "dump": "/home/wkhan12/multilingual-metrics/results/dumps/bloom-1b7",
+  "published_rank_from": "/home/wkhan12/multilingual-metrics/results/budget/bloom-1b7/budget.json",
+  "doc_ids": "/home/wkhan12/multilingual-metrics/data/NTREX/DOCUMENT_IDS.tsv"
+ },
+ "precision": "fp32 load, fp64 statistics",
+ "n_parquet_rows": 519
+}

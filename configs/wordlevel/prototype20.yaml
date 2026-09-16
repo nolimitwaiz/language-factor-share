@@ -1,0 +1,84 @@
+# Word-level prototype language set.
+#
+# Twenty languages plus the English pivot. Chosen to span resource tier and,
+# deliberately, to include ten non-Latin scripts, since the reliability of
+# word alignment is expected to depend on script and typological distance and
+# that dependence is one of the things being measured.
+#
+# Four of these (zho-CN, jpn, khm, mya) are written without whitespace word
+# boundaries. They are included ON PURPOSE: whitespace tokenization is wrong
+# for them, and the coverage table is the evidence for how wrong. They are
+# expected to fail and their failure is a reported result, not a bug.
+
+n_sentences: 300
+
+languages:
+  - deu
+  - fra
+  - spa
+  - rus
+  - zho-CN
+  - jpn
+  - arb
+  - ces
+  - pol
+  - tur
+  - vie
+  - ind
+  - hin
+  - ben
+  - swa
+  - amh
+  - khm
+  - mya
+  - kat
+  - zul
+
+tiers:
+  deu: high
+  fra: high
+  spa: high
+  rus: high
+  zho-CN: high
+  jpn: high
+  arb: high
+  ces: mid
+  pol: mid
+  tur: mid
+  vie: mid
+  ind: mid
+  hin: mid
+  ben: mid
+  swa: low
+  amh: low
+  khm: low
+  mya: low
+  kat: low
+  zul: low
+
+scripts:
+  deu: Latin
+  fra: Latin
+  spa: Latin
+  rus: Cyrillic
+  zho-CN: Han
+  jpn: Japanese
+  arb: Arabic
+  ces: Latin
+  pol: Latin
+  tur: Latin
+  vie: Latin
+  ind: Latin
+  hin: Devanagari
+  ben: Bengali
+  swa: Latin
+  amh: Ethiopic
+  khm: Khmer
+  mya: Myanmar
+  kat: Georgian
+  zul: Latin
+
+# GATE. Inter-aligner agreement must exceed this on high-resource pairs. If
+# it does not, word-level measurement cannot be trusted and the stage stops.
+gate:
+  min_agreement_f1_high_resource: 0.70

@@ -1,0 +1,51 @@
+{
+ "model": "Qwen/Qwen3-0.6B-Base",
+ "n_pairs": 200,
+ "trained_languages": [
+  "deu",
+  "hin",
+  "swa"
+ ],
+ "held_out_languages": [
+  "fra",
+  "rus",
+  "zho-CN"
+ ],
+ "contrast_note": "all deltas are against arm B",
+ "seeds": {
+  "0": {
+   "CS-A": {
+    "deu": {
+     "context_gain_mean": 0.4703959143161774,
+     "context_gain_sem": 0.031009589681891606,
+     "n_pairs": 200
+    },
+    "hin": {
+     "context_gain_mean": 0.28855135083198546,
+     "context_gain_sem": 0.023278916342705798,
+     "n_pairs": 200
+    },
+    "swa": {
+     "context_gain_mean": 0.17829659938812256,
+     "context_gain_sem": 0.02061036298590613,
+     "n_pairs": 200
+    },
+    "fra": {
+     "context_gain_mean": 0.5036475813388824,
+     "context_gain_sem": 0.031903221278837435,
+     "n_pairs": 200
+    },
+    "rus": {
+     "context_gain_mean": 0.4183086347579956,
+     "context_gain_sem": 0.027309829309669943,
+     "n_pairs": 200
+    },
+    "zho-CN": {
+     "context_gain_mean": 0.5556199288368225,
+     "context_gain_sem": 0.03019829635364307,
+     "n_pairs": 200
+    }
+   }
+  }
+ }
+}

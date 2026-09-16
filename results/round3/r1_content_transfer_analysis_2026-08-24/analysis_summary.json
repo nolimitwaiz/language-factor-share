@@ -1,0 +1,28 @@
+{
+  "claim_scope": "fixed NTREX content-transfer harness; Aim 1 section 3.1.3",
+  "primary_candidate": "q_L = 1 - LFS-VC",
+  "primary_target": "R_content",
+  "primary_bootstrap_axis": "model",
+  "primary_rho_deflated": 0.5084771834083438,
+  "primary_ci": [
+    0.18794327168346922,
+    0.7071880053927248
+  ],
+  "primary_p_two_sided": 0.003,
+  "n_frozen_models": 19,
+  "n_ratio_valid_models": 19,
+  "n_model_families_ratio_valid": 13,
+  "n_common_support_languages_per_model": 34,
+  "n_models_in_raw_content_analysis": 19,
+  "model_generalization_claim_allowed": true,
+  "external_comparators": [
+    "MEXA",
+    "AaR"
+  ],
+  "interpretation_guards": [
+    "No universal downstream-validity claim.",
+    "No causal geometry-to-performance claim.",
+    "MEXA and AaR are external comparators, not original project metrics.",
+    "RMFS is not tested in R1."
+  ]
+}

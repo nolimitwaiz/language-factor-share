@@ -1,0 +1,54 @@
+{
+  "run_id": "aim1_axis_basis_sensitivity_SmolLM2-1.7B",
+  "created_utc": "2026-08-24T20:55:44.639563+00:00",
+  "host": "c19",
+  "slurm_job_id": "1761848",
+  "model": "SmolLM2-1.7B",
+  "layers": [
+    0,
+    6,
+    15,
+    18,
+    24
+  ],
+  "seeds": [
+    1729,
+    2718,
+    3141,
+    5772,
+    8111
+  ],
+  "sweeps": [
+    0,
+    1,
+    4,
+    16
+  ],
+  "n_concepts": 300,
+  "languages": [
+    "eng",
+    "deu",
+    "rus",
+    "arb",
+    "zho-CN",
+    "tur",
+    "vie",
+    "hin",
+    "ben",
+    "swa",
+    "amh",
+    "zul",
+    "khm"
+  ],
+  "source_manifest_sha256": "cd084ae09e801dc867719e66df7c786e4898dd2dfca588fadbd2c4cbb444697b",
+  "source_sha256": {
+    "0": "bb8ee057d629eb94422f2786f69548139b01a8445dcba880bcf91288b97bf5ae",
+    "6": "add393ba661e8a10ce22b20fce04015480670a90aaf4f2ce73b500371bcd251c",
+    "15": "52047cf2f3152aee2e0623848ce9e729cba3f882eb6320fc4ee0f2151f36f351",
+    "18": "df57abfde81afeb9a8bdbf88f616712d347e38f44e9a5a354d6a4a095eced31b",
+    "24": "2c6aad69c99fb5accc8d55579e2556890af1e9e34f7506d49a439804cadb6514"
+  },
+  "rows": 100,
+  "maximum_conservation_relative_error": 9.271583829682871e-16,
+  "wall_seconds": 497.211
+}

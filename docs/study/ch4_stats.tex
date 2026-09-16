@@ -1,0 +1,191 @@
+\section{Statistics for measurement}
+\label{ch:stats}
+
+LFS is a statistic, its validation is statistics, and most objections you will
+face are statistical. This chapter covers exactly what the paper uses.
+
+\subsection{Variance, sums of squares, and decomposition}
+
+The variance of numbers $x_1,\dots,x_n$ is the mean squared distance from
+their mean; the \emph{sum of squares} is the same without dividing. The key
+fact of analysis of variance (ANOVA) is that on a balanced design the total
+sum of squares splits exactly into parts attributable to each factor plus a
+residual, because the parts are orthogonal.
+
+For two crossed factors (language $l$, sentence $c$) with one observation per
+cell and one coordinate, write the cell value as
+\[
+x_{lc} = \mu + a_l + b_c + r_{lc},\qquad
+a_l = \bar x_{l\cdot} - \bar x,\quad b_c = \bar x_{\cdot c} - \bar x,\quad
+r_{lc} = x_{lc} - \bar x_{l\cdot} - \bar x_{\cdot c} + \bar x .
+\]
+Then $\sum_{lc}(x_{lc}-\bar x)^2 = N\sum_l a_l^2 + L\sum_c b_c^2 +
+\sum_{lc} r_{lc}^2$, exactly, because $\sum_l a_l = 0$, $\sum_c b_c = 0$, and
+the residuals sum to zero along every row and column, so every cross term
+vanishes. Figure~\ref{fig:anova} shows the picture on one coordinate. LFS is
+this decomposition with vectors instead of numbers (sum over coordinates)
+and with the residual left out of the ratio.
+
+\begin{figure}[h]\centering\includegraphics[width=0.8\linewidth]{fig_stats_anova.png}
+\caption{One hidden coordinate on a small grid: language offsets, concept slope, residual scatter.}\label{fig:anova}\end{figure}
+
+\textbf{Degrees of freedom} count independent pieces of information:
+$L-1$ for languages, $N-1$ for sentences, $(L-1)(N-1)$ for the residual. A
+\emph{mean square} is a sum of squares divided by its degrees of freedom.
+
+\textbf{Expected mean squares and variance components.} If the effects are
+random with variances $\sigma^2_L$, $\sigma^2_C$ and noise $\sigma^2_E$, then
+$\mathbb E[\mathrm{MS}_L] = \sigma^2_E + N\sigma^2_L$,
+$\mathbb E[\mathrm{MS}_C] = \sigma^2_E + L\sigma^2_C$,
+$\mathbb E[\mathrm{MS}_E] = \sigma^2_E$. Solving gives noise-corrected
+estimates of each component (the method of moments); restricted maximum
+likelihood (REML) does the same with a non-negativity constraint. This is
+the LFS-VC variant in the paper. The pure-noise value of the direct LFS
+estimator follows from the same expectations with $\sigma^2_L =
+\sigma^2_C = 0$: $(L-1)/(L+N-2)$.
+
+\begin{exercise}{verify the decomposition and the null by simulation}
+\begin{lstlisting}
+def two_way(X):                       # X: (L, N, D)
+    L, N, D = X.shape; mu = X.mean((0, 1)); ml = X.mean(1); mc = X.mean(0)
+    ss_l = N * ((ml - mu)**2).sum(); ss_c = L * ((mc - mu)**2).sum()
+    ss_r = ((X - ml[:, None] - mc[None] + mu)**2).sum(); tot = ((X - mu)**2).sum()
+    return ss_l, ss_c, ss_r, tot
+X = rng.normal(size=(12, 120, 64))
+ss_l, ss_c, ss_r, tot = two_way(X)
+print(abs(ss_l + ss_c + ss_r - tot))                    # ~1e-9: exact identity
+lfs = [two_way(rng.normal(size=(12, 120, 64)))[0] for _ in range(50)]
+sim = np.mean([a / (a + two_way(rng.normal(size=(12,120,64)))[1]) for a in lfs])
+print(sim, 11 / (11 + 119))                              # both ~0.0846
+\end{lstlisting}
+Then add a language effect (\texttt{X += rng.normal(0, 0.5, (12,1,64))}) and
+watch the share rise; add a concept effect and watch it fall.
+\end{exercise}
+
+\subsection{Standardization and invariances}
+
+Z-scoring a coordinate subtracts its mean and divides by its standard
+deviation, an affine map. Done jointly over all cells, it equalizes
+coordinate variances without touching the language or sentence structure
+within a coordinate. LFS is then invariant to uniform rescaling of all
+vectors, to any positive rescaling of individual coordinates, and to
+rotations of the coordinate basis; it is \emph{not} invariant to the choice
+of basis before standardization (whitening changes it), to pooling, or to
+the grid size. Every one of those was measured, and each dictates a
+reporting rule.
+
+\subsection{Correlation}
+
+Pearson's $r$ measures linear association; Spearman's $\rho$ is Pearson on
+ranks, so it ignores monotone transformations and is robust to outliers. The
+paper reports Spearman. A correlation of 0.5 explains a quarter of the
+variance; 0.9 explains 81 percent. Correlation is symmetric and says nothing
+about cause.
+
+\subsection{Confounding, residualization, and the confounder adjustment regression}
+
+If languages with more training data have both higher alignment and higher
+accuracy, then the raw correlation between alignment and accuracy is partly
+``data size predicting data size''. The remedy is to remove the observables
+from both variables and correlate what is left (Figure~\ref{fig:deflation}).
+
+\begin{figure}[h]\centering\includegraphics[width=0.9\linewidth]{fig_stats_deflation.png}
+\caption{Synthetic illustration: a shared driver inflates the raw correlation; residualizing on it leaves the genuine incremental relationship.}\label{fig:deflation}\end{figure}
+
+The paper's regression, for each (model, language) cell:
+\[
+\mathrm{logit}\!\Big(\tfrac{\mathrm{acc}-0.25}{0.75}\Big) = \text{model FE} + \beta_1 \log_{10}(\text{tokens}) + \beta_2\,\text{macro-family} + \beta_3\,\text{script} + \beta_4\,\text{fertility} + \alpha .
+\]
+Three details to be able to explain. The \emph{logit transform above the
+chance floor} maps accuracies in $(0.25, 1)$ onto the real line so that
+differences near the floor and near the ceiling are comparable.
+\emph{Model fixed effects} (one dummy per model) absorb each model's overall
+level, so the comparison is across languages within a model. \emph{Cluster-robust
+standard errors by language} account for the fact that the same language
+appears once per model. The residual $\alpha$ is the ``transfer residual'';
+metric validity is the Spearman correlation between the residualized metric
+and $\alpha$. A validity check precedes everything: the token coefficient must be
+positive and significant, or the proxy is broken.
+
+\begin{exercise}{residualize and correlate}
+Generate \texttt{tokens}, a \texttt{metric} that depends on tokens plus noise,
+and an \texttt{acc} that depends on tokens and a little on the metric.
+Compute Spearman raw; then regress both on tokens, take residuals, and
+compute Spearman again. Vary the ``little'' and watch when the confounder-adjusted
+correlation vanishes. This is Figure~\ref{fig:deflation}.
+\end{exercise}
+
+\subsection{Uncertainty: bootstrap, clusters, and the unit of generalization}
+
+A confidence interval says how much the estimate would move if you redrew
+the sample. The bootstrap estimates that by resampling your own data with
+replacement many times and recomputing the statistic. The key choice is
+\emph{what to resample}. If you want to generalize to new languages,
+resample languages; to new models, resample models; to both, resample both
+(crossed). Rows within a model are correlated, so resampling rows overstates
+certainty about models (Figure~\ref{fig:bootstrap}). Four models cannot
+support a model-level claim because a four-model bootstrap has only a handful
+of distinct resamples; nineteen can. This single point is why the R1
+expansion was run and why every interval in the paper is reported by unit.
+
+\begin{figure}[h]\centering\includegraphics[width=0.9\linewidth]{fig_stats_bootstrap.png}
+\caption{Same synthetic data: resampling rows gives a narrow interval; resampling the four models gives a wide one. The second is the right one for a claim about models.}\label{fig:bootstrap}\end{figure}
+
+\emph{Effective sample size.} When 40 languages are highly correlated within
+a model, they carry the information of far fewer independent languages
+(about 1.2 to 2 in the project's panels). Nominal $n$ overstates evidence;
+cluster bootstraps do not.
+
+\emph{Leave-one-out.} Recompute the statistic dropping one family (or model)
+at a time. If every estimate stays positive, no single family drives the
+result. The content-transfer result stays between 0.44 and 0.60 under
+leave-one-family-out.
+
+\begin{exercise}{cluster bootstrap for Spearman}
+\begin{lstlisting}
+from scipy.stats import spearmanr
+def boot_ci(x, y, groups, B=2000):
+    ids = np.unique(groups); out = []
+    for _ in range(B):
+        pick = rng.choice(ids, len(ids), replace=True)
+        idx = np.concatenate([np.where(groups == g)[0] for g in pick])
+        out.append(spearmanr(x[idx], y[idx]).statistic)
+    return np.nanpercentile(out, [2.5, 97.5])
+\end{lstlisting}
+Build 4 models $\times$ 34 languages with a model-level effect; compare
+\texttt{groups = model} against \texttt{groups = language}.
+\end{exercise}
+
+\subsection{Multiple comparisons}
+
+Test twenty hypotheses at $p < 0.05$ and one will ``pass'' by chance.
+Benjamini--Hochberg adjusts a family of $p$-values to control the false
+discovery rate; the paper applies it over its preregistered comparison set.
+The deeper protection is preregistration: fewer, named tests.
+
+\subsection{Measurement theory: validity, reliability, Goodhart}
+
+\begin{description}[leftmargin=3.4cm, style=nextline, itemsep=1pt]
+\item[construct validity] does the number measure what it claims? Evidence: the exact decomposition, the null, the invariances, the probe contrast, the fault test suite.
+\item[predictive validity] does it relate to behavior it should relate to? Evidence: content transfer yes; pooled benchmarks no, with a measured reason.
+\item[reliability and ceilings] two independent measurements of the same thing agree at 0.315 on their residuals, so no predictor of one can exceed about $\sqrt{0.315} = 0.56$. Spearman--Brown: averaging parallel forms raises reliability.
+\item[Goodhart's law] a measure that becomes a target stops measuring. The Aim 2 reversal is a textbook case; BLEU as a training objective is the MT analogue.
+\item[preregistration] write the prediction, criterion, and analysis in a dated file before seeing the outcome, and report every failure. It is why the collapse blind spot can be called ``predicted before observed''.
+\item[minimum detectable effect] the smallest effect a design can find; a criterion without one returns verdicts it has no power to support (discrepancy ledger D7).
+\end{description}
+
+\subsection{Linear algebra tools, in one paragraph each}
+
+\textbf{PCA and SVD.} Directions of largest variance; the spectrum tells how
+many directions matter. \textbf{Effective rank and participation ratio.}
+Scalar summaries of that spectrum; they fell by 80 to 90 percent when concept
+rank collapsed while LFS moved little. \textbf{Whitening (ZCA).} Rotate
+and rescale so the covariance is the identity; it equalizes the spectrum and,
+in the paper, collapsed the measured language share for 13 of 14 models,
+which is how we know language identity lives in high-variance directions.
+\textbf{Procrustes.} The best rotation aligning one point set to another;
+the map M3 of the sequence. \textbf{Ridge regression.} Least squares with a
+penalty; the hub test and map M4. \textbf{Gini coefficient.} A
+concentration measure from 0 (spread evenly) to 1 (all in one place); the
+coordinate-energy Gini fell from 0.855 to 0.542 under random rotations,
+which is why no ``language neuron'' claim is made.

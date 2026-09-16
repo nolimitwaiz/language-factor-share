@@ -1,0 +1,76 @@
+injection,magnitude,component,expectation,value,k_noise,note
+identity,-,T,band,0,3,
+identity,-,q_L,band,0,3,
+identity,-,q_K,band,0,3,
+identity,-,C_pres,band,0,3,
+identity,-,RMFS,band,0,3,
+offset_per_language,calibrated,T,band,0,3,
+offset_per_language,calibrated,q_L,down,-,3,
+offset_per_language,calibrated,q_K,rung_le,M1,3,cheap misalignment absorbed by low rungs — by design
+offset_per_language,calibrated,C_pres,band,0,3,
+offset_per_language,calibrated,RMFS,ceiling,0,3,mild fall allowed
+scale_isotropic_per_language,calibrated,T,band,0,3,
+scale_isotropic_per_language,calibrated,q_L,down,-,3,
+scale_isotropic_per_language,calibrated,q_K,rung_le,M2,3,cheap misalignment absorbed by low rungs — by design
+scale_isotropic_per_language,calibrated,C_pres,band,0,3,
+scale_isotropic_per_language,calibrated,RMFS,ceiling,0,3,mild fall allowed
+rotation_global_shared,-,T,band,0,3,refit map per condition
+rotation_global_shared,-,q_L,band,0,3,INVARIANT track only; native track report-only (z-scoring not rotation-invariant)
+rotation_global_shared,-,q_K,band,0,3,shared rotation cancels in the consensus; not per-language complexity
+rotation_global_shared,-,C_pres,band,0,3,
+rotation_global_shared,-,RMFS,band,0,3,invariant track
+rotation_per_language,0.1,T,down_mag,-,3,monotone in theta
+rotation_per_language,0.1,q_L,ceiling,0,3,may rise into residual
+rotation_per_language,0.1,q_K,rung_ge,M0,3,theta=0.1 may stay below one-SE resolution; 0.4/0.8 must select >=M3
+rotation_per_language,0.1,C_pres,band,0,3,
+rotation_per_language,0.1,RMFS,ceiling,-,3,
+rotation_per_language,0.4,T,down_mag,-,3,monotone in theta
+rotation_per_language,0.4,q_L,ceiling,0,3,may rise into residual
+rotation_per_language,0.4,q_K,rung_ge,M3,3,theta=0.1 may stay below one-SE resolution; 0.4/0.8 must select >=M3
+rotation_per_language,0.4,C_pres,band,0,3,
+rotation_per_language,0.4,RMFS,down,-,3,
+rotation_per_language,0.8,T,down_mag,-,3,monotone in theta
+rotation_per_language,0.8,q_L,ceiling,0,3,may rise into residual
+rotation_per_language,0.8,q_K,rung_ge,M3,3,theta=0.1 may stay below one-SE resolution; 0.4/0.8 must select >=M3
+rotation_per_language,0.8,C_pres,band,0,3,
+rotation_per_language,0.8,RMFS,down,-,3,
+shear_general_linear,calibrated,T,down,-,3,
+shear_general_linear,calibrated,q_L,ceiling,0,3,
+shear_general_linear,calibrated,q_K,rung_ge,M4,3,
+shear_general_linear,calibrated,C_pres,band,0,3,
+shear_general_linear,calibrated,RMFS,down,-,3,
+lowrank_CxL_interaction,calibrated,T,down,-,3,
+lowrank_CxL_interaction,calibrated,q_L,band,0,3,
+lowrank_CxL_interaction,calibrated,q_K,rung_ge,M4,3,interaction is not absorbed below linear
+lowrank_CxL_interaction,calibrated,C_pres,band,0,3,
+lowrank_CxL_interaction,calibrated,RMFS,down,-,3,
+monotone_warp,calibrated,T,down,-,3,
+monotone_warp,calibrated,q_L,band,0,3,
+monotone_warp,calibrated,q_K,rung_ge,M5,3,
+monotone_warp,calibrated,C_pres,band,0,3,
+monotone_warp,calibrated,RMFS,down,-,3,
+uniform_collapse,0.9,T,down_mag,-,3,monotone in m
+uniform_collapse,0.9,q_L,band,0,3,LFS is scale-invariant: BLIND by construction — the founding result
+uniform_collapse,0.9,q_K,band,0,3,
+uniform_collapse,0.9,C_pres,exact,0.01,3,"closed form (1-m)^2, abs_tol 0.01 (battery I8b: exact to 3 decimals)"
+uniform_collapse,0.9,RMFS,down_mag,-,3,
+uniform_collapse,0.5,T,down_mag,-,3,monotone in m
+uniform_collapse,0.5,q_L,band,0,3,LFS is scale-invariant: BLIND by construction — the founding result
+uniform_collapse,0.5,q_K,band,0,3,
+uniform_collapse,0.5,C_pres,exact,0.25,3,"closed form (1-m)^2, abs_tol 0.01 (battery I8b: exact to 3 decimals)"
+uniform_collapse,0.5,RMFS,down_mag,-,3,
+uniform_collapse,0.1,T,down_mag,-,3,monotone in m
+uniform_collapse,0.1,q_L,band,0,3,LFS is scale-invariant: BLIND by construction — the founding result
+uniform_collapse,0.1,q_K,band,0,3,
+uniform_collapse,0.1,C_pres,exact,0.81,3,"closed form (1-m)^2, abs_tol 0.01 (battery I8b: exact to 3 decimals)"
+uniform_collapse,0.1,RMFS,down_mag,-,3,
+collapse_per_language,0.5,T,down,-,3,affected language only
+collapse_per_language,0.5,q_L,up,-,3,one deviating language raises the language share
+collapse_per_language,0.5,q_K,band,0,3,
+collapse_per_language,0.5,C_pres,exact,0.25,3,"affected language; (1-m)^2, abs_tol 0.01"
+collapse_per_language,0.5,RMFS,down,-,3,affected language
+pairing_permutation,-,T,down,-,3,destroys concept correspondence; strongest expected response
+pairing_permutation,-,q_L,down,-,3,shuffling destroys concept structure so the language share RISES; q_L = 1-LFS-VC falls. Direction fixed by prior D4 lesson (null first)
+pairing_permutation,-,q_K,down,-,3,"no rung maps shuffled pairs; held-out loss high everywhere, one-SE pushes selection up"
+pairing_permutation,-,C_pres,band,0,3,
+pairing_permutation,-,RMFS,down,-,3,

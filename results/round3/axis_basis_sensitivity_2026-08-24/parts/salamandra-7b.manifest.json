@@ -1,0 +1,54 @@
+{
+  "run_id": "aim1_axis_basis_sensitivity_salamandra-7b",
+  "created_utc": "2026-08-24T21:01:10.481980+00:00",
+  "host": "c09",
+  "slurm_job_id": "1761838",
+  "model": "salamandra-7b",
+  "layers": [
+    0,
+    8,
+    18,
+    24,
+    32
+  ],
+  "seeds": [
+    1729,
+    2718,
+    3141,
+    5772,
+    8111
+  ],
+  "sweeps": [
+    0,
+    1,
+    4,
+    16
+  ],
+  "n_concepts": 300,
+  "languages": [
+    "eng",
+    "deu",
+    "rus",
+    "arb",
+    "zho-CN",
+    "tur",
+    "vie",
+    "hin",
+    "ben",
+    "swa",
+    "amh",
+    "zul",
+    "khm"
+  ],
+  "source_manifest_sha256": "63d6870507fc83c65440e4ee0f6626360aee37eebed6d097639fa254c4f77d74",
+  "source_sha256": {
+    "0": "c64bd6660e35c2e3417de592614589fb5a7b90886db1ce5d6d15f4cf798cd352",
+    "8": "3fa490d63555dae6f04ee9f5047f93ceaf64c3a85b5862de029ccde9ae939332",
+    "18": "0ed473ba8339735d23507904b9c1208f2beb74e74343e2b8a3d178ed74bf81b3",
+    "24": "adc3b3af48a1a24bdd14d32ac8c64abaa09c3ddc452111c2536ea14423a2eb99",
+    "32": "ae48f0835560bf41f77300552a6ca6d0de3ccfdd17be6460779d8a40e2e45aa3"
+  },
+  "rows": 100,
+  "maximum_conservation_relative_error": 6.412200462913389e-16,
+  "wall_seconds": 823.615
+}

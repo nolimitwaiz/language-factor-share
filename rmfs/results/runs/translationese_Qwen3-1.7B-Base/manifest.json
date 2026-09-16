@@ -1,0 +1,8 @@
+{
+ "run_id": "translationese_Qwen3-1.7B-Base",
+ "script": "scripts/translationese.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-07T19:55:20.739401+00:00",
+ "wall_s": 77.3
+}

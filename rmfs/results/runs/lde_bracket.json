@@ -1,0 +1,50 @@
+[
+ {
+  "candidate": "lde",
+  "target": "raw_acc",
+  "scheme": "raw_residual",
+  "spearman": -0.3360483501113235,
+  "ci_low": -0.38364120762086035,
+  "ci_high": -0.28136506278824536,
+  "n": 980,
+  "n_boot": 2000,
+  "tokens_gate_passed": true,
+  "flags": []
+ },
+ {
+  "candidate": "lde",
+  "target": "alpha",
+  "scheme": "raw_residual",
+  "spearman": 0.02459531328720072,
+  "ci_low": -0.045762393600345626,
+  "ci_high": 0.08974642326650445,
+  "n": 980,
+  "n_boot": 2000,
+  "tokens_gate_passed": true,
+  "flags": []
+ },
+ {
+  "candidate": "lde",
+  "target": "alpha",
+  "scheme": "family_demeaned",
+  "spearman": -0.00032026229914518305,
+  "ci_low": -0.07213154293090562,
+  "ci_high": 0.07745490703779039,
+  "n": 980,
+  "n_boot": 2000,
+  "tokens_gate_passed": true,
+  "flags": []
+ },
+ {
+  "candidate": "lde",
+  "target": "alpha",
+  "scheme": "disattenuated",
+  "spearman": 0.0428766955481664,
+  "ci_low": -0.07264064667943902,
+  "ci_high": 0.16242610313826517,
+  "n": 980,
+  "n_boot": 2000,
+  "tokens_gate_passed": true,
+  "flags": []
+ }
+]

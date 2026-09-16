@@ -1,0 +1,8 @@
+{
+ "run_id": "translationese_salamandra-2b",
+ "script": "scripts/translationese.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-07T19:57:38.493048+00:00",
+ "wall_s": 114.6
+}

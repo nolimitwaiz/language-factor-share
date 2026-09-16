@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this code or these results, please cite the paper."
+title: "Measuring the Language Share of Multilingual Representations"
+authors:
+  - family-names: Khan
+    given-names: Waiz
+    affiliation: "Department of Applied Mathematics and Statistics, Johns Hopkins University"
+  - family-names: Koehn
+    given-names: Philipp
+    affiliation: "Department of Computer Science, Johns Hopkins University"
+year: 2026
+type: software
+repository-code: "https://github.com/nolimitwaiz/language-factor-share"

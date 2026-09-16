@@ -1,0 +1,54 @@
+{
+  "run_id": "aim1_axis_basis_sensitivity_OLMo-2-0425-1B",
+  "created_utc": "2026-08-24T21:00:43.871586+00:00",
+  "host": "c26",
+  "slurm_job_id": "1761842",
+  "model": "OLMo-2-0425-1B",
+  "layers": [
+    0,
+    4,
+    9,
+    12,
+    16
+  ],
+  "seeds": [
+    1729,
+    2718,
+    3141,
+    5772,
+    8111
+  ],
+  "sweeps": [
+    0,
+    1,
+    4,
+    16
+  ],
+  "n_concepts": 300,
+  "languages": [
+    "eng",
+    "deu",
+    "rus",
+    "arb",
+    "zho-CN",
+    "tur",
+    "vie",
+    "hin",
+    "ben",
+    "swa",
+    "amh",
+    "zul",
+    "khm"
+  ],
+  "source_manifest_sha256": "fe21297d4c16595ea31f8489e82d522aadd013c2701d713aa34468b4be2eeaaa",
+  "source_sha256": {
+    "0": "ab522ca29c93ce574056437e2bc9eaf76b4d9edc170b9895c705e7fd673112e0",
+    "4": "c2353b9870fde38a0c3dbd179b69a8f36409a65d0103ab31e6758e1c7044362f",
+    "9": "01196179501d589e731005e5e0bf9d06c4fbcfe774351468d78a41d5e686e528",
+    "12": "8bb1056f3761e97d5b50d0f8dbbfbd5e0f681471affda3c1f9912e45711049f1",
+    "16": "d5469fd6e9df68bd4e82ed064379c1dc23a044bde19ca74f746de62dce64b1c7"
+  },
+  "rows": 100,
+  "maximum_conservation_relative_error": 4.109425862599535e-16,
+  "wall_seconds": 796.149
+}

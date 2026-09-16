@@ -1,0 +1,8 @@
+{
+ "run_id": "new_readings_granite-3.1-8b-base",
+ "script": "scripts/new_model_readings.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-09T03:34:59.449659+00:00",
+ "wall_s": 1761.5
+}

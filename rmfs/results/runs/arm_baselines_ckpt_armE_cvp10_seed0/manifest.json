@@ -1,0 +1,8 @@
+{
+ "run_id": "arm_baselines_ckpt_armE_cvp10_seed0",
+ "script": "scripts/arm_baselines.py",
+ "git": "",
+ "host": "e03",
+ "when": "2026-08-05T07:27:51.298607+00:00",
+ "wall_s": 26.6
+}

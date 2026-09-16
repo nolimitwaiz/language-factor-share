@@ -1,0 +1,9 @@
+{
+ "run_id": "battery_t",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-04T18:13:18.647212+00:00",
+ "wall_s": 2420.7,
+ "n_runs": 17,
+ "script": "scripts/battery_t.py"
+}

@@ -1,0 +1,8 @@
+{
+ "run_id": "new_readings_TowerBase-7B",
+ "script": "scripts/new_model_readings.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-09T03:32:09.985458+00:00",
+ "wall_s": 871.3
+}

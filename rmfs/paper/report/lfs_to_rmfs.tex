@@ -1,0 +1,74 @@
+\documentclass[11pt]{article}
+\usepackage[margin=0.85in]{geometry}
+\usepackage{amsmath,booktabs,xcolor,enumitem}
+\usepackage[hidelinks]{hyperref}
+\setlist{nosep,leftmargin=1.15em}
+\pagestyle{empty}
+
+\begin{document}
+\begin{center}
+{\LARGE\textbf{What the study found}}\\[3pt]
+{\small LFS, RMFS, and a model that lost its meaning structure ---
+Waiz Khan, JHU, August 2026}
+\end{center}
+\vspace{-2pt}\hrule\vspace{8pt}
+
+\textbf{A degraded model scored best.} Across 25 training variants of
+Qwen3-0.6B (75 checkpoints), the variant trained with the word level
+alignment objective lost about \textbf{95\%} of the structure in its
+representations that encodes meaning rather than language. It posted
+the \textbf{best LFS score in the study}. MEXA ranked it third of the
+25.
+
+\textbf{The ratio cannot see this.} LFS is a share: meaning structure
+against language structure. When a model shrinks both together the
+share does not move. Synthetic tests give the closed form --- the share
+shifts by less than a millionth while meaning structure falls by 99
+percent. Any scale invariant ratio inherits this. The possibility was
+written into the July preregistration, together with the detector that
+catches it, before any of these models were trained.
+
+\textbf{The damage cost it nothing.} On a 40 language reading test the
+degraded variant scores \textbf{0.395} against \textbf{0.390} for the
+untouched control. The variants that did lose ability, by roughly six
+points, look clean on every geometric measure taken. Representational
+damage and capability damage are separable, and the measures that see
+one do not see the other.
+
+\textbf{RMFS reports four readings per language.} Each carries its own
+validated number, and each predicts something the others miss:
+\begin{center}\small
+\begin{tabular}{llc}
+\toprule
+reading & what it tracks & correlation\\
+\midrule
+Meaning against language & carrying content across languages &
+$\mathbf{0.76}$\\
+Sentence matching & downstream exam performance & $0.24$--$0.31$\\
+Weakest aligned languages & which variants lost ability &
+$\mathbf{0.51}$\\
+Collapse flag & the case above & exact\\
+\bottomrule
+\end{tabular}
+\end{center}
+The first is LFS's original measurement, kept intact. Correlations are
+measured after removing the effects of training data volume, language
+family, script and tokenizer differences.
+
+\textbf{Scores read as percentiles.} For a model: embed 300 parallel
+sentences in 41 languages at one layer, compute the four readings per
+language, convert each to a percentile against a reference grid of 14
+models, average. A score of 74 means better than 74 percent of the
+reference models. Roughly four GPU minutes per model. The ordering
+falls out with no tuning: Qwen3-8B \textbf{90.5}, 4B \textbf{85.7},
+1.7B \textbf{73.8}; the multilingual focused Salamandra-7B
+\textbf{69.0}; the English centric OLMo-2-1B \textbf{28.6}.
+
+\textbf{What the mapping between languages looks like.} Across 1{,}792
+model and language pairs the fitted map is linear or simpler in
+\textbf{74 percent} of cases. The nonlinear cases are concentrated
+rather than spread out: three models carry 80 percent of them, and
+across the other eleven only 6.5 percent of languages need a nonlinear
+map.
+
+\end{document}

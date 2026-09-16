@@ -1,0 +1,111 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{framed}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue!60!black, urlcolor=blue!60!black}
+\graphicspath{{figs/}}
+\setlength{\parskip}{5pt}
+\setlength{\parindent}{0pt}
+
+\definecolor{boxbg}{RGB}{244,246,250}
+\definecolor{exbg}{RGB}{255,244,230}
+\definecolor{codebg}{RGB}{247,247,245}
+\lstset{language=Python, basicstyle=\ttfamily\footnotesize, backgroundcolor=\color{codebg},
+  frame=single, framerule=0pt, breaklines=true, columns=fullflexible, keepspaces=true,
+  showstringspaces=false, commentstyle=\color{gray}, keywordstyle=\bfseries}
+
+% boxes
+\newenvironment{keybox}{\def\FrameCommand{\fboxsep=8pt\colorbox{boxbg}}\MakeFramed{\advance\hsize-\width\FrameRestore}}{\endMakeFramed}
+\newenvironment{exercise}[1]{\def\FrameCommand{\fboxsep=8pt\colorbox{exbg}}\MakeFramed{\advance\hsize-\width\FrameRestore}\textbf{Implement it: #1}\par\smallskip}{\endMakeFramed}
+\newcommand{\say}[1]{\begin{keybox}\textbf{How to say it.} #1\end{keybox}}
+
+\newcommand{\LFS}{\mathrm{LFS}}
+\newcommand{\SSl}{\mathrm{SS}_{\mathrm{lang}}}
+\newcommand{\SSc}{\mathrm{SS}_{\mathrm{con}}}
+\newcommand{\SSr}{\mathrm{SS}_{\mathrm{res}}}
+\newcommand{\R}{\mathbb{R}}
+
+\title{\textbf{From Zero to Defending LFS}\\[2mm]
+\large Machine learning, language models, machine translation, and the statistics of measurement,\\
+built around one instrument: the Language-Factor Share}
+\author{Study guide for Waiz Khan}
+\date{5 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{keybox}
+\textbf{What this is.} A self-contained course in everything you need to
+explain and defend the LFS work to Professor Koehn, Professor Murray, other
+faculty, and students, written for someone who has not yet learned the
+fundamentals. It assumes you can program. Every chapter has ``Implement
+it'' exercises in plain numpy, because the fastest way to own a formula is to
+type it. Every LFS statement is tied to a number you can point to in the
+repository.
+
+\textbf{How to use it.} Read Chapter~\ref{ch:lfs} first, once, even if it is
+hard; it tells you why everything else matters. Then work Chapters
+\ref{ch:ml} to \ref{ch:stats} in order, doing the exercises. Return to
+Chapter~\ref{ch:lfs} and it will be easy. Chapter~\ref{ch:defense} is the
+question bank; practice it aloud. Chapter~\ref{ch:plan} is the schedule and
+reading list.
+
+\textbf{Compute rule.} The numpy exercises use synthetic data and run on your
+Mac. Anything that loads a real language model runs on the CLSP cluster, as
+always.
+\end{keybox}
+
+\begin{keybox}
+\textbf{Do you need all of this to defend LFS?} No. Three tiers.
+
+\textbf{Must know cold} (you will be asked, and a wrong answer costs
+credibility): all of Chapter~\ref{ch:lfs}; from Chapter~\ref{ch:ml}, vectors,
+norms and cosine, least squares and ridge, why held-out data; from
+Chapter~\ref{ch:llm}, tokens and fertility, the residual stream and hidden
+states per layer, mean pooling, what the logit lens assumes, fp16 versus
+fp32; from Chapter~\ref{ch:stats}, two-way ANOVA and degrees of freedom,
+Spearman, residualization and fixed effects, the cluster bootstrap and the
+unit of generalization, preregistration; from Chapter~\ref{ch:mt}, parallel
+corpora, translationese, MEXA's scoring rule, and the ``think in English''
+papers.
+
+\textbf{Should know} (this is what makes you credible to Koehn, Murray, and
+faculty who work in these areas, and it lets you answer the follow-up
+question, not just the first one): the rest of Chapters~\ref{ch:ml} to
+\ref{ch:mt}.
+
+\textbf{Later} (the long arc of a researcher, not this month): the measure
+list in Chapter~\ref{ch:plan}, Block F.
+
+The checklist in Chapter~\ref{ch:plan} marks the must-know items with a
+star.
+\end{keybox}
+
+\tableofcontents
+\clearpage
+
+\input{ch1_ml}
+\clearpage
+\input{ch2_llm}
+\clearpage
+\input{ch3_mt}
+\clearpage
+\input{ch4_stats}
+\clearpage
+\input{ch5_lfs}
+\clearpage
+\input{ch8_numbers}
+\clearpage
+\input{ch6_defense}
+\clearpage
+\input{ch9_figures}
+\clearpage
+\input{ch7_plan}
+
+\end{document}

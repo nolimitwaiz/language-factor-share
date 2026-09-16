@@ -1,0 +1,29 @@
+{
+ "spec": "prereg \u00a75 frozen 2026-07-15",
+ "results": [
+  {
+   "target": "rot_share",
+   "rho_partial": -0.0254,
+   "ci95": [
+    -0.1648,
+    0.1108
+   ],
+   "p": 0.7300007573966414,
+   "n": 207,
+   "p_bh": 1.0,
+   "prereg_negative_and_sig": false
+  },
+  {
+   "target": "m4_share",
+   "rho_partial": -0.0228,
+   "ci95": [
+    -0.147,
+    0.1047
+   ],
+   "p": 0.7562775881268824,
+   "n": 207,
+   "p_bh": 0.7562775881268824,
+   "prereg_negative_and_sig": false
+  }
+ ]
+}

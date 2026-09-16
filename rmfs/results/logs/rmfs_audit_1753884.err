@@ -1,0 +1,24 @@
+/home/wkhan12/rmfs/scripts/rmfs_v1_robustness_audit.py:100: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  result.append(stats.spearmanr(candidate_residual, target_residual).statistic)
+/home/wkhan12/rmfs/scripts/rmfs_v1_robustness_audit.py:100: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  result.append(stats.spearmanr(candidate_residual, target_residual).statistic)
+/home/wkhan12/rmfs/scripts/rmfs_v1_robustness_audit.py:100: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  result.append(stats.spearmanr(candidate_residual, target_residual).statistic)
+/home/wkhan12/rmfs/scripts/rmfs_v1_robustness_audit.py:100: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  result.append(stats.spearmanr(candidate_residual, target_residual).statistic)
+/home/wkhan12/rmfs/scripts/rmfs_v1_robustness_audit.py:100: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  result.append(stats.spearmanr(candidate_residual, target_residual).statistic)
+/home/wkhan12/rmfs/scripts/rmfs_v1_robustness_audit.py:100: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  result.append(stats.spearmanr(candidate_residual, target_residual).statistic)
+/home/wkhan12/rmfs/scripts/rmfs_v1_robustness_audit.py:100: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  result.append(stats.spearmanr(candidate_residual, target_residual).statistic)
+/home/wkhan12/rmfs/scripts/rmfs_v1_robustness_audit.py:100: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  result.append(stats.spearmanr(candidate_residual, target_residual).statistic)
+/home/wkhan12/rmfs/scripts/rmfs_v1_robustness_audit.py:100: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  result.append(stats.spearmanr(candidate_residual, target_residual).statistic)
+/home/wkhan12/rmfs/scripts/rmfs_v1_robustness_audit.py:100: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  result.append(stats.spearmanr(candidate_residual, target_residual).statistic)
+/home/wkhan12/rmfs/scripts/rmfs_v1_robustness_audit.py:100: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  result.append(stats.spearmanr(candidate_residual, target_residual).statistic)
+/home/wkhan12/rmfs/scripts/rmfs_v1_robustness_audit.py:100: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  result.append(stats.spearmanr(candidate_residual, target_residual).statistic)

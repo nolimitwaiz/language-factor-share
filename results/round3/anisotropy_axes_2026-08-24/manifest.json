@@ -1,0 +1,125 @@
+{
+  "run_id": "round3_anisotropy_axes_14model_coarse",
+  "created_utc": "2026-08-24T19:07:51.392318+00:00",
+  "host": "c04",
+  "models": [
+    "EuroLLM-1.7B",
+    "Falcon3-7B-Base",
+    "Mistral-7B-v0.3",
+    "OLMo-2-0425-1B",
+    "OLMo-2-1124-7B",
+    "Qwen3-0.6B-Base",
+    "Qwen3-1.7B-Base",
+    "Qwen3-4B-Base",
+    "Qwen3-8B-Base",
+    "SmolLM2-1.7B",
+    "bloom-1b7",
+    "bloom-7b1",
+    "salamandra-2b",
+    "salamandra-7b"
+  ],
+  "model_manifest_sha256": "5d9ebb38115538173fcabe86485f935271d24ed37b3e9e0ea434ec796a0720f4",
+  "input_hashes": {
+    "EuroLLM-1.7B": {
+      "layers": "6062f6cdc0977292002d79979b950ce6862dbaef2d10a61ad6a67107ec823ab8",
+      "axes": "6f6d556aebc3071558d67b73cfab00ad8408f32df69ae24ea6dc66e9e7ad7adb",
+      "summary": "830044746b9fa13af030937dd11fee3959fee577971594d9b6bdfd98b541edd3",
+      "manifest": "c069db9c3a217e6ae2e558535cc9a33924636b637f17e2407e519e7cfac06bcd"
+    },
+    "Falcon3-7B-Base": {
+      "layers": "965f6226b20cd4b7f312aa1e746cf673bf8ce5896c6e04a831b115ff38230dda",
+      "axes": "7f77c7d2b2077fd334ad0704b5133ec0148ac6a10593be905d8a0d1d298561f7",
+      "summary": "e507e72df990555399e94a9bd8232addbf201f48b7886abda61a1f8fee492eb9",
+      "manifest": "2a64e8ab3169e8156f39a5d98a2bdb2bca6d8813689ee6bfb292c20b3e5fd89a"
+    },
+    "Mistral-7B-v0.3": {
+      "layers": "92d9e56271b5b44d2b5950eba835275763389ad1f1f7d4a73966780f19d1c456",
+      "axes": "b7738776b904e8553972b4d1ca231f21088acdec65c6f17f827d8dd9c8be5b07",
+      "summary": "9227394030a60574d9629fc5d47bcd68264b71bf541a680c427a6872acd2e0a4",
+      "manifest": "29a673782410dd5276ce92b2b30918642c56f5e6c5b41fb3db12b9636d982317"
+    },
+    "OLMo-2-0425-1B": {
+      "layers": "fd2f5e700de4fef4a776577a7fda948b25d3efdb99b26a1b06b010ef5728e64c",
+      "axes": "1ba82589300e40d6a2c65c8f7d5b6a853e4e6f394f172b5267b792a1d83b8ab5",
+      "summary": "f14f66cfce76c3e90c6f8d0c286f652930d93a6485afff997a40d656cdf02918",
+      "manifest": "fe21297d4c16595ea31f8489e82d522aadd013c2701d713aa34468b4be2eeaaa"
+    },
+    "OLMo-2-1124-7B": {
+      "layers": "cc762be47e1c5f0fe3c6d4add6bd559766b2e21dfb4829da89073628a52cd7db",
+      "axes": "2b949d413e27d520653bdde4e9fa558d56346ff16f8d88b1f811cac49e1aea7b",
+      "summary": "672fbe4e9fc7cca95d1d5b7eeed546aa3a60d3246ce2bee9cea04b0fe68302f0",
+      "manifest": "6ea7466a74f87355abd4405f9cdda811aee6d5c2ab01f4ca6ac6212ae6a7bd36"
+    },
+    "Qwen3-0.6B-Base": {
+      "layers": "7023fa695d54c081ade571890eaa2feff777b739b5c82ddaa951937eea97fe12",
+      "axes": "a4128dd9cb480b996fe2ed72d132407cd390e9764427150c0c6f09f1d1a484c9",
+      "summary": "1f94ca056d6800eeb72933f8d4ebf218b529377d39b3c862f317f3a70fbca9ea",
+      "manifest": "a3220b187bb8b1051d73ccecf34a06b07019621c5c84656d394b23821c6ec224"
+    },
+    "Qwen3-1.7B-Base": {
+      "layers": "942342cdc3c0d4733a06abde8d048ca26d15042d8129f8b750189bf7b0931041",
+      "axes": "b0c9c70b0cc33c6b3c93b2d08d505c75fc2b4fc8d9bdc0bb7c4e505a16c9ae26",
+      "summary": "e6a3619f21948055ae3230a2427b8187dff427fc7e7d2ece92b8863dcdabfbc3",
+      "manifest": "5ac613f8439f002934de0dd1f20fb918db3ddd694a253e9ed2d848252cb26de0"
+    },
+    "Qwen3-4B-Base": {
+      "layers": "0bd2b9e040a2a31565548ef8a21a8d15f45b5b7c489d26264469d8ef23e33435",
+      "axes": "0df45a034f26e3fb9788dcd2e21a494fe3122ba91206cbf506148e76db04421f",
+      "summary": "e5fbc958f1c614b398e7f54300052a455ca4518c54a067a8b287aff29759668b",
+      "manifest": "02125e757376a1b310b1d2bfd3081ecb2b37d4831d2043ab6afe5162d5522bb2"
+    },
+    "Qwen3-8B-Base": {
+      "layers": "04a5587d08cc4b43208b0bf85a2a20adf2a5fa4917b82813c0c80fcf70a75141",
+      "axes": "887586a557bb832ccac98ed51b5bd58d10be78d653f778a2db0ba2ccda6f1f9f",
+      "summary": "1cdc4577bb03dd93b6cd83b1768225c5b9fabc791836d36376a5fb95b898a1b2",
+      "manifest": "ac5948aa315ea68ec8413d0ae9b8d9f8d1a9132f7bca9abe9454f11f4a25a3c2"
+    },
+    "SmolLM2-1.7B": {
+      "layers": "7b1ee9f7aaa82e9d934464c4139c62e942c993ffa63023a1b3f53317a983a2a8",
+      "axes": "432bcad1aad7356fbffb6488ef888b7b6ce77e1a43225489bf6b0131ac855d6f",
+      "summary": "9e590423d95f9eb96533b12b873add17ad1ceb12315bb28af813b44507e8ba1f",
+      "manifest": "cd084ae09e801dc867719e66df7c786e4898dd2dfca588fadbd2c4cbb444697b"
+    },
+    "bloom-1b7": {
+      "layers": "d0404846ec36efb70edd88acc07d9574a038de99aecc7843a054069313f918a3",
+      "axes": "ea83e2baa54a17fb5373bd014cb324db3a0d3c2b0af56a239a9e339e80233bbe",
+      "summary": "70dddacd21c92b5b6701d8f41938e4055e25c0d769fcb7d550ab363d44ca27df",
+      "manifest": "16661ed9cfe3819d5b2612b3b2271888d643548e22e22a880194537cf5759252"
+    },
+    "bloom-7b1": {
+      "layers": "18aa046a8ae1874039ccb2ffbfe84e688aba648a403bdcf5e93c47b87953ab16",
+      "axes": "a274f8a654a2e6782a26fbe228ae259c7b77c0c1d36c97390a52cb0e258275b4",
+      "summary": "4f2e12a53ac6d7fc5d30054bcb0e77f128ed31b091c2de98dd49da9c0e6a5112",
+      "manifest": "53f71e9b54d512475c92c534614cd4c7a20611dfa285326b6e1ddacdf186276d"
+    },
+    "salamandra-2b": {
+      "layers": "fc8bf7dd4a62cdea53088525c6b77509af3f27a4166cedfd0f170d95d82f4e88",
+      "axes": "b5fc350a4e687dd3ee16b7e4df98428dbd8bf1e217ba1fc679ace44ca37e65a3",
+      "summary": "85f563ab9070990f23ca45fed6491ce960ad9cfae470dddc7334756d54428859",
+      "manifest": "fc15cb527137e6fb15bcd91ffe52b20aacd63f9e1de7993df46d06df3835c9ae"
+    },
+    "salamandra-7b": {
+      "layers": "ade6da5a5cbce8a5cac248843f1917ade1a3f53fa2ecaf3cd1a13d5dd6449378",
+      "axes": "db2e5c11ebd2e0a1e3e5ed06581bc6e748bf6628f588d60f985bc88406a7292b",
+      "summary": "ede7ed596aeb0ef38da235811b53b50669c4057fefcb38f452137eb6d4389eec",
+      "manifest": "63d6870507fc83c65440e4ee0f6626360aee37eebed6d097639fa254c4f77d74"
+    }
+  },
+  "aggregate": {
+    "n_models": 14,
+    "n_model_layers": 69,
+    "minimum_saved_layers_per_model": 4,
+    "maximum_saved_layers_per_model": 5,
+    "n_axes": 195072,
+    "median_spearman_lfs_vs_mean_cosine": -0.7999999999999999,
+    "models_abs_rho_cosine_over_0_7": 8,
+    "median_spearman_lfs_vs_top_eigen_share": -0.75,
+    "models_abs_rho_eigen_over_0_7": 7,
+    "median_language_heavy_axis_fraction": 1.0,
+    "minimum_language_heavy_axis_fraction": 0.996337890625,
+    "maximum_language_heavy_axis_fraction": 1.0,
+    "warning": "all correlations use only the frozen coarse saved layers and are descriptive"
+  },
+  "gaussian_reference": true,
+  "causal_axis_claim": false
+}

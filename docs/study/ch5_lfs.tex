@@ -1,0 +1,285 @@
+\section{The Language-Factor Share, end to end}
+\label{ch:lfs}
+
+\subsection{The question}
+
+When the same sentence is written in many languages and run through a model,
+how much of the model's internal representation at a given layer is organized
+by \emph{which language} it is, and how much by \emph{what it means}? LFS
+answers with one number in $[0,1]$ per layer: near 1, the vectors cluster by
+language whatever the sentence says; near 0, they cluster by meaning whatever
+the language. Across layers the numbers form a depth profile.
+
+\subsection{The grid}
+
+Take $N$ sentences that exist in all $L$ languages with the same meaning.
+NTREX-128 gives the WMT19 news test set in 128 languages; the profiles use
+$N = 300$ and $L = 128$. Every cell (language $l$, sentence $c$) is one
+string, and the grid is \emph{balanced}: every language has every sentence.
+Balance is what makes the decomposition exact.
+
+\subsection{From strings to vectors}
+
+Run each string through the model with hidden states enabled. At one layer,
+average the token vectors over the sentence's real tokens (not padding) in
+fp32. That gives one vector $\mathbf h_{lc} \in \R^D$ per cell, and an
+$L\times N\times D$ tensor per layer. Layer 0 is the embedding output; layer
+$k$ is the residual stream after block $k$ (Chapter~\ref{ch:llm}).
+
+\subsection{Standardize each coordinate, jointly}
+
+For each coordinate $d$, subtract its mean and divide by its standard
+deviation, both taken over all $L\times N$ cells together:
+\[
+z_{lcd} = \frac{h_{lcd} - \overline{h}_{\cdot\cdot d}}{s_d}.
+\]
+Why: a few coordinates carry values hundreds of times larger than the rest
+and would decide the answer alone. Why jointly: standardizing each language
+separately would subtract each language's mean, which is the quantity being
+measured. After standardization every coordinate has the same total
+variance, so LFS becomes a weighted average of per-coordinate language shares
+in which no coordinate can dominate by scale.
+
+\subsection{Three averages and two sums of squares}
+
+\begin{figure}[h]\centering\includegraphics[width=\linewidth]{fig_lfs_grid.png}
+\caption{Row means isolate language (they average over meaning); column means isolate meaning (they average over language).}\label{fig:grid}\end{figure}
+
+Compute the grand mean $\bar{\mathbf z}$, the language means $\bar{\mathbf
+z}_l$ (average over the $N$ sentences of language $l$), and the sentence means
+$\bar{\mathbf z}_c$ (average over the $L$ translations of sentence $c$).
+Averaging over sentences within a language cancels meaning and leaves
+language identity; averaging over languages within a sentence cancels
+language and leaves meaning. Then
+\[
+\SSl = N\sum_{l}\|\bar{\mathbf z}_l - \bar{\mathbf z}\|^2,\qquad
+\SSc = L\sum_{c}\|\bar{\mathbf z}_c - \bar{\mathbf z}\|^2,\qquad
+\SSr = \sum_{l,c}\|\mathbf z_{lc} - \bar{\mathbf z}_l - \bar{\mathbf z}_c + \bar{\mathbf z}\|^2,
+\]
+\[
+\LFS = \frac{\SSl}{\SSl + \SSc}.
+\]
+The multipliers $N$ and $L$ are bookkeeping: each language mean stands for
+$N$ cells and each sentence mean for $L$, so with those weights the three
+terms add up exactly to the total spread of the grid. The residual is left out
+of the ratio because LFS asks how the two \emph{systematic} effects divide; a
+noisy model must not look language-agnostic by being noisy. The residual is
+reported next to the ratio.
+
+\subsection{A worked example for the whiteboard}
+
+One coordinate, two languages, three sentences:
+\begin{center}
+\begin{tabular}{lrrr|r}
+ & $s_1$ & $s_2$ & $s_3$ & language mean \\ \hline
+English & 1.0 & 3.0 & 5.0 & 3.0 \\
+German  & 2.0 & 4.0 & 6.0 & 4.0 \\ \hline
+sentence mean & 1.5 & 3.5 & 5.5 & grand mean 3.5
+\end{tabular}
+\end{center}
+$\SSl = 3\,[(3.0-3.5)^2 + (4.0-3.5)^2] = 1.5$;\quad
+$\SSc = 2\,[(1.5-3.5)^2 + 0 + (5.5-3.5)^2] = 16$;\quad
+every residual is zero (check: $1.0 - 3.0 - 1.5 + 3.5 = 0$);\quad
+$\LFS = 1.5/17.5 = 0.086$.
+
+Meaning dominates: sentences differ by a lot, languages by a constant
+offset of one. Multiply every number by ten: every sum of squares is
+multiplied by 100 and the ratio does not move. That is the scale invariance
+that later becomes the collapse blind spot. (The REML variant in
+\texttt{reports/lfs\_math.pdf} gives 0.11 on the same table because it
+subtracts a noise estimate and divides by degrees of freedom; same data,
+different estimator. On 14 real models the two rank models identically.)
+
+\begin{exercise}{LFS from scratch, matching the repository code}
+\begin{lstlisting}
+def lfs(X):                                   # X: (L, N, D), already z-scored per coordinate
+    L, N, D = X.shape
+    mu = X.mean((0, 1)); mu_l = X.mean(1); mu_c = X.mean(0)
+    ss_lang = N * ((mu_l - mu)**2).sum(); ss_con = L * ((mu_c - mu)**2).sum()
+    ss_res = ((X - mu_l[:, None] - mu_c[None] + mu)**2).sum()
+    return ss_lang / (ss_lang + ss_con), ss_lang, ss_con, ss_res
+def zscore(H):                                # H: (L, N, D) raw pooled vectors
+    flat = H.reshape(-1, H.shape[-1]); return (H - flat.mean(0)) / (flat.std(0) + 1e-9)
+# illustration: language offsets G, concept vectors C, noise E
+L, N, D = 12, 300, 128
+G = rng.normal(0, 1.0, (L, 1, D)); C = rng.normal(0, 1.5, (1, N, D)); E = rng.normal(0, 0.5, (L, N, D))
+H = G + C + E
+print(lfs(zscore(H))[0])                       # a share between 0 and 1
+print(lfs(zscore(3.7 * H))[0])                 # identical: uniform scale cancels
+print(lfs(zscore(C + E))[0], (L-1)/(L+N-2))    # no language effect: near the null
+\end{lstlisting}
+Compare your function line by line with \texttt{code/pilot\_metrics.py:lfs}
+and \texttt{src/analysis/rmfs\_profile.py:factor\_decomposition}. They are
+the same estimator.
+\end{exercise}
+
+\subsection{What the profile looks like}
+
+\begin{figure}[h]\centering\includegraphics[width=\linewidth]{fig_lfs_profiles_17.png}
+\caption{Seventeen models on the 128-language, 300-sentence grid. Left: LFS by relative depth, four models highlighted. Right: dip depth, first-layer value minus minimum.}\label{fig:profiles}\end{figure}
+
+Every one of the 17 primary models and the 19 expansion models has an
+interior minimum with both endpoints higher (Figure~\ref{fig:profiles}).
+Read it as three stages. Layer 0 is high because the embedding layer knows
+the token identity and tokens are language-specific. The interior minimum is
+where the model represents the same meaning most similarly across languages;
+its depth runs from 0.039 (BLOOM-1.7B) to 0.336 (Qwen3-8B). The rise toward
+the output is the model preparing to predict the next token, which is in a
+specific language.
+
+Two facts to state before anyone else does. The minimum is above 0.5 for
+every model on this grid: even at the most shared layer, language main
+effects exceed meaning main effects. Say ``more meaning-weighted relative to
+its own endpoints'', never ``concept-dominated''. And the minimum's location
+varies: most models place it between 35 and 60 percent depth, but Mistral-7B
+(and two continued-pretraining models in the expansion) put a sharp minimum
+at layer 2 followed by a plateau.
+
+\begin{figure}[h]\centering\includegraphics[width=0.8\linewidth]{fig_lfs_decomp.png}
+\caption{The same decomposition at three layers of Qwen3-8B. The residual (gray) is never in the ratio but always reported.}\label{fig:decomp}\end{figure}
+
+\subsection{Properties, each with a short proof}
+
+\textbf{Bounded.} Both sums of squares are non-negative, so $\LFS\in[0,1]$.
+
+\textbf{Exact decomposition.} With $a_l = \bar{\mathbf z}_l - \bar{\mathbf
+z}$, $b_c = \bar{\mathbf z}_c - \bar{\mathbf z}$, $r_{lc}$ the residual,
+$\mathbf z_{lc} - \bar{\mathbf z} = a_l + b_c + r_{lc}$. On a balanced grid
+$\sum_l a_l = 0$, $\sum_c b_c = 0$, and residuals sum to zero along every
+row and column; expanding the squared norm and summing over the grid, every
+cross term contains one of those zero sums. Hence total $=\SSl+\SSc+\SSr$.
+
+\textbf{Uniform-scale invariance.} Multiply every vector by $k$: every sum of
+squares is multiplied by $k^2$; the ratio is unchanged. After standardization
+LFS is also invariant to any positive rescaling of individual coordinates.
+Consequence: LFS cannot see all representations shrinking together
+(Figure~\ref{fig:collapse}).
+
+\textbf{Rotation invariance.} A rotation of the coordinate basis preserves
+every norm in the sums, so the global LFS is unchanged. Which coordinates
+carry the language energy is not invariant; hence no ``language neuron''
+claims.
+
+\textbf{The finite-grid null.} With no structure and isotropic noise of
+variance $\sigma^2$ in $D$ coordinates, $\mathbb E[\SSl] = (L-1)D\sigma^2$
+(language means average $N$ cells; $L-1$ degrees of freedom) and $\mathbb
+E[\SSc] = (N-1)D\sigma^2$. Their ratio is
+\[
+\LFS_{\text{null}} = \frac{L-1}{L+N-2},
+\]
+independent of $D$: 0.298 at $(128, 300)$, 0.078 at $(128, 1500)$
+(Figure~\ref{fig:null}). Three consequences: absolute values are not
+comparable across grids, pooling schemes, or granularities; differences at a
+fixed grid are fine because the noise term is common; and the null is not a
+floor, since strong meaning structure with weak language structure drives
+LFS below it. Verified on synthetic noise and on pseudo-language splits of
+real representations to three decimals.
+
+\begin{figure}[h]\centering\includegraphics[width=0.7\linewidth]{fig_lfs_null.png}
+\caption{The pure-noise value depends on the grid. Compare LFS values only at a fixed grid.}\label{fig:null}\end{figure}
+
+\textbf{Near-independence of evaluation size.} The noise term shrinks as a
+share of the numerator as $N$ grows, so LFS drifts by $-0.006$ to $-0.010$
+from $N=100$ to $N=1000$; a retrieval score moves $-0.065$ to $-0.125$ on the
+same draws. This is the practical argument for LFS over retrieval scores when
+comparing across studies.
+
+\textbf{Differentiable.} LFS is a smooth function of the vectors, so it can
+be a loss. That made the Aim 2 test possible; the test showed it should not be
+one.
+
+\subsection{The boundary and the failure mode}
+
+LFS measures the \emph{additive} language component: how far each language's
+mean sits from the center. Rotations, warps, and language-by-meaning
+interactions land in the residual. The misalignment decomposition measured how much
+that matters: offset plus scale explain 63 to 97 percent of held-out
+cross-language misalignment, rotation under one percent, with the instrument
+recovering injected rotations exactly. Language identity nonetheless stays
+linearly decodable at every layer (probe accuracy 0.875 to 0.886, chance
+0.042): variance share and separability are different quantities.
+
+\begin{figure}[h]\centering\includegraphics[width=0.7\linewidth]{fig_lfs_collapse_synthetic.png}
+\caption{Synthetic collapse: shrink every vector and the ratio is flat while the raw concept component vanishes.}\label{fig:collapse}\end{figure}
+
+\begin{figure}[h]\centering\includegraphics[width=\linewidth]{fig_lfs_collapse_trained.png}
+\caption{The same thing in a trained model. The word-MSE condition lost 95 percent of raw concept variance; LFS moved by 0.05 and MEXA ranked it first.}\label{fig:collapse_trained}\end{figure}
+
+Own this before anyone raises it: in the Aim 2 word-alignment condition the
+representation norm fell from 451 to 42 and raw concept variance from 13{,}791
+to 699 while LFS moved from 0.445 to 0.493 and the retrieval metric ranked the
+collapsed model first (Figure~\ref{fig:collapse_trained}). Every
+scale-invariant measure shares this blind spot, by theorem. The fix is to
+report the ratio with its raw components ($\SSl$, $\SSc$, residual, norm), so
+that collapse shows up where it lives.
+
+\subsection{What LFS relates to, and what it does not}
+
+\begin{figure}[h]\centering\includegraphics[width=0.66\linewidth]{fig_r1_model_level.png}
+\caption{Nineteen models: sentence-component share ($1-$LFS-VC) at the dip against median content transfer. Spearman 0.77 at the model level; 0.51 [0.19, 0.71] on the full confounder-adjusted panel.}\label{fig:r1}\end{figure}
+
+\textbf{Content transfer (positive).} Give a model an English sentence to
+predict, preceded by the previous sentence of the same document in another
+language, versus a wrong-document sentence in that language; the improvement
+from the right context is the content benefit. Across 19 models and 13
+families, models with a more meaning-weighted dip layer show more content
+transfer after controlling for data exposure, family, script, and fertility
+(Figure~\ref{fig:r1}).
+
+\textbf{Benchmark accuracy (null).} Against pooled multiple-choice accuracy on 33
+models, LFS has no association once exposure is removed (0.04, interval
+crossing zero); MEXA reaches 0.24. Two independent benchmarks agree on only about a
+third of their per-language residual variation, which caps what any intrinsic
+metric can predict there.
+
+\textbf{Training objective (negative).} Minimizing LFS deepens the dip
+quickly but through a shortcut that damages alignment and capability; across
+18 trained condition-seed points lower LFS went with worse tail alignment. LFS is a
+measurement, not a target.
+
+\subsection{The family}
+
+LFS answers one question. The other questions a multilingual representation
+raises are answered by accompanying measures on the same grid, each validated on
+its own question and never averaged into a single score:
+
+\begin{center}\small
+\begin{tabular}{p{4.6cm}p{5.2cm}p{4.6cm}}
+\toprule
+Question & Measure & Exposes \\
+\midrule
+Language vs.\ meaning share, per layer & LFS profile; dip depth & structure; recipe differences \\
+Did scale or concept variance collapse? & raw $\SSl$, $\SSc$, residual, norm vs.\ a frozen reference & collapse a ratio hides \\
+Is the cross-language map simple? & nested maps M0--M5, held-out error reduction & additive vs.\ rotational vs.\ nonlinear \\
+Is the shared factor English? & latent-factor vs.\ English donor $R^2$ & English-centricity \\
+Do the hardest sentences align? & AaR@10, worst-decile margin & tail failures that means hide \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+MEXA is the published reference measure, not a family member. The proposal's own list
+of candidate metric types (raw distances; mapping complexity; ``anything else
+that emerges'') maps onto this table.
+
+\subsection{How to say it}
+
+\say{\textbf{Ten seconds.} LFS measures, at each layer, how much of the
+systematic variation in a model's hidden states follows the language of a
+sentence rather than its meaning, on a grid of matched translations.}
+
+\say{\textbf{Thirty seconds.} Take the same 300 sentences in 128 languages,
+run them through the model, and average token states into one vector per
+sentence per language. Standardize coordinates jointly. The spread of the
+language means measures language; the spread of the sentence means measures
+meaning; LFS is the first divided by the sum. Across 33 models it falls to an
+interior minimum and recovers, and how far it falls varies nine-fold and
+tracks training recipe more than size. It must be reported with its raw
+components, because the ratio cannot see everything shrinking at once.}
+
+\say{\textbf{Two minutes.} Add: the exact two-way decomposition and why the
+residual is excluded; the null $(L-1)/(L+N-2)$ and fixed-grid comparison;
+values above 0.5 read relatively; the additive boundary measured at under one
+percent rotation; the multilingual latent factor beating English in 113 to
+124 of 127 languages; content transfer on 19 models at 0.51 [0.19, 0.71];
+pooled benchmarks null with a measured ceiling; the collapse case; the family of
+measures and the rule against averaging them.}

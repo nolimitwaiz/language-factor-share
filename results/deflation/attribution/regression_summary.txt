@@ -1,0 +1,56 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                      y   R-squared:                       0.824
+Model:                            OLS   Adj. R-squared:                  0.819
+Method:                 Least Squares   F-statistic:                     786.1
+Date:                Mon, 20 Jul 2026   Prob (F-statistic):           7.64e-80
+Time:                        12:13:39   Log-Likelihood:                -1435.8
+No. Observations:                1241   AIC:                             2938.
+Df Residuals:                    1208   BIC:                             3107.
+Df Model:                          32                                         
+Covariance Type:              cluster                                         
+=======================================================================================================
+                                          coef    std err          z      P>|z|      [0.025      0.975]
+-------------------------------------------------------------------------------------------------------
+Intercept                              -7.0162      0.571    -12.283      0.000      -8.136      -5.897
+C(model)[T.Falcon3-7B-Base]             1.8078      0.154     11.747      0.000       1.506       2.109
+C(model)[T.Llama-3.1-8B]                3.3989      0.126     26.929      0.000       3.151       3.646
+C(model)[T.Mistral-7B-v0.3]             2.1950      0.182     12.077      0.000       1.839       2.551
+C(model)[T.OLMo-2-0425-1B]              0.3532      0.110      3.209      0.001       0.137       0.569
+C(model)[T.OLMo-2-1124-7B]              1.6134      0.155     10.409      0.000       1.310       1.917
+C(model)[T.Qwen3-0.6B-Base]             2.3201      0.154     15.057      0.000       2.018       2.622
+C(model)[T.Qwen3-1.7B-Base]             3.3144      0.146     22.749      0.000       3.029       3.600
+C(model)[T.Qwen3-4B-Base]               4.3646      0.147     29.748      0.000       4.077       4.652
+C(model)[T.Qwen3-8B-Base]               4.6847      0.140     33.568      0.000       4.411       4.958
+C(model)[T.SmolLM2-1.7B]                0.9726      0.111      8.750      0.000       0.755       1.190
+C(model)[T.Yi-1.5-9B]                   3.3498      0.156     21.519      0.000       3.045       3.655
+C(model)[T.bloom-1b7]                  -0.1462      0.087     -1.680      0.093      -0.317       0.024
+C(model)[T.bloom-7b1]                  -0.3869      0.086     -4.500      0.000      -0.555      -0.218
+C(model)[T.granite-3.1-8b-base]         1.8811      0.171     10.990      0.000       1.546       2.217
+C(model)[T.salamandra-2b]               0.0800      0.067      1.196      0.232      -0.051       0.211
+C(model)[T.salamandra-7b]               1.3951      0.124     11.254      0.000       1.152       1.638
+C(macro_family_g)[T.Atlantic-Congo]     0.0165      0.371      0.044      0.965      -0.711       0.744
+C(macro_family_g)[T.Austronesian]       0.6768      0.636      1.063      0.288      -0.571       1.924
+C(macro_family_g)[T.Balto-Slavic]       0.5562      0.461      1.207      0.228      -0.347       1.460
+C(macro_family_g)[T.Dravidian]          0.2241      0.360      0.622      0.534      -0.482       0.931
+C(macro_family_g)[T.Indo-European]      0.5541      0.412      1.345      0.179      -0.253       1.362
+C(macro_family_g)[T.Sino-Tibetan]       0.6446      0.448      1.438      0.150      -0.234       1.523
+C(macro_family_g)[T.Tai-Kadai]          0.1986      0.367      0.541      0.589      -0.521       0.918
+C(macro_family_g)[T.Turkic]             0.2425      0.446      0.544      0.587      -0.632       1.117
+C(macro_family_g)[T.Uralic]             0.2489      0.449      0.554      0.579      -0.631       1.129
+C(macro_family_g)[T.other]              0.2233      0.409      0.546      0.585      -0.578       1.025
+C(script_g)[T.Cyrl]                     0.0866      0.302      0.287      0.774      -0.505       0.678
+C(script_g)[T.Deva]                     0.0068      0.220      0.031      0.975      -0.425       0.439
+C(script_g)[T.Latn]                     0.1894      0.255      0.743      0.458      -0.310       0.689
+C(script_g)[T.other]                    0.3666      0.215      1.706      0.088      -0.055       0.788
+log_tokens                              0.2862      0.059      4.813      0.000       0.170       0.403
+fertility                              -0.1031      0.022     -4.706      0.000      -0.146      -0.060
+==============================================================================
+Omnibus:                       95.157   Durbin-Watson:                   2.085
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              166.225
+Skew:                          -0.542   Prob(JB):                     8.03e-37
+Kurtosis:                       4.428   Cond. No.                         186.
+==============================================================================
+
+Notes:
+[1] Standard Errors are robust to cluster correlation (cluster)

@@ -1,0 +1,8 @@
+{
+ "run_id": "new_readings_Falcon3-3B-Base",
+ "script": "scripts/new_model_readings.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-09T03:44:02.204720+00:00",
+ "wall_s": 175.4
+}

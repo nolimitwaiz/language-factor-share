@@ -1,0 +1,164 @@
+
+================================================================================
+WORST DECILE — hin (margins -0.142 .. -0.056)
+================================================================================
+[296] m=-0.142  EN: "Standing as a candidate for the European elections is the best way to denounce the regression in democratic values and repression we have seen from the Spanish government," he said.
+[238] m=-0.135  EN: Interest remained high after the hearing.
+[240] m=-0.125  EN: After the moderate Republican's office issued a statement that he would be voting in favor of Kavanaugh, he was caught be CNN and CBS cameras Friday morning being shouted at by protesters as he tried 
+[284] m=-0.125  EN: Tensions remain high in the independence-minded region a year after the October 1 referendum deemed illegal by Madrid but celebrated by separatist Catalans.
+[270] m=-0.115  EN: "This is what you worry about at all times," Wade said.
+[ 41] m=-0.112  EN: The vestry - the parish's governing body, made up of lay leaders - wrote the diocese in July with concerns that the diocese "would seek to pass along the costs" to the vestry, even though the vestry h
+[ 33] m=-0.107  EN: A black congregation that had been worshiping nearby took title to the building.
+[273] m=-0.099  EN: The National Center for Disaster Prevention warned Mexicans on Saturday to stay away from the volcano after activity picked up in the crater and it registered 183 emissions of gas and ash over 24 hour
+[293] m=-0.099  EN: Joan Puig, a 42-year-old mechanic recording the protest in support of the police on his phone, said the conflict had been stoked by politicians on both sides.
+[210] m=-0.091  EN: It would be extremely ill advised to venture out into the desert on foot with the threat of tropical rainfall.
+[ 42] m=-0.076  EN: Some parishioners complained of a lack of transparency on the diocese's part.
+[244] m=-0.075  EN: He was told, "you have power when so many women are powerless.""
+[251] m=-0.073  EN: President Trump has opened an FBI investigation into the allegations against Kavanaugh.
+[ 44] m=-0.073  EN: A shark attacked and injured a 13-year-old boy Saturday while he was diving for lobster in California on the opening day of lobster season, officials said.
+[289] m=-0.072  EN: Narcis Termes, 68, an electrician attending the separatist protest with his wife said he was no longer hopeful about the prospects of Catalonia gaining independence.
+[124] m=-0.072  EN: A hospital ship that had been stationed in Lombok to treat earthquake victims is making its way to Palu, but it will take at least three days to reach the site of the new calamity.
+[134] m=-0.072  EN: The ball eventually dropped over a leaping Kepa Arrizabalaga and fell into the net.
+[121] m=-0.068  EN: The apparent lack of a tsunami warning siren in Palu, even though a warning had been in effect, is likely to have contributed to the loss of life.
+[181] m=-0.068  EN: He had reportedly travelled with his cousin from the neighboring Yunnan province Wednesday to sell 15 pigs at the market.
+[189] m=-0.067  EN: A market manager told the Evening News that the pig had been locked away to prevent it attacking anyone else, while police gathered evidence at the scene.
+[179] m=-0.066  EN: The man, identified only by his surname "Yuan," was found dead with a severed artery, covered in blood near a sty at the market in Liupanshui in Guizhou province, the South China Morning Post reported
+[204] m=-0.066  EN: Rosa will bring up to 10 inches of rain in parts of Mexico on Monday.
+[227] m=-0.064  EN: Meanwhile, the political standoff continued, with broadcasters interrupting regular programming for Friday's last-minute twist: an agreement engineered by Arizona Sen. Jeff Flake for the FBI to conduc
+[141] m=-0.064  EN: Hazard outran the defense and finished into the far post netting with a left footed shot past Liverpool's Alisson Becker.
+[194] m=-0.064  EN: After an Oregon farmer was eaten by his pigs in 2012, one Manitoba farmer told CBC News that pigs are not normally aggressive but the taste of blood can act as a "trigger."
+[286] m=-0.063  EN: According to Catalan authorities almost 1000 people were injured last year after police tried to stop the vote going ahead at polling stations across the region in violent clashes.
+[225] m=-0.060  EN: More than 20 million people watched Brett Kavanaugh hearing
+[ 43] m=-0.059  EN: Shark injures 13-year-old on lobster dive in California
+[177] m=-0.057  EN: Killer Pig Mauls Chinese Farmer to Death
+[169] m=-0.056  EN: John Goldsmith, chairman of the Cromwell Society, said: "It was inevitable in the present debate about the removal of statues that the figure of Oliver Cromwell outside the Palace of Westminster would
+
+--- for contrast, 5 BEST-aligned (hin) ---
+[135] m=+0.182  EN: "It was just trying to get into that position, to get on the ball and players like Shaq always play it forward as much as possible, so I just tried to create my
+[266] m=+0.183  EN: Sims was 20 years old.
+[165] m=+0.314  EN: Anyone with information is asked to DM @MerPolCC, call 101 or contact Crimestoppers anonymously on 0800 555 111 quoting log 247 of 30th September.
+[  8] m=+0.320  EN: In this context The Welsh letter w is pronounced similarly to the Yorkshire English pronunciation of the letter u.
+[237] m=+0.365  EN: CBS had 3.1 million, NBC had 2.94 million, MSNBC had 2.89 million and CNN had 2.52 million, Nielsen said.
+
+================================================================================
+WORST DECILE — tur (margins -0.134 .. -0.014)
+================================================================================
+[161] m=-0.134  EN: A woman appeared at the scene in tears.
+[ 87] m=-0.089  EN: Nobody could believe what was happening on Tuesday, it was so close to the launch.
+[ 96] m=-0.089  EN: Tough talk 'and then we fell in love'
+[151] m=-0.088  EN: Police have urged people in the area who saw or heard anything to come forward.
+[159] m=-0.081  EN: Residents are now being told it will be hours until they are allowed back in.
+[ 45] m=-0.076  EN: The attack occurred just before 7 a.m. near Beacon's Beach in Encinitas.
+[156] m=-0.067  EN: Investigations are ongoing as police have said they are in the process of informing the victim's next of kin.
+[189] m=-0.061  EN: A market manager told the Evening News that the pig had been locked away to prevent it attacking anyone else, while police gathered evidence at the scene.
+[281] m=-0.055  EN: Scuffles also broke out later in the day with police using their batons to contain the fighting.
+[  1] m=-0.046  EN: There is consternation among some AMs at a suggestion their title should change to MWPs (Member of the Welsh Parliament).
+[ 88] m=-0.041  EN: There is a warehouse full of goods at the Marlow HQ which are ready to be sold."
+[244] m=-0.039  EN: He was told, "you have power when so many women are powerless.""
+[  2] m=-0.035  EN: It has arisen because of plans to change the name of the assembly to the Welsh Parliament.
+[ 42] m=-0.034  EN: Some parishioners complained of a lack of transparency on the diocese's part.
+[210] m=-0.033  EN: It would be extremely ill advised to venture out into the desert on foot with the threat of tropical rainfall.
+[200] m=-0.028  EN: However, Rosa will bring flooding rains across northern Mexico and the southwest U.S. over the coming days.
+[131] m=-0.024  EN: Sturridge received a pass from Xherdan Shaqiri while about 30 yards out from the Chelsea goal with his team trailing 1-0.
+[ 24] m=-0.024  EN: "Today, there's neither."
+[ 49] m=-0.022  EN: His whole clavicle was ripped open," Hammel said he noticed once he got to the boy.
+[199] m=-0.022  EN: As forecast, Hurricane Rosa is weakening as it moves over the cooler waters of the northern coast of Mexico.
+[183] m=-0.020  EN: He said that in the sty was a large male pig with blood on its mouth.
+[118] m=-0.020  EN: Mr. Sutopo, the national disaster agency spokesman, said Indonesian officials were assessing the situation in Palu to see whether international agencies would be allowed to contribute to the aid effor
+[ 32] m=-0.017  EN: The original white Methodist congregation moved out in the 1930s.
+[230] m=-0.017  EN: It's likely that more than the 20.4 million people reported by Nielsen on Friday watched it.
+[278] m=-0.017  EN: Police clash with Catalan separatists ahead of independence vote anniversary
+[ 99] m=-0.016  EN: Trump said in his mock "news anchor" voice.
+[  0] m=-0.016  EN: Welsh AMs worried about 'looking like muppets'
+[ 17] m=-0.014  EN: Voters will vote Sunday on whether to change their country's name to the "Republic of North Macedonia."
+[261] m=-0.014  EN: After questioning Simpson, police said he admitted to fatally shooting Wayde.
+[  6] m=-0.014  EN: A Plaid AM said the group as a whole was "not happy" and has suggested alternatives.
+
+--- for contrast, 5 BEST-aligned (tur) ---
+[ 91] m=+0.263  EN: Mother-of-three Willoughby and husband Dan Baldwin have been close to Jones and his wife Tara Capp for ten years.
+[ 98] m=+0.294  EN: Why has President Trump given up so much?
+[220] m=+0.298  EN: There is nearly a 20-degree temperature difference between Kansas City, Missouri, and Omaha, Nebraska, and between St. Louis and Des Moines, Iowa.
+[237] m=+0.378  EN: CBS had 3.1 million, NBC had 2.94 million, MSNBC had 2.89 million and CNN had 2.52 million, Nielsen said.
+[165] m=+0.386  EN: Anyone with information is asked to DM @MerPolCC, call 101 or contact Crimestoppers anonymously on 0800 555 111 quoting log 247 of 30th September.
+
+================================================================================
+WORST DECILE — ben (margins -0.155 .. -0.085)
+================================================================================
+[289] m=-0.155  EN: Narcis Termes, 68, an electrician attending the separatist protest with his wife said he was no longer hopeful about the prospects of Catalonia gaining independence.
+[235] m=-0.149  EN: Fox News Channel, whose opinion hosts have strongly backed Kavanaugh's appointment, led all networks with an average of 5.69 million viewers during the all-day hearing, Nielsen said.
+[186] m=-0.141  EN: Security camera footage showed Yuan entering the market at 4.40 am Thursday to feed his pigs.
+[ 89] m=-0.134  EN: Experts believe the departure of the This Morning presenter, who is among Britain's most bankable stars, could cost the firm millions due to hefty investment in products ranging from cushions and cand
+[118] m=-0.134  EN: Mr. Sutopo, the national disaster agency spokesman, said Indonesian officials were assessing the situation in Palu to see whether international agencies would be allowed to contribute to the aid effor
+[287] m=-0.133  EN: Pro-independence groups had camped out overnight on Friday to prevent a demonstration in support of the national police.
+[  3] m=-0.120  EN: AMs across the political spectrum are worried it could invite ridicule.
+[ 42] m=-0.119  EN: Some parishioners complained of a lack of transparency on the diocese's part.
+[146] m=-0.116  EN: Many people were reported trapped in the rubble of buildings brought down in the 7.5 magnitude earthquake which struck Friday and triggered waves as high as 20 feet, agency spokesman Sutopo Purwo Nugr
+[181] m=-0.112  EN: He had reportedly travelled with his cousin from the neighboring Yunnan province Wednesday to sell 15 pigs at the market.
+[ 18] m=-0.110  EN: The popular vote was set up in a bid to resolve a decades-long dispute with neighboring Greece, which has its own province called Macedonia.
+[246] m=-0.109  EN: The cable and broadcast networks were all covering live hours later, when the Judiciary Committee was to vote to advance Kavanaugh's nomination to the full Senate for a vote.
+[228] m=-0.108  EN: Ford told the Senate Judiciary Committee that she's 100 percent certain that Kavanaugh groped her drunkenly and tried to take off her clothes at a high school party.
+[249] m=-0.108  EN: After a conversation with Coons and several senators afterwards, Flake made his decision.
+[227] m=-0.107  EN: Meanwhile, the political standoff continued, with broadcasters interrupting regular programming for Friday's last-minute twist: an agreement engineered by Arizona Sen. Jeff Flake for the FBI to conduc
+[ 11] m=-0.105  EN: In June, the Commission published the results of a public consultation on the proposals which found broad support for calling the assembly a Welsh Parliament.
+[179] m=-0.104  EN: The man, identified only by his surname "Yuan," was found dead with a severed artery, covered in blood near a sty at the market in Liupanshui in Guizhou province, the South China Morning Post reported
+[284] m=-0.104  EN: Tensions remain high in the independence-minded region a year after the October 1 referendum deemed illegal by Madrid but celebrated by separatist Catalans.
+[ 40] m=-0.101  EN: What has played out at St. Martin's over the last few months has been a complicated tale of architects and contractors, some brought in by the lay leaders of the church, others by the Episcopal dioces
+[286] m=-0.101  EN: According to Catalan authorities almost 1000 people were injured last year after police tried to stop the vote going ahead at polling stations across the region in violent clashes.
+[293] m=-0.100  EN: Joan Puig, a 42-year-old mechanic recording the protest in support of the police on his phone, said the conflict had been stoked by politicians on both sides.
+[295] m=-0.097  EN: On Saturday, Oriol Junqueras, one of nine Catalan leaders in pre-trial jail since late last year, announced he would run in European Parliament elections next year.
+[ 13] m=-0.095  EN: AMs are apparently suggesting alternative options, but the struggle to reach consensus could be a headache for the Presiding Officer, Elin Jones, who is expected to submit draft legislation on the cha
+[ 60] m=-0.093  EN: The investment in beauty comes as supermarkets hunt for ways to use up shelf space once sued for TVs, microwaves and homeware.
+[279] m=-0.090  EN: Six people were arrested in Barcelona on Saturday after pro-independence protesters clashed with riot police, and as thousands joined rival demonstrations to mark the first anniversary of Catalonia's 
+[189] m=-0.090  EN: A market manager told the Evening News that the pig had been locked away to prevent it attacking anyone else, while police gathered evidence at the scene.
+[ 79] m=-0.088  EN: This Morning presenter, 37, took to Instagram to announce she is leaving.
+[101] m=-0.086  EN: He noted that Kim is interested in a second meeting after their initial meeting in Singapore in June was hailed by Trump as a big step toward denuclearization of North Korea.
+[ 66] m=-0.085  EN: Mike Coupe, the chief executive of Sainsbury's, has said the outlets will look increasingly like department stores as the supermarket chain tries to fight back against the discounters Aldi and Lidl wi
+[240] m=-0.085  EN: After the moderate Republican's office issued a statement that he would be voting in favor of Kavanaugh, he was caught be CNN and CBS cameras Friday morning being shouted at by protesters as he tried 
+
+--- for contrast, 5 BEST-aligned (ben) ---
+[  8] m=+0.183  EN: In this context The Welsh letter w is pronounced similarly to the Yorkshire English pronunciation of the letter u.
+[243] m=+0.186  EN: "Do you think he's telling the truth to the country?
+[ 98] m=+0.189  EN: Why has President Trump given up so much?
+[165] m=+0.232  EN: Anyone with information is asked to DM @MerPolCC, call 101 or contact Crimestoppers anonymously on 0800 555 111 quoting log 247 of 30th September.
+[237] m=+0.346  EN: CBS had 3.1 million, NBC had 2.94 million, MSNBC had 2.89 million and CNN had 2.52 million, Nielsen said.
+
+================================================================================
+WORST DECILE — vie (margins -0.247 .. 0.071)
+================================================================================
+[202] m=-0.247  EN: Rosa is expected to move north on Sunday.
+[ 16] m=-0.037  EN: Macedonians go to polls in referendum on changing country's name
+[204] m=-0.029  EN: Rosa will bring up to 10 inches of rain in parts of Mexico on Monday.
+[208] m=-0.011  EN: As much as 2 to 4 inches of rain is expected in parts of the Southwest, especially over much of Arizona.
+[212] m=-0.007  EN: The approaching trough will bring some locally heavy rain to parts of the Southern California coastline.
+[ 26] m=-0.004  EN: "People socialize in a different way" nowadays, he said.
+[271] m=+0.006  EN: Volcano spews ash on Mexico City
+[132] m=+0.012  EN: He tapped the ball to his left before scooping a shot toward the far post.
+[134] m=+0.014  EN: The ball eventually dropped over a leaping Kepa Arrizabalaga and fell into the net.
+[  7] m=+0.019  EN: A Welsh Conservative said his group was "open minded" about the name change, but noted it was a short verbal hop from MWP to Muppet.
+[ 12] m=+0.023  EN: On the matter of the AMs' title, the Commission favoured Welsh Parliament Members or WMPs, but the MWP option received the most support in a public consultation.
+[129] m=+0.027  EN: Watch: Liverpool's Daniel Sturridge dips deep equalizer vs. Chelsea
+[ 80] m=+0.032  EN: Holly Willoughby has left Dragons" Den star Peter Jones fuming by pulling out of their lucrative lifestyle brand business at the last minute - to focus on her own new bumper contracts with Marks & Spe
+[133] m=+0.036  EN: The attempt sailed high above the box as it drifted toward the right top corner of the net.
+[148] m=+0.036  EN: Police arrest man, 32, on suspicion of murder after woman is stabbed to death
+[140] m=+0.037  EN: He then fired a beautiful through ball, leading Hazard into the box.
+[  0] m=+0.038  EN: Welsh AMs worried about 'looking like muppets'
+[213] m=+0.049  EN: Rainfall totals of over half an inch are possible, which could cause minor debris flows and slick roadways.
+[234] m=+0.051  EN: To put that in perspective, that's an audience size similar to that for a playoff football game or the Academy Awards.
+[  6] m=+0.051  EN: A Plaid AM said the group as a whole was "not happy" and has suggested alternatives.
+[206] m=+0.054  EN: Locally, 1 to 4 inches of rain will cause dangerous flash flooding, debris flows and possibility landslides in the desert.
+[  2] m=+0.056  EN: It has arisen because of plans to change the name of the assembly to the Welsh Parliament.
+[ 45] m=+0.059  EN: The attack occurred just before 7 a.m. near Beacon's Beach in Encinitas.
+[198] m=+0.061  EN: Hurricane Rosa's remnants to bring widespread heavy rain to southwest US
+[ 22] m=+0.062  EN: The Bells of St. Martin's Fall Silent as Churches in Harlem Struggle
+[230] m=+0.067  EN: It's likely that more than the 20.4 million people reported by Nielsen on Friday watched it.
+[155] m=+0.069  EN: This afternoon friends who believe they know the woman have arrived at the scene to ask questions about where she was found this morning.
+[270] m=+0.070  EN: "This is what you worry about at all times," Wade said.
+[ 52] m=+0.071  EN: The species of shark responsible for the attack was unknown.
+[ 76] m=+0.071  EN: Dragons Den star Peter Jones left 'furious' after TV presenter Holly Willoughby pulls out of £11million deal with his lifestyle brand business to focus on her new contracts with Marks and Spencer and 
+
+--- for contrast, 5 BEST-aligned (vie) ---
+[277] m=+0.346  EN: The volcano known as "Don Goyo" has been active since 1994.
+[249] m=+0.353  EN: After a conversation with Coons and several senators afterwards, Flake made his decision.
+[ 94] m=+0.354  EN: Willoughby is to become a brand ambassador for M&S and will replace Ant McPartlin as host of ITV's I'm A Celebrity.
+[231] m=+0.370  EN: The company was counting average viewership on CBS, ABC, NBC, CNN, Fox News Channel and MSNBC.
+[165] m=+0.534  EN: Anyone with information is asked to DM @MerPolCC, call 101 or contact Crimestoppers anonymously on 0800 555 111 quoting log 247 of 30th September.

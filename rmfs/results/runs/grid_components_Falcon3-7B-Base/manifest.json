@@ -1,0 +1,20 @@
+{
+ "run_id": "grid_components_Falcon3-7B-Base",
+ "git": "",
+ "host": "e05",
+ "when": "2026-08-02T22:24:56",
+ "config": {
+  "model_tag": "Falcon3-7B-Base",
+  "S": 20,
+  "seed": 13,
+  "rank": 128,
+  "tracks": "native=z-scored for LFS-VC/LDE/baselines; raw for gates"
+ },
+ "inputs": {
+  "dump": "/home/wkhan12/multilingual-metrics/results/dumps/Falcon3-7B-Base",
+  "published_rank_from": "/home/wkhan12/multilingual-metrics/results/budget/Falcon3-7B-Base/budget.json",
+  "doc_ids": "/home/wkhan12/multilingual-metrics/data/NTREX/DOCUMENT_IDS.tsv"
+ },
+ "precision": "fp32 load, fp64 statistics",
+ "n_parquet_rows": 775
+}

@@ -1,0 +1,16 @@
+{
+  "run_id": "round3_empirical_descriptive_summary",
+  "analysis_status": "post-result descriptive; no new pass thresholds",
+  "created_utc": "2026-08-24T08:17:59.510032+00:00",
+  "host": "c24",
+  "source_sweep": "/home/wkhan12/rmfs/results/round3_invariance/assembled_2026-08-24/sweep.csv",
+  "source_sweep_sha256": "68e711dcbaba4b2fc05650c11b574d1f7479820a14b7088b1099d74193927d41",
+  "rows": {
+    "empirical_cells": 4788,
+    "strongest_rank_cells": 532,
+    "strongest_rank_summary": 38,
+    "rank_monotonicity_by_model": 532,
+    "rank_monotonicity_summary": 38,
+    "family_summary": 114
+  }
+}

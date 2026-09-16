@@ -1,0 +1,19 @@
+{
+ "code": "src/aim2/offset_offline.py",
+ "code_sha256": "44cf21bfdd8292ee003305dcd84425b7f225512d695746b53d1c8acdbc984008",
+ "inputs": {
+  "layer000.npz": "0d1343bfd93eaba4555cb08dc557d223289c3bb1701b78ba33053cb918557fe4",
+  "layer008.npz": "1bc556b7f1c703af6ae4a70e44e3c060ff9ad83ef3618ae1d86300e8a94330fd",
+  "layer012.npz": "bf62fae4d5e25f262ba585e48453fdeb9ba9a601ea7135f3078fbabc48e6d4cf",
+  "layer024.npz": "bf43375c0ef5daad052efe652307f217674720655dcf91afc4b75c351ccc46b5",
+  "layer032.npz": "b8c1366e5b4c01cfdf7b4b0b33986c4cf4c998c9fc95205f3cacd853daa3cf78"
+ },
+ "grid_metrics": "/home/wkhan12/multilingual-metrics/results/grid/OLMo-2-1124-7B/metrics.json",
+ "seed": 20260907,
+ "n_boot": 300,
+ "host": "c11",
+ "platform": "Linux-5.15.0-179-generic-x86_64-with-glibc2.35",
+ "numpy": "1.26.4",
+ "wall_s": 2697.2,
+ "created_utc": "2026-09-07T19:03:30Z"
+}

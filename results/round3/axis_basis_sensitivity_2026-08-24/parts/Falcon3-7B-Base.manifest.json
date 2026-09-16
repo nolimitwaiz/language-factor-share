@@ -1,0 +1,54 @@
+{
+  "run_id": "aim1_axis_basis_sensitivity_Falcon3-7B-Base",
+  "created_utc": "2026-08-24T21:00:09.031410+00:00",
+  "host": "c04",
+  "slurm_job_id": "1761840",
+  "model": "Falcon3-7B-Base",
+  "layers": [
+    0,
+    7,
+    13,
+    21,
+    28
+  ],
+  "seeds": [
+    1729,
+    2718,
+    3141,
+    5772,
+    8111
+  ],
+  "sweeps": [
+    0,
+    1,
+    4,
+    16
+  ],
+  "n_concepts": 300,
+  "languages": [
+    "eng",
+    "deu",
+    "rus",
+    "arb",
+    "zho-CN",
+    "tur",
+    "vie",
+    "hin",
+    "ben",
+    "swa",
+    "amh",
+    "zul",
+    "khm"
+  ],
+  "source_manifest_sha256": "2a64e8ab3169e8156f39a5d98a2bdb2bca6d8813689ee6bfb292c20b3e5fd89a",
+  "source_sha256": {
+    "0": "a054fc3fd3bfb16d55073f5201b7375f0718b00c91f2b7482553c3ed5d55d3e0",
+    "7": "2ea03f1427e91cb28d0ce91371672fd11874b7e544e2938d5a342268b1b023c1",
+    "13": "4a4fe23f6ed1813f7684fb77c3bb75589ae21954133845158f2b0ef6ef6866ae",
+    "21": "ea89ecb50e73201a912c8f842000c12ad25488197d8e6d184bfc7757bef66b1a",
+    "28": "0576ad04b2338f38feac6656db78c678d48860bb7262bb6a6f653da0ea544e0d"
+  },
+  "rows": 100,
+  "maximum_conservation_relative_error": 8.897809060422875e-16,
+  "wall_seconds": 734.958
+}

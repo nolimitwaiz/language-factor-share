@@ -1,0 +1,140 @@
+\section{Machine translation and multilingual NLP}
+\label{ch:mt}
+
+This is Professor Koehn's field. The goal of this chapter is that you can
+speak it correctly: know the data, the evaluation problems, the history of
+cross-lingual alignment, and where the ``think in English'' debate stands.
+
+\subsection{A short history, so the vocabulary makes sense}
+
+Statistical machine translation (SMT, 1990s to about 2015) learned
+phrase-to-phrase translation probabilities from parallel text and combined
+them with a language model; Koehn's 2010 textbook is the reference. Neural MT
+(2014 onward) replaced this with a single encoder--decoder network trained
+end to end; attention was invented for it (Bahdanau et al.\ 2015), and the
+transformer (Vaswani et al.\ 2017) was first a translation model. Koehn's 2020
+book covers this era. LLMs are decoder-only transformers trained on raw text
+that translate as a side effect of scale; whether they are ``truly
+multilingual'' is the question the proposal opens with.
+
+\subsection{Parallel data}
+
+A \emph{parallel corpus} pairs sentences with their translations (Europarl,
+UN, OPUS). An \emph{n-way parallel} test set has the same source sentences
+in many languages, so any pair of languages is aligned through the source.
+Two matter here:
+
+\begin{description}[leftmargin=2.2cm, style=nextline, itemsep=1pt]
+\item[NTREX-128] the WMT19 English news test set (1{,}997 sentences, 123 documents) professionally translated into 128 languages. The project's representation grid: first 300 sentences per language for profiles, 1{,}500 for the saved 1,500-sentence study.
+\item[FLORES-200] 3{,}001 Wikipedia-derived sentences in 200 languages (dev and devtest). The corpus MEXA reports on; the natural replication set.
+\end{description}
+
+Document structure matters: NTREX sentences come in documents, so adjacent
+sentences share context. The content-transfer test uses that (the
+previous sentence of the same document is the matched context), and any
+train/test split must be purged by document, a lesson the misalignment decomposition
+taught the project the hard way.
+
+\subsection{Translationese and direction}
+
+Translated text carries the shadow of its source: more literal word order,
+source-like lexical choices, simplified style. NTREX is translated
+\emph{from} English, so every non-English cell is translationese, and the
+proposal itself criticizes benchmarks built by translation. WMT test sets
+since 2019 include both directions, which made the project's direct test
+possible: measured on native versus translated text for seven languages,
+translated text shows a slightly higher language share ($+0.02$ to $+0.06$)
+and slightly lower retrieval alignment, while model ordering is preserved at
+Spearman 0.99. Say the numbers.
+
+\subsection{Evaluation in MT}
+
+BLEU counts n-gram overlap with a reference; chrF does it over characters
+(better for morphologically rich languages); COMET is a learned metric. Human
+evaluation is the gold standard and expensive. Three problems carry over to
+our benchmarks: translated test sets (translationese and content bias), test
+set contamination (text seen in pretraining), and chance floors on
+multiple-choice tasks. The project's Belebele protocol is zero-shot
+log-likelihood scoring, after discovering that five-shot prompts silently
+truncate on models with 2k to 4k contexts.
+
+\subsection{Multilinguality in LLMs}
+
+\begin{description}[leftmargin=3.0cm, style=nextline, itemsep=1pt]
+\item[resource tiers] high, mid, low, proxied by web-corpus size (CulturaX, CC-100). Low-resource languages have worse tokenization, worse alignment, and worse task scores, all at once, which is why data size is the confound to remove first.
+\item[families and scripts] Indo-European, Sino-Tibetan, Afro-Asiatic, Niger-Congo; Latin, Cyrillic, Devanagari, Arabic, Han. Both predict alignment and performance; both are controls.
+\item[curse of multilinguality] at fixed capacity, adding languages dilutes each; deliberately multilingual models (BLOOM, Salamandra, EuroLLM) trade English strength for coverage.
+\item[cross-lingual transfer] ability learned in one language showing up in another; parallel data in pretraining is a strong driver (Briakou et al.\ 2023).
+\item[tokenizer fairness] Ahia et al.\ (2023), Petrov et al.\ (2023): some languages pay several times more tokens for the same content.
+\end{description}
+
+\subsection{Aligning representation spaces across languages}
+
+The classic result (Mikolov et al.\ 2013) is that word-embedding spaces of two
+languages are related by a nearly linear map; Conneau et al.\ (2018, MUSE) and
+Artetxe et al.\ learned that map without parallel data, and Koehn's group
+(Marchisio et al.\ 2020 to 2022) studied when it works. The map is usually
+constrained to be orthogonal (a rotation), found by \emph{Procrustes}
+analysis. \emph{Hubness} is the high-dimensional nuisance where a few points
+are the nearest neighbor of everything; frequent English words are hubs, and
+retrieval methods use corrections (CSLS) for it.
+
+The proposal asks whether this still holds inside deep LLM layers. The
+project's misalignment decomposition answers with a nested sequence of maps scored on
+held-out sentences: cross-language differences are mostly an additive offset
+plus a scale (63 to 97 percent), rotation is under one percent, and the
+nonlinear remainder is small. The linear-mapping picture survives, in a
+degenerate form: mostly a shift.
+
+For sentences rather than words, the standard tools are mean-pooled
+representations and retrieval. \textbf{MEXA} (Kargaran et al.\ 2025) asks, for
+each non-English sentence, whether its English translation is its nearest
+neighbor among $N$ candidates, requiring the true pair to beat both its row
+and its column; the score is the fraction of sentences that pass. It depends
+on $N$ (harder with more candidates) and uses English as the pivot.
+\textbf{Alignment-at-Risk} (AaR@10, this project) takes each sentence's
+margin, true-pair cosine minus the best wrong-pair cosine, and averages the
+worst decile: a tail measure. \textbf{Information Parity} compares how well a
+model compresses a text in language $L$ relative to English. Know how each is
+computed so your comparisons are fair.
+
+\subsection{The ``LLMs think in English'' debate}
+
+\begin{description}[leftmargin=3.6cm, style=nextline, itemsep=1pt]
+\item[Wendler et al.\ 2024] logit lens on Llama shows English tokens at middle layers for non-English input: ``Llamas work in English''.
+\item[Shani and Basirat 2025] middle layers are better described as language-specific plus shared spaces than as internal translation into English.
+\item[Tezuka and Inoue 2025] ``transfer neurons'' move representations between shared and language-specific spaces.
+\item[Zhao et al.\ 2024; Xu et al.\ 2025] language-specific neurons concentrate in final layers.
+\item[Bafna et al.\ 2025 (Murray's group)] intermediate layers are multilingual, dominated by all high-resource languages with English foremost.
+\item[Dumas et al.\ 2025] activation patching separates the language of a representation from its concept.
+\end{description}
+
+Where LFS sits: it quantifies the language component per layer as a variance
+share; the hub test finds a multilingual latent factor beats English as a
+predictor for 113 to 124 of 127 languages in every model; and the lens
+validity measurement shows why lens-based readouts of the middle are weak.
+This supports the Shani/Bafna measure over the ``English'' measure, with
+numbers.
+
+\subsection{Improving multilinguality: the Aim 2 options}
+
+The proposal's second aim lists four routes: more parallel and code-switched
+data; word- and segment-level alignment losses; an adversarial language
+discriminator; multilingual preference training. Prior work: Liu and Niehues
+(2025) and Bu et al.\ (2025) align mean-pooled sentence representations in
+middle layers and report small gains. The project tested naive forms of the
+first three on a 0.6B model: code-switched data gave no detectable benefit
+and cost perplexity outside the replay set; the word-level squared-difference
+loss collapsed representations by a factor of twenty while retrieval scores
+improved; direct LFS minimization deepened the dip through a shortcut. The
+lesson for Aim 2: alignment objectives need the raw components as
+constraints and independent capability checks. None of this is in the ICLR
+paper beyond the stress-test section.
+
+\subsection{Downstream benchmarks you will be asked about}
+
+\begin{description}[leftmargin=2.6cm, style=nextline, itemsep=1pt]
+\item[Belebele] 4-choice reading comprehension, 122 languages, translated from FLORES; chance 0.25; 300 questions per language here.
+\item[INCLUDE] natively authored benchmark questions in 44 languages (30 overlap the panel); used to test whether the benchmark null was a translation artifact (it was not).
+\item[Global-MMLU, MGSM, XNLI] other translated multilingual benchmarks; know they exist and share the translation problem.
+\end{description}

@@ -1,0 +1,14 @@
+{
+ "script": "src/analysis/dip_bootstrap.py",
+ "script_sha256": "0b7d84d4d475d8d833e6e1af70acdf1671e71c0a512bdf36f45149429093ec8b",
+ "inputs": {
+  "results/dumps/bloom-7b1/layer000.npz": "421ffcdfde876ab59c6c7bffd480954cf56ef182cac8cacd1ba045ffd1012382",
+  "results/dumps/bloom-7b1/layer017.npz": "1b7ee3ce3b6f24b5e554c45940b4a3d7aaec72f16b38d31e198d2003b47aecac"
+ },
+ "grid_reference": "results/grid/bloom-7b1/metrics.json",
+ "host": "c24",
+ "python": "3.11.9",
+ "numpy": "1.26.4",
+ "wall_seconds": 11537.705444812775,
+ "finished_utc": "2026-09-05T11:27:30Z"
+}

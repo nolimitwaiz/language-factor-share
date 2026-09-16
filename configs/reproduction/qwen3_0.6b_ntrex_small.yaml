@@ -1,0 +1,73 @@
+# Reproduction configuration: the smallest supported end-to-end path.
+#
+# PURPOSE. This configuration exists to prove the pipeline is deterministic
+# and to give a fast path for verifying changes. It is NOT a scientific
+# configuration and must never back a claim: 11 languages and 200 sentences
+# are far below the grid used for any reported result, and at this shape the
+# estimator's pure-noise value is large (see below).
+#
+# Everything that can affect a number is pinned here.
+
+name: qwen3_0.6b_ntrex_small
+purpose: reproduction_only
+
+model:
+  name: Qwen/Qwen3-0.6B-Base
+  # Pinned revision. A moving 'main' would silently change results.
+  revision: main            # [PIN] replace with the resolved commit sha at first run
+  dtype: fp16               # fp32 pooling is enforced downstream regardless
+  device: cuda
+
+data:
+  dataset: NTREX-128
+  root: data/NTREX/NTREX-128
+  pivot: eng
+  # Sentence selection is by explicit index into the file, zero-based,
+  # contiguous from the top. Recorded as a range plus a content hash so a
+  # changed data file is detected rather than silently used.
+  sentence_indices: [0, 200]        # [start, end)
+  n_sents: 200
+  # 10 languages plus the English pivot, stratified deliberately:
+  #   resource tier : 4 high, 3 mid, 3 low
+  #   script        : Latin, Cyrillic, Han, Arabic, Devanagari, Ethiopic, Georgian
+  #   family        : Germanic, Slavic, Sinitic, Semitic x2, Indo-Aryan,
+  #                   Turkic, Austroasiatic, Bantu, Kartvelian
+  languages:
+    - eng      # pivot,  Latin,      Germanic
+    - deu      # high,   Latin,      Germanic
+    - rus      # high,   Cyrillic,   Slavic
+    - zho-CN   # high,   Han,        Sinitic
+    - arb      # high,   Arabic,     Semitic
+    - hin      # mid,    Devanagari, Indo-Aryan
+    - tur      # mid,    Latin,      Turkic
+    - vie      # mid,    Latin,      Austroasiatic
+    - swa      # low,    Latin,      Bantu
+    - amh      # low,    Ethiopic,   Semitic
+    - kat      # low,    Georgian,   Kartvelian
+
+pooling:
+  method: mean_tokens       # masked mean over tokens
+  accumulate_dtype: fp32    # incident 1: fp16 accumulation overflows
+  max_length: 128
+
+compute:
+  batch_size: 16            # fixed: batch composition changes padding, which
+                            # changes low-order bits of the forward pass
+  seed: 0
+  deterministic: true
+
+metrics:
+  layers: all
+  compute: [lfs, mexa, aar10, cvp, residual_share]
+
+determinism_gate:
+  # Two independent runs of this configuration must agree to this tolerance
+  # on every reported quantity, or the pipeline is not deterministic and
+  # nothing downstream can be called reproducible.
+  tolerance: 1.0e-6
+
+# The estimator's pure-noise value at this grid shape, from section 5.3 of
+# the technical report: (L-1) / ((L-1) + (N-1)) with L=11, N=200.
+# Recorded so that nobody reads an LFS number from this configuration as
+# comparable to one from the campaign grid, where the value is 0.078.
+pure_noise_lfs: 0.0478

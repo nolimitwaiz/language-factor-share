@@ -1,0 +1,41 @@
+[project]
+name = "rmfs"
+version = "0.1.0"
+description = "Robust Multilingual Factor Score: collapse-aware multilingual metric and validation tournament"
+requires-python = ">=3.11"
+authors = [{ name = "Waiz Khan", email = "wkhan12@jh.edu" }]
+dependencies = [
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "pandas>=2.1",
+  "pyarrow>=14",
+  "scikit-learn>=1.4",
+  "pyyaml>=6",
+  "statsmodels>=0.14",
+]
+
+[project.optional-dependencies]
+# Model-touching extras are installed ONLY in the cluster environment;
+# the local machine never runs a forward pass (CLAUDE.md, Environment).
+cluster = ["torch>=2.3", "transformers>=4.46"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+src = ["src", "tests", "scripts"]
+extend-exclude = ["legacy"]  # read-only prior pipeline; never linted, never edited
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "NPY"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

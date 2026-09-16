@@ -1,0 +1,20 @@
+{
+ "run_id": "grid_components_OLMo-2-0425-1B",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-02T20:16:20",
+ "config": {
+  "model_tag": "OLMo-2-0425-1B",
+  "S": 20,
+  "seed": 13,
+  "rank": 64,
+  "tracks": "native=z-scored for LFS-VC/LDE/baselines; raw for gates"
+ },
+ "inputs": {
+  "dump": "/home/wkhan12/multilingual-metrics/results/dumps/OLMo-2-0425-1B",
+  "published_rank_from": "/home/wkhan12/multilingual-metrics/results/budget/OLMo-2-0425-1B/budget.json",
+  "doc_ids": "/home/wkhan12/multilingual-metrics/data/NTREX/DOCUMENT_IDS.tsv"
+ },
+ "precision": "fp32 load, fp64 statistics",
+ "n_parquet_rows": 775
+}

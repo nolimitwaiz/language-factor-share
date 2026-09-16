@@ -1,0 +1,8 @@
+{
+ "run_id": "translationese_OLMo-2-0425-1B",
+ "script": "scripts/translationese.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-07T19:50:54.141816+00:00",
+ "wall_s": 69.2
+}

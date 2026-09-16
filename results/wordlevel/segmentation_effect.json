@@ -1,0 +1,38 @@
+{
+ "zho-CN": {
+  "f1_before": 0.1183,
+  "f1_after": 0.6035,
+  "cov_before": 0.0588,
+  "cov_after": 0.6382,
+  "tok_before": 2.74,
+  "tok_after": 19.25,
+  "segmenter": "jieba"
+ },
+ "jpn": {
+  "f1_before": 0.0964,
+  "f1_after": 0.5021,
+  "cov_before": 0.0049,
+  "cov_after": 0.5425,
+  "tok_before": 1.16,
+  "tok_after": 26.49,
+  "segmenter": "fugashi+unidic-lite"
+ },
+ "khm": {
+  "f1_before": 0.1985,
+  "f1_after": 0.696,
+  "cov_before": 0.155,
+  "cov_after": 0.6792,
+  "tok_before": 5.25,
+  "tok_after": 25.33,
+  "segmenter": "khmer-nltk"
+ },
+ "mya": {
+  "f1_before": 0.1346,
+  "f1_after": 0.1311,
+  "cov_before": 0.3383,
+  "cov_after": 0.3374,
+  "tok_before": 11.62,
+  "tok_after": 11.56,
+  "segmenter": "whitespace"
+ }
+}

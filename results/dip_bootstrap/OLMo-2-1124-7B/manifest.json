@@ -1,0 +1,14 @@
+{
+ "script": "src/analysis/dip_bootstrap.py",
+ "script_sha256": "0b7d84d4d475d8d833e6e1af70acdf1671e71c0a512bdf36f45149429093ec8b",
+ "inputs": {
+  "results/dumps/OLMo-2-1124-7B/layer000.npz": "0d1343bfd93eaba4555cb08dc557d223289c3bb1701b78ba33053cb918557fe4",
+  "results/dumps/OLMo-2-1124-7B/layer012.npz": "bf62fae4d5e25f262ba585e48453fdeb9ba9a601ea7135f3078fbabc48e6d4cf"
+ },
+ "grid_reference": "results/grid/OLMo-2-1124-7B/metrics.json",
+ "host": "c02",
+ "python": "3.11.9",
+ "numpy": "1.26.4",
+ "wall_seconds": 15290.945657253265,
+ "finished_utc": "2026-09-05T13:45:10Z"
+}

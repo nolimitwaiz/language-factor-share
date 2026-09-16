@@ -1,0 +1,18 @@
+{
+ "code": "src/aim2/offset_offline.py",
+ "code_sha256": "44cf21bfdd8292ee003305dcd84425b7f225512d695746b53d1c8acdbc984008",
+ "inputs": {
+  "layer000.npz": "04c51f20af6a708933bfe5cf8a84112af55b645236702b0a36388d221217647e",
+  "layer006.npz": "02d78a8f65ef3b3094d32246c05a7ed16e81461b7288cdea59f2f959805dafa4",
+  "layer018.npz": "19b3ee0ec71fb38c153f93771fa25beee9a86eb96e445dc0ec47d9b0a19b4242",
+  "layer024.npz": "b2b661dd1d8adf002907a0539a72a646b7276ce5ed706fa24fcf32ad59123b49"
+ },
+ "grid_metrics": "/home/wkhan12/multilingual-metrics/results/grid/salamandra-2b/metrics.json",
+ "seed": 20260907,
+ "n_boot": 300,
+ "host": "c03",
+ "platform": "Linux-5.15.0-179-generic-x86_64-with-glibc2.35",
+ "numpy": "1.26.4",
+ "wall_s": 1143.5,
+ "created_utc": "2026-09-07T19:15:16Z"
+}

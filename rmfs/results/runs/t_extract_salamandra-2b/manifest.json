@@ -1,0 +1,29 @@
+{
+ "run_id": "t_extract_salamandra-2b",
+ "git": "",
+ "host": "e02",
+ "when": "2026-08-05T04:12:01",
+ "config": {
+  "model_tag": "salamandra-2b",
+  "arm_ckpt": null,
+  "n_pairs": 60,
+  "langs": 40,
+  "diagnostic": false,
+  "dip": 6,
+  "rank": 64,
+  "n_train": 178,
+  "n_test": 122,
+  "dtype": "bf16",
+  "consensus": "leave-one-out (A3)",
+  "governance": [
+   "prereg",
+   "A2",
+   "A3",
+   "A4-injection"
+  ]
+ },
+ "inputs": {
+  "model": "BSC-LT/salamandra-2b",
+  "rungs_from": "salamandra-2b"
+ }
+}

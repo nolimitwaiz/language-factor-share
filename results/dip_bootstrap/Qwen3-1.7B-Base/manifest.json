@@ -1,0 +1,14 @@
+{
+ "script": "src/analysis/dip_bootstrap.py",
+ "script_sha256": "0b7d84d4d475d8d833e6e1af70acdf1671e71c0a512bdf36f45149429093ec8b",
+ "inputs": {
+  "results/dumps/Qwen3-1.7B-Base/layer000.npz": "627e707001719a0b7a2d967f9c1667fd382056aeff857d79884943447b9f94e8",
+  "results/dumps/Qwen3-1.7B-Base/layer013.npz": "d14d9f37dbcdef4863efbd4a2f98fe70910330bd16c27c51a96886518bfddd2b"
+ },
+ "grid_reference": "results/grid/Qwen3-1.7B-Base/metrics.json",
+ "host": "c04",
+ "python": "3.11.9",
+ "numpy": "1.26.4",
+ "wall_seconds": 5525.733345746994,
+ "finished_utc": "2026-09-05T11:20:48Z"
+}

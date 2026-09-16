@@ -1,0 +1,19 @@
+{
+ "code": "src/aim2/offset_offline.py",
+ "code_sha256": "44cf21bfdd8292ee003305dcd84425b7f225512d695746b53d1c8acdbc984008",
+ "inputs": {
+  "layer000.npz": "bd4bcbfa620a313958369b6d40a04af4f12fcd0d3d74346fb11217f18b930abc",
+  "layer007.npz": "1b2916953ecc43bcbb61397d758a88b5e3321b901f6743e4a1227b02a5a7b93e",
+  "layer008.npz": "e158720eeed19443978733046a76e4bcb0a29a5975e7e76b6176f5a76b6784fa",
+  "layer021.npz": "2471374f23c1670109d7513853bf21142bb5f1f397082d4a42794ec25db028c5",
+  "layer028.npz": "ce5ae40e8bd6f8c4117265f4b97a50fb20920a1011f21a9bce4f1db9eb7f56ff"
+ },
+ "grid_metrics": "/home/wkhan12/multilingual-metrics/results/grid/Qwen3-0.6B-Base/metrics.json",
+ "seed": 20260907,
+ "n_boot": 300,
+ "host": "c11",
+ "platform": "Linux-5.15.0-179-generic-x86_64-with-glibc2.35",
+ "numpy": "1.26.4",
+ "wall_s": 603.5,
+ "created_utc": "2026-09-07T18:18:05Z"
+}

@@ -1,0 +1,8 @@
+{
+ "run_id": "new_readings_Qwen2.5-0.5B",
+ "script": "scripts/new_model_readings.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-09T02:55:03.335842+00:00",
+ "wall_s": 132.9
+}

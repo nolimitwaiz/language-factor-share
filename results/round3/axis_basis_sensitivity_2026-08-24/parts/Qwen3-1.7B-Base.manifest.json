@@ -1,0 +1,54 @@
+{
+  "run_id": "aim1_axis_basis_sensitivity_Qwen3-1.7B-Base",
+  "created_utc": "2026-08-24T21:00:41.954747+00:00",
+  "host": "c26",
+  "slurm_job_id": "1761845",
+  "model": "Qwen3-1.7B-Base",
+  "layers": [
+    0,
+    7,
+    13,
+    21,
+    28
+  ],
+  "seeds": [
+    1729,
+    2718,
+    3141,
+    5772,
+    8111
+  ],
+  "sweeps": [
+    0,
+    1,
+    4,
+    16
+  ],
+  "n_concepts": 300,
+  "languages": [
+    "eng",
+    "deu",
+    "rus",
+    "arb",
+    "zho-CN",
+    "tur",
+    "vie",
+    "hin",
+    "ben",
+    "swa",
+    "amh",
+    "zul",
+    "khm"
+  ],
+  "source_manifest_sha256": "5ac613f8439f002934de0dd1f20fb918db3ddd694a253e9ed2d848252cb26de0",
+  "source_sha256": {
+    "0": "627e707001719a0b7a2d967f9c1667fd382056aeff857d79884943447b9f94e8",
+    "7": "8f392542b9a2fb4b32fa68aa596f9b7e71af713f2e502b6ef5de5f42f05d74b0",
+    "13": "d14d9f37dbcdef4863efbd4a2f98fe70910330bd16c27c51a96886518bfddd2b",
+    "21": "19a241e70f8db4d626ffe3e253ddeffbf4bf7a56af46d980abd9d73973cf9dc4",
+    "28": "3b574e3b07efb89c89ee59f3edacfc0210d55ad9a06f3f50875f057935c279cb"
+  },
+  "rows": 100,
+  "maximum_conservation_relative_error": 1.1967939063941988e-15,
+  "wall_seconds": 794.039
+}

@@ -1,0 +1,54 @@
+{
+  "run_id": "aim1_axis_basis_sensitivity_bloom-7b1",
+  "created_utc": "2026-08-24T21:02:05.425430+00:00",
+  "host": "c21",
+  "slurm_job_id": "1761850",
+  "model": "bloom-7b1",
+  "layers": [
+    0,
+    8,
+    17,
+    22,
+    30
+  ],
+  "seeds": [
+    1729,
+    2718,
+    3141,
+    5772,
+    8111
+  ],
+  "sweeps": [
+    0,
+    1,
+    4,
+    16
+  ],
+  "n_concepts": 300,
+  "languages": [
+    "eng",
+    "deu",
+    "rus",
+    "arb",
+    "zho-CN",
+    "tur",
+    "vie",
+    "hin",
+    "ben",
+    "swa",
+    "amh",
+    "zul",
+    "khm"
+  ],
+  "source_manifest_sha256": "53f71e9b54d512475c92c534614cd4c7a20611dfa285326b6e1ddacdf186276d",
+  "source_sha256": {
+    "0": "421ffcdfde876ab59c6c7bffd480954cf56ef182cac8cacd1ba045ffd1012382",
+    "8": "0ef2181f6f46a0a698fb6941fa41ff136ab3d97240077e9922d02ac6eff0fcda",
+    "17": "1b7ee3ce3b6f24b5e554c45940b4a3d7aaec72f16b38d31e198d2003b47aecac",
+    "22": "4aaaa0db1b94ea6dfbe31cf2b595070bfdaa5147054c2e9c9386c70bb7e1c0b5",
+    "30": "ec9e53a1f891a9b4a795031c0f49be7aa197c115478e15843ee3b674ba44e497"
+  },
+  "rows": 100,
+  "maximum_conservation_relative_error": 1.126641573484628e-15,
+  "wall_seconds": 878.909
+}

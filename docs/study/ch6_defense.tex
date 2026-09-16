@@ -1,0 +1,126 @@
+\section{The defense: questions and answers}
+\label{ch:defense}
+
+Answers you can give without notes. Every number is the audited one; the
+source is \texttt{docs/AIM1\_ASSESSMENT\_FOR\_ICLR\_2026-09-04.md} and the
+claims ledger in \texttt{paper/iclr2027/claims\_ledger.csv}.
+
+\subsection*{On the construct}
+
+\textbf{Isn't this just two-way ANOVA on embeddings?}
+Yes, the decomposition is standard. The contribution is what is done with it:
+a balanced translation grid that makes it exact, a closed-form null that
+makes values interpretable, 33 models showing the shape is universal and the
+depth nine-fold variable, confounder-adjusted behavioral validation, and stress tests
+that show exactly when the ratio misleads. Nobody had done the last three for
+any intrinsic multilinguality metric.
+
+\textbf{The U-shape is known.}
+Qualitatively, and the paper cites that work. New is the number: a comparable
+depth from 0.04 to 0.34 that tracks recipe over scale; the dip is not a
+scaling proxy (Salamandra shallows from 2B to 7B while alignment improves);
+script and meaning leave on different schedules; and three models put the
+minimum at layer 2, which no ``middle layers are shared'' summary predicts.
+
+\textbf{Why is LFS above 0.5 even at the dip?}
+With 128 languages the language offsets (script, tokenizer, high-variance
+directions) are large relative to the spread of 300 sentence means, and the
+numerator carries a noise term that never vanishes. The measure is relative:
+the dip layer is more meaning-weighted than the model's own endpoints, and
+0.6 is far above the 0.298 null.
+
+\textbf{Why standardize, and why jointly?}
+A few coordinates carry values hundreds of times larger than the rest and
+would decide the answer alone. Jointly, because per-language standardization
+subtracts the language means we are measuring. The whitened variant is also
+reported, so the basis choice is disclosed.
+
+\textbf{Why is the residual outside the denominator?}
+LFS asks how the two systematic main effects divide. With the residual in
+the denominator a noisy model would look language-agnostic. The residual is
+reported beside the ratio, and it is where rotations and interactions would
+show.
+
+\textbf{Does low LFS mean a universal interlingua?}
+No. It means less language-associated variance relative to matched-sentence
+variance under this estimator. Language stays decodable by a probe at every
+layer.
+
+\subsection*{On comparisons}
+
+\textbf{Why not just use MEXA?}
+Different question. MEXA asks whether a sentence's translation is its nearest
+neighbor among candidates, against an English pivot. LFS asks how the
+variance splits between language and meaning, with no pivot, a closed-form
+null, evaluation-size stability where retrieval moves ten times more, and
+components that catch a collapse MEXA scored higher on. On pooled benchmark accuracy
+neither does well after removing exposure and MEXA is somewhat better; that
+is reported. The paper measures structure; it does not compete on a
+leaderboard.
+
+\textbf{Then what is LFS for?}
+Three uses, all demonstrated: describing where in a model meaning is shared
+and comparing models on it; predicting a specific behavior, cross-lingual
+content use, across 19 models after controls; and monitoring training, where
+its components expose failures that alignment scores miss. Its role in
+training is design, monitoring, and evaluation, not the loss.
+
+\subsection*{On the data}
+
+\textbf{Mean pooling injects length and tokenizer effects.}
+Measured. Absolute depth moves 0.13 to 0.20 across four pooling schemes;
+ordering changes by at most one adjacent swap; the within-family result holds
+for two Qwen3 sizes sharing a tokenizer; fertility correlates with each
+language's contribution at $+0.42$ to $+0.64$ and is said so.
+
+\textbf{Your data is translated from English on both sides.}
+Tested on WMT19 in both directions: level shifts small ($+0.02$ to $+0.06$
+language share), ordering preserved at 0.99. The natively authored benchmark gave
+the same null as the translated benchmark restricted to the same languages, so the
+null is about the narrow resource range of benchmark languages, not translation.
+
+\textbf{Only 300 sentences?}
+Profiles use 300 per language and 128 languages; the null is stated for that
+grid. The 1,500-sentence study gives the same picture, and LFS drifts by
+under 0.01 between 100 and 1,000 sentences.
+
+\textbf{Only Qwen drives this.}
+Leave-one-family-out estimates stay between 0.44 and 0.60 for content
+transfer; the family bootstrap excludes zero; 13 families are on the panel.
+
+\subsection*{On what it means}
+
+\textbf{Is the dip causal? Does a deeper dip make a model better?}
+No causal claim. Across pretrained models a deeper dip goes with more
+cross-lingual content use after controls, on 19 models; under intervention
+the association reversed. Observation and intervention are different
+questions and both are reported.
+
+\textbf{Can I train with it?}
+Not by itself. Minimizing LFS finds a shortcut; the proposal's word-level
+alignment loss collapsed representations by a factor of twenty while LFS
+barely moved and MEXA rose for the collapsed model. Training use needs
+the raw components as constraints and independent capability checks.
+
+\textbf{Why not one number per model?}
+Because the measures disagree in exactly the cases that matter: a collapsed
+model has a fine ratio and a collapsed raw component. A composite was
+preregistered and failed its own crash test. The deliverable is a profile
+plus a behavioral check chosen for the question.
+
+\textbf{What about instruction-tuned models, other corpora, larger models?}
+Open and cheap: FLORES-200 replication, instruct-versus-base pairs, and a
+bootstrap on dip depth are forward-pass or CPU experiments listed in
+\texttt{docs/AIM1\_NEXT\_EXPERIMENTS\_2026-09-05.md}.
+
+\textbf{What would change your mind?}
+A model with a deep dip and poor content transfer after controls at scale; a
+corpus on which the profile shape fails; a pooling scheme that breaks the
+cross-model ordering. All three were looked for.
+
+\textbf{The one-sentence claim.}
+LFS is a reproducible layerwise decomposition of language and concept
+structure in multilingual representations whose profile generalizes across 33
+models and carries target-specific behavioral signal, and whose measured
+limits show why it must be reported with its raw components rather than used
+as a score or a loss.

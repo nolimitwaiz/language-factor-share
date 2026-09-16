@@ -1,0 +1,19 @@
+{
+ "code": "src/aim2/offset_offline.py",
+ "code_sha256": "44cf21bfdd8292ee003305dcd84425b7f225512d695746b53d1c8acdbc984008",
+ "inputs": {
+  "layer000.npz": "cb174f19f8bb84d75c0e22f59168c6d1b3d8e76e9a1ca0d1d43e01dfe519b05f",
+  "layer002.npz": "dfc313009bca29388e98625448ef399d706a28534c93b159d3d8bfead43015f6",
+  "layer008.npz": "b72c81cb9706e5327ded7b9f96907557239371b6c9525d470417dc6bf76805e5",
+  "layer024.npz": "fe3a4d16496d053f63b4b716461c5f66b79c5ce5c1fa1fcb352753411130f35f",
+  "layer032.npz": "07242ce4aef761da1a196069d38d088926569106cf273e82c48eddb0048d705f"
+ },
+ "grid_metrics": "/home/wkhan12/multilingual-metrics/results/grid/Mistral-7B-v0.3/metrics.json",
+ "seed": 20260907,
+ "n_boot": 300,
+ "host": "c05",
+ "platform": "Linux-5.15.0-179-generic-x86_64-with-glibc2.35",
+ "numpy": "1.26.4",
+ "wall_s": 2697.8,
+ "created_utc": "2026-09-07T19:13:33Z"
+}

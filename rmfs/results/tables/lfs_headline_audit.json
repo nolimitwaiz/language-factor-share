@@ -1,0 +1,63 @@
+{
+  "analysis_status": "retrospective artifact audit; no new outcome claim",
+  "created_utc": "2026-08-21T03:21:40.754921+00:00",
+  "host": "c09",
+  "multilingual_metrics_root": "/home/wkhan12/multilingual-metrics",
+  "important_interpretation": "The 17-model direct-SS cohort and 19-model A9 REML LFS-VC cohort are distinct estimator cohorts and must not be combined into a single direct-SS pass count. Three models appear in both cohorts.",
+  "direct_ss": {
+    "n_models": 17,
+    "n_interior_minima": 17,
+    "n_both_endpoints_above_minimum": 17,
+    "median_relative_min_depth": 0.4642857142857143,
+    "min_relative_min_depth": 0.0625,
+    "max_relative_min_depth": 0.625,
+    "median_left_endpoint_lift": 0.1798199372149163,
+    "median_right_endpoint_lift": 0.1545050856887047,
+    "smallest_left_endpoint_lift": 0.03911094381401192,
+    "smallest_right_endpoint_lift": 0.049760776941777274
+  },
+  "a9_reml_lfs_vc": {
+    "n_models": 19,
+    "n_interior_minima": 19,
+    "n_both_endpoints_above_minimum": 19,
+    "median_relative_min_depth": 0.4583333333333333,
+    "min_relative_min_depth": 0.0625,
+    "max_relative_min_depth": 0.65625,
+    "median_left_endpoint_lift": 0.27022310604373245,
+    "median_right_endpoint_lift": 0.2784400512760735,
+    "smallest_left_endpoint_lift": 0.07215198441951831,
+    "smallest_right_endpoint_lift": 0.09413094473620742
+  },
+  "overlap_models": [
+    "Llama-3.1-8B",
+    "Yi-1.5-9B",
+    "granite-3.1-8b-base"
+  ],
+  "same_support_estimator_parity": {
+    "n_models": 14,
+    "spearman": 1.0,
+    "pearson": 0.9999866816123382,
+    "max_absolute_value_difference": 0.004984344327212287,
+    "models": [
+      "EuroLLM-1.7B",
+      "Falcon3-7B-Base",
+      "Mistral-7B-v0.3",
+      "OLMo-2-0425-1B",
+      "OLMo-2-1124-7B",
+      "Qwen3-0.6B-Base",
+      "Qwen3-1.7B-Base",
+      "Qwen3-4B-Base",
+      "Qwen3-8B-Base",
+      "SmolLM2-1.7B",
+      "bloom-1b7",
+      "bloom-7b1",
+      "salamandra-2b",
+      "salamandra-7b"
+    ]
+  },
+  "hub_rows": 17,
+  "outputs": {
+    "depth_profiles": "/home/wkhan12/rmfs/results/tables/lfs_depth_profile_audit.csv",
+    "hub": "/home/wkhan12/rmfs/results/tables/lfs_hub_audit.csv"
+  }
+}

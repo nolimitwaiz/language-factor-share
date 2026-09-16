@@ -1,0 +1,105 @@
+{
+ "tag": "Falcon3-7B-Base",
+ "dip": 13,
+ "n_pairs": 300,
+ "languages": {
+  "de": {
+   "native": {
+    "language_share": 0.2588745515299779,
+    "matching": 0.92,
+    "tail": 0.021251059003719795,
+    "n": 300
+   },
+   "translated": {
+    "language_share": 0.294074875725178,
+    "matching": 0.91,
+    "tail": 0.03510684995796127,
+    "n": 300
+   }
+  },
+  "ru": {
+   "native": {
+    "language_share": 0.500866492594629,
+    "matching": 0.6666666666666666,
+    "tail": -0.1326117406122981,
+    "n": 300
+   },
+   "translated": {
+    "language_share": 0.5381949889580918,
+    "matching": 0.76,
+    "tail": -0.02143469823927609,
+    "n": 300
+   }
+  },
+  "zh": {
+   "native": {
+    "language_share": 0.2833519796233095,
+    "matching": 0.9133333333333333,
+    "tail": 0.00487254588099813,
+    "n": 300
+   },
+   "translated": {
+    "language_share": 0.378063144932689,
+    "matching": 0.8,
+    "tail": -0.014161322663786422,
+    "n": 300
+   }
+  },
+  "fi": {
+   "native": {
+    "language_share": 0.5940442409360639,
+    "matching": 0.28,
+    "tail": -0.21638157925631343,
+    "n": 300
+   },
+   "translated": {
+    "language_share": 0.6326391240250204,
+    "matching": 0.2733333333333333,
+    "tail": -0.05793880748079975,
+    "n": 300
+   }
+  },
+  "lt": {
+   "native": {
+    "language_share": 0.610533241555835,
+    "matching": 0.19,
+    "tail": -0.18439755144132006,
+    "n": 300
+   },
+   "translated": {
+    "language_share": 0.7010430608921795,
+    "matching": 0.12,
+    "tail": -0.10369593009246446,
+    "n": 300
+   }
+  },
+  "gu": {
+   "native": {
+    "language_share": 0.9129639478457313,
+    "matching": 0.02666666666666667,
+    "tail": -0.2003347184463929,
+    "n": 300
+   },
+   "translated": {
+    "language_share": 0.9419699405899208,
+    "matching": 0.016666666666666666,
+    "tail": -0.17127672107684405,
+    "n": 300
+   }
+  },
+  "kk": {
+   "native": {
+    "language_share": 0.8799374745718072,
+    "matching": 0.02,
+    "tail": -0.21526245494786275,
+    "n": 300
+   },
+   "translated": {
+    "language_share": 0.9086373023114042,
+    "matching": 0.013333333333333334,
+    "tail": -0.15273298880327527,
+    "n": 300
+   }
+  }
+ }
+}

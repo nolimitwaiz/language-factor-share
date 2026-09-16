@@ -1,0 +1,8 @@
+{
+ "run_id": "layer_profiles_OLMo-2-0425-1B",
+ "script": "scripts/layer_profiles.py",
+ "git": "",
+ "host": "e05",
+ "when": "2026-08-05T22:11:45.156691+00:00",
+ "wall_s": 4289.6
+}

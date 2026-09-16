@@ -1,0 +1,174 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,xcolor,enumitem}
+\usepackage[hidelinks]{hyperref}
+\setlist{nosep,leftmargin=1.3em}
+\pagestyle{empty}
+\newcommand{\Hi}[1]{{\color[HTML]{2B6CB0}\textbf{#1}}}
+
+\begin{document}
+\begin{center}
+{\Large\textbf{The language share, step by step}}\\[3pt]
+{\small Waiz Khan --- August 2026}
+\end{center}
+\vspace{4pt}\hrule\vspace{10pt}
+
+\section*{1. The data}
+Take $N$ sentences and their translations into $L$ languages, so that
+sentence $c$ carries the same meaning in every language. Feed each of
+the $L \times N$ strings to the model and mean pool the hidden states
+at one layer. This gives one vector per cell of an $L \times N$ grid:
+\[
+h_{\ell c} \in \mathbb{R}^{D}, \qquad \ell = 1,\dots,L \ \text{(languages)},
+\qquad c = 1,\dots,N \ \text{(sentences)} .
+\]
+In the runs reported here $N = 300$, $L = 41$, and $D$ is the model's
+hidden size. Everything below is done \Hi{separately for each
+coordinate $d$} of the vector and then summed over $d$; the ratio at
+the end is unchanged by whether one sums or averages over coordinates,
+so the choice does not matter.
+
+\section*{2. The model being fitted}
+For coordinate $d$, write the value in cell $(\ell,c)$ as
+\[
+h_{\ell c d} \;=\; \mu_d \;+\; \underbrace{a_{cd}}_{\text{sentence}}
+\;+\; \underbrace{b_{\ell d}}_{\text{language}} \;+\; e_{\ell c d},
+\qquad
+a_{cd} \sim (0,\sigma^2_{C,d}), \quad
+b_{\ell d} \sim (0,\sigma^2_{L,d}), \quad
+e_{\ell c d} \sim (0,\sigma^2_{E,d}),
+\]
+all mutually independent. This is the balanced two way crossed random
+effects layout with one observation per cell. In words: a vector's
+position is the overall mean, plus an offset shared by every
+translation of that sentence, plus an offset shared by every sentence
+in that language, plus what is left.
+
+\Hi{One caveat, stated up front.} With a single observation per cell,
+$e_{\ell c d}$ absorbs both measurement noise and any genuine
+language by sentence interaction; the two cannot be separated without
+replicates. So $\sigma^2_E$ should be read as ``everything not
+explained by an additive sentence effect and an additive language
+effect''.
+
+\section*{3. Sums of squares}
+Let
+\[
+\bar h_{\ell \cdot d} = \frac1N \sum_c h_{\ell c d}, \qquad
+\bar h_{\cdot c d} = \frac1L \sum_\ell h_{\ell c d}, \qquad
+\bar h_{\cdot \cdot d} = \frac{1}{LN} \sum_{\ell,c} h_{\ell c d} .
+\]
+Then
+\[
+\mathrm{SS}_{L,d} = N \sum_{\ell=1}^{L}
+  \bigl(\bar h_{\ell \cdot d} - \bar h_{\cdot\cdot d}\bigr)^2,
+\qquad
+\mathrm{SS}_{C,d} = L \sum_{c=1}^{N}
+  \bigl(\bar h_{\cdot c d} - \bar h_{\cdot\cdot d}\bigr)^2,
+\]
+\[
+\mathrm{SS}_{E,d} = \sum_{\ell,c}
+  \bigl(h_{\ell c d} - \bar h_{\ell \cdot d} - \bar h_{\cdot c d}
+        + \bar h_{\cdot\cdot d}\bigr)^2 ,
+\]
+with degrees of freedom $L-1$, $N-1$ and $(L-1)(N-1)$. Mean squares are
+$\mathrm{MS} = \mathrm{SS}/\mathrm{df}$.
+
+\section*{4. From mean squares to variances}
+For this layout the expected mean squares are
+\[
+\mathbb{E}[\mathrm{MS}_{L,d}] = \sigma^2_{E,d} + N\,\sigma^2_{L,d},
+\qquad
+\mathbb{E}[\mathrm{MS}_{C,d}] = \sigma^2_{E,d} + L\,\sigma^2_{C,d},
+\qquad
+\mathbb{E}[\mathrm{MS}_{E,d}] = \sigma^2_{E,d} .
+\]
+Solving gives the estimates
+\[
+\boxed{\;
+\hat\sigma^2_{E,d} = \mathrm{MS}_{E,d}, \qquad
+\hat\sigma^2_{L,d} = \frac{\mathrm{MS}_{L,d} - \mathrm{MS}_{E,d}}{N},
+\qquad
+\hat\sigma^2_{C,d} = \frac{\mathrm{MS}_{C,d} - \mathrm{MS}_{E,d}}{L} \; }
+\]
+The subtraction of $\mathrm{MS}_E$ is the noise correction: a language
+effect must exceed what the residual alone would produce before it
+counts as signal. These can come out negative when the true component
+is near zero; they are kept as computed in the moment estimator and
+counted, and the primary estimate uses nonnegative restricted maximum
+likelihood, which for this balanced design has a closed form: it agrees
+with the above when both are positive and sets the offending component
+to zero otherwise, re-pooling its sum of squares into the residual.
+
+\section*{5. The quantity}
+Summing over coordinates,
+\[
+\sigma^2_L = \sum_d \hat\sigma^2_{L,d}, \qquad
+\sigma^2_C = \sum_d \hat\sigma^2_{C,d}, \qquad
+\boxed{\ \text{language share} \;=\;
+\frac{\sigma^2_L}{\sigma^2_L + \sigma^2_C}\ }
+\]
+It is $0$ when language contributes nothing (all $L$ translations of a
+sentence sit at the same point) and $1$ when meaning contributes
+nothing (all $N$ sentences in a language sit at the same point).
+Measured across 33 models it runs from $0.59$ to $0.90$.
+
+\section*{6. A worked example}
+One coordinate, $L=2$, $N=3$:
+\begin{center}
+\begin{tabular}{l|ccc|c}
+ & $c_1$ & $c_2$ & $c_3$ & row mean\\
+\hline
+English & 1.0 & 3.0 & 5.0 & 3.0\\
+German  & 2.0 & 4.0 & 6.0 & 4.0\\
+\hline
+column mean & 1.5 & 3.5 & 5.5 & 3.5 (grand)\\
+\end{tabular}
+\end{center}
+$\mathrm{SS}_L = 3[(3-3.5)^2 + (4-3.5)^2] = 1.5$, so
+$\mathrm{MS}_L = 1.5/1 = 1.5$. \\
+$\mathrm{SS}_C = 2[(1.5-3.5)^2 + 0 + (5.5-3.5)^2] = 16$, so
+$\mathrm{MS}_C = 16/2 = 8$. \\
+Every residual $h_{\ell c} - \bar h_{\ell\cdot} - \bar h_{\cdot c} +
+\bar h_{\cdot\cdot}$ is zero here, so $\mathrm{MS}_E = 0$. \\[4pt]
+Hence $\hat\sigma^2_L = (1.5-0)/3 = 0.5$ and
+$\hat\sigma^2_C = (8-0)/2 = 4$, giving a language share of
+$0.5/4.5 = \Hi{0.11}$: meaning dominates.
+
+\section*{7. Why the ratio cannot see a uniform shrinkage}
+Suppose the model's representations are scaled by a constant,
+$h_{\ell c} \mapsto \kappa\, h_{\ell c}$. Every sum of squares scales
+by $\kappa^2$, so every mean square does, so every variance component
+does:
+\[
+\hat\sigma^2_L \mapsto \kappa^2 \hat\sigma^2_L, \qquad
+\hat\sigma^2_C \mapsto \kappa^2 \hat\sigma^2_C
+\qquad\Longrightarrow\qquad
+\frac{\kappa^2\sigma^2_L}{\kappa^2\sigma^2_L + \kappa^2\sigma^2_C}
+= \frac{\sigma^2_L}{\sigma^2_L + \sigma^2_C} .
+\]
+The share is exactly invariant. In the worked example above, replacing
+every cell by one tenth of its value leaves the answer at $0.11$ while
+$\sigma^2_C$ falls from $4$ to $0.04$.
+
+This is not an estimation problem, and no better estimator of the same
+ratio avoids it: any statistic that is homogeneous of degree zero in
+the components is blind to a common rescaling. The consequence observed
+in the training study is that a checkpoint which had lost about 95
+percent of $\sigma^2_C$ scored best in the study on this quantity.
+
+\Hi{The remedy is to report $\sigma^2_C$ itself alongside the ratio},
+which is what the collapse reading does: measured against a reference
+checkpoint it recovers the injected shrinkage exactly, returning
+$(1-m)^2$ to within $0.01$ for a shrinkage of magnitude $m$.
+
+\section*{8. What is done with it}
+The share is one of four readings. The others do not use this
+decomposition at all: sentence matching asks, for each sentence in
+language $\ell$, whether its English counterpart is the nearest of the
+$N$ candidates; the tail reading restricts that to the worst aligned
+languages; the collapse reading is $\sigma^2_C$ against a reference.
+Each is converted to a percentile against a fixed grid of 33 models
+before any averaging, since the four are on different scales.
+
+\end{document}

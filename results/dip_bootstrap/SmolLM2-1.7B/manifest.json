@@ -1,0 +1,14 @@
+{
+ "script": "src/analysis/dip_bootstrap.py",
+ "script_sha256": "0b7d84d4d475d8d833e6e1af70acdf1671e71c0a512bdf36f45149429093ec8b",
+ "inputs": {
+  "results/dumps/SmolLM2-1.7B/layer000.npz": "bb8ee057d629eb94422f2786f69548139b01a8445dcba880bcf91288b97bf5ae",
+  "results/dumps/SmolLM2-1.7B/layer015.npz": "52047cf2f3152aee2e0623848ce9e729cba3f882eb6320fc4ee0f2151f36f351"
+ },
+ "grid_reference": "results/grid/SmolLM2-1.7B/metrics.json",
+ "host": "c10",
+ "python": "3.11.9",
+ "numpy": "1.26.4",
+ "wall_seconds": 5488.050438404083,
+ "finished_utc": "2026-09-05T12:56:40Z"
+}

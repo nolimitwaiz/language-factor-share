@@ -1,0 +1,14 @@
+{
+ "script": "src/analysis/dip_bootstrap.py",
+ "script_sha256": "0b7d84d4d475d8d833e6e1af70acdf1671e71c0a512bdf36f45149429093ec8b",
+ "inputs": {
+  "results/dumps/salamandra-2b/layer000.npz": "04c51f20af6a708933bfe5cf8a84112af55b645236702b0a36388d221217647e",
+  "results/dumps/salamandra-2b/layer006.npz": "02d78a8f65ef3b3094d32246c05a7ed16e81461b7288cdea59f2f959805dafa4"
+ },
+ "grid_reference": "results/grid/salamandra-2b/metrics.json",
+ "host": "c25",
+ "python": "3.11.9",
+ "numpy": "1.26.4",
+ "wall_seconds": 5834.5500547885895,
+ "finished_utc": "2026-09-05T12:18:05Z"
+}

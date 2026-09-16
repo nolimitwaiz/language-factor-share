@@ -1,0 +1,8 @@
+{
+ "run_id": "translationese_SmolLM2-1.7B",
+ "script": "scripts/translationese.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-07T20:00:41.881797+00:00",
+ "wall_s": 147.3
+}

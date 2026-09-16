@@ -1,0 +1,522 @@
+{
+  "dataset": "X-FACT",
+  "source": "https://github.com/utahnlp/x-fact",
+  "license_file": "data/xfact_raw/LICENSE",
+  "parser_policy": "Keep only rows with exactly the advertised 17 fields; do not repair malformed rows.",
+  "splits": {
+    "train.all.tsv": {
+      "sha256": "55f7385af77baab3fdd92cc2e3b7368fb9b8300a34831d86091ad22b88499661",
+      "bytes": 38723706,
+      "parsed_rows": 18414,
+      "strict_valid_rows": 18109,
+      "malformed_rows": 305,
+      "row_widths": {
+        "4": 31,
+        "5": 23,
+        "6": 9,
+        "7": 4,
+        "8": 1,
+        "9": 1,
+        "13": 3,
+        "14": 6,
+        "15": 20,
+        "16": 39,
+        "17": 18109,
+        "18": 14,
+        "19": 10,
+        "20": 12,
+        "21": 6,
+        "23": 4,
+        "24": 2,
+        "25": 10,
+        "26": 19,
+        "27": 24,
+        "28": 28,
+        "29": 27,
+        "30": 8,
+        "31": 1,
+        "32": 1,
+        "41": 2
+      },
+      "languages": {
+        "ar": 1498,
+        "de": 687,
+        "es": 993,
+        "hi": 821,
+        "id": 2144,
+        "it": 899,
+        "ka": 1445,
+        "pl": 1272,
+        "pt": 5250,
+        "ro": 657,
+        "sr": 565,
+        "ta": 1054,
+        "tr": 824
+      },
+      "labels": {
+        "complicated/hard to categorise": 516,
+        "false": 7114,
+        "mostly false": 818,
+        "mostly true": 1301,
+        "other": 345,
+        "partly true/misleading": 4147,
+        "true": 3868
+      },
+      "evidence_count": {
+        "0": 5,
+        "1": 18,
+        "2": 29,
+        "3": 457,
+        "4": 311,
+        "5": 17289
+      },
+      "no_link_tokens": 3601,
+      "evidence_character_lengths": {
+        "min": 3,
+        "median": 158.0,
+        "mean": 191.8198707592892,
+        "max": 18793
+      }
+    },
+    "dev.all.tsv": {
+      "sha256": "faed99c2ee9e7ea505a1bae88c06bd2c686804b5e1e786551e589b5f89df8199",
+      "bytes": 5245528,
+      "parsed_rows": 2434,
+      "strict_valid_rows": 2393,
+      "malformed_rows": 41,
+      "row_widths": {
+        "4": 1,
+        "5": 2,
+        "6": 3,
+        "14": 1,
+        "15": 2,
+        "16": 4,
+        "17": 2393,
+        "18": 3,
+        "19": 3,
+        "20": 2,
+        "21": 4,
+        "25": 2,
+        "26": 2,
+        "27": 3,
+        "28": 5,
+        "29": 1,
+        "30": 3
+      },
+      "languages": {
+        "ar": 202,
+        "de": 91,
+        "es": 124,
+        "hi": 103,
+        "id": 295,
+        "it": 120,
+        "ka": 187,
+        "pl": 170,
+        "pt": 695,
+        "ro": 85,
+        "sr": 76,
+        "ta": 140,
+        "tr": 105
+      },
+      "labels": {
+        "complicated/hard to categorise": 74,
+        "false": 924,
+        "mostly false": 104,
+        "mostly true": 184,
+        "other": 63,
+        "partly true/misleading": 530,
+        "true": 514
+      },
+      "evidence_count": {
+        "0": 1,
+        "1": 1,
+        "2": 1,
+        "3": 59,
+        "4": 41,
+        "5": 2290
+      },
+      "no_link_tokens": 378,
+      "evidence_character_lengths": {
+        "min": 4,
+        "median": 159.0,
+        "mean": 195.61073427166355,
+        "max": 6396
+      }
+    },
+    "test.all.tsv": {
+      "sha256": "b126a4f7e16ec72f554a79e1fffaef8d71ba03ec9e07072ff7484a502cf37cbb",
+      "bytes": 7874799,
+      "parsed_rows": 3659,
+      "strict_valid_rows": 3597,
+      "malformed_rows": 62,
+      "row_widths": {
+        "4": 7,
+        "5": 4,
+        "6": 1,
+        "8": 1,
+        "15": 1,
+        "16": 7,
+        "17": 3597,
+        "18": 1,
+        "19": 6,
+        "20": 1,
+        "21": 2,
+        "25": 2,
+        "26": 8,
+        "27": 4,
+        "28": 3,
+        "29": 7,
+        "30": 5,
+        "33": 1,
+        "44": 1
+      },
+      "languages": {
+        "ar": 299,
+        "de": 136,
+        "es": 191,
+        "hi": 163,
+        "id": 436,
+        "it": 185,
+        "ka": 278,
+        "pl": 253,
+        "pt": 1035,
+        "ro": 133,
+        "sr": 118,
+        "ta": 209,
+        "tr": 161
+      },
+      "labels": {
+        "complicated/hard to categorise": 101,
+        "false": 1380,
+        "mostly false": 146,
+        "mostly true": 277,
+        "other": 85,
+        "partly true/misleading": 818,
+        "true": 790
+      },
+      "evidence_count": {
+        "0": 2,
+        "1": 3,
+        "2": 2,
+        "3": 88,
+        "4": 52,
+        "5": 3450
+      },
+      "no_link_tokens": 649,
+      "evidence_character_lengths": {
+        "min": 16,
+        "median": 159,
+        "mean": 193.5924192001805,
+        "max": 3505
+      }
+    },
+    "ood.tsv": {
+      "sha256": "6524dceae75cc37e26304c281a0df09e359718b66d0f628d9c11bca2582b0d1e",
+      "bytes": 4658141,
+      "parsed_rows": 2345,
+      "strict_valid_rows": 2327,
+      "malformed_rows": 18,
+      "row_widths": {
+        "4": 4,
+        "5": 1,
+        "14": 2,
+        "15": 4,
+        "17": 2327,
+        "18": 2,
+        "19": 2,
+        "20": 1,
+        "27": 1,
+        "29": 1
+      },
+      "languages": {
+        "hi": 378,
+        "id": 635,
+        "it": 238,
+        "pt": 466,
+        "tr": 610
+      },
+      "labels": {
+        "complicated/hard to categorise": 145,
+        "false": 1097,
+        "other": 11,
+        "partly true/misleading": 759,
+        "true": 315
+      },
+      "evidence_count": {
+        "0": 4,
+        "1": 9,
+        "2": 8,
+        "3": 68,
+        "4": 167,
+        "5": 2071
+      },
+      "no_link_tokens": 113,
+      "evidence_character_lengths": {
+        "min": 16,
+        "median": 162.0,
+        "mean": 202.2005865623889,
+        "max": 7534
+      }
+    },
+    "zeroshot.tsv": {
+      "sha256": "793045bb86c1ef4a12a59259a6c3428a26c7c5f87288f730a9c4b2b90a651502",
+      "bytes": 8401803,
+      "parsed_rows": 3331,
+      "strict_valid_rows": 3320,
+      "malformed_rows": 11,
+      "row_widths": {
+        "13": 1,
+        "15": 1,
+        "16": 3,
+        "17": 3320,
+        "18": 1,
+        "19": 1,
+        "20": 1,
+        "21": 1,
+        "27": 2
+      },
+      "languages": {
+        "az": 244,
+        "bn": 556,
+        "fa": 278,
+        "fr": 194,
+        "gu": 124,
+        "mr": 85,
+        "nl": 166,
+        "no": 399,
+        "pa": 102,
+        "ru": 433,
+        "si": 80,
+        "sq": 659
+      },
+      "labels": {
+        "complicated/hard to categorise": 260,
+        "false": 1447,
+        "mostly false": 404,
+        "mostly true": 69,
+        "other": 54,
+        "partly true/misleading": 760,
+        "true": 326
+      },
+      "evidence_count": {
+        "0": 1,
+        "1": 3,
+        "2": 5,
+        "3": 161,
+        "4": 85,
+        "5": 3065
+      },
+      "no_link_tokens": 128,
+      "evidence_character_lengths": {
+        "min": 16,
+        "median": 170,
+        "mean": 213.99845306602313,
+        "max": 12075
+      }
+    }
+  },
+  "cross_split_leakage": {
+    "normalized_exact_claims_in_multiple_splits": 38,
+    "normalized_urls_in_multiple_splits": 4464,
+    "strict_valid_rows_touched_by_cross_split_urls": 8548,
+    "claim_examples": [
+      [
+        "no [governo] crivella, [os aumentos do pedágio da linha amarela] foram o dobro da inflação",
+        [
+          "test.all.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "yargıdan memnuniyet oranlarının çok yukarıda olması işin doğası gereği mümkün görünmüyor. yargıya işi düşenlerin yarısı kaybediyor, yarısı kazanıyor ... buna rağmen 2016’da yargıdan memnuniyet yüzde 52,4 oldu. bu iyi bir rakamdır.",
+        [
+          "test.all.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "[o brasil é o] único país [onde] não existe voto impresso",
+        [
+          "test.all.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "video prabowo subianto nabok tangan pendukungnya sendiri",
+        [
+          "test.all.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "anna zalewska: ja wiem, ale do ginekologa to nie jest taki problem. monika olejnik: najpierw trzeba iść, od razu można iść do ginekologa? anna zalewska: według mnie tak, z tego co pamiętam. monika olejnik: nie, najpierw chyba trzeba do lekarza pierwszego kontaktu. anna zalewska: nie, nie, nie, do ginekologa chyba nie.",
+        [
+          "dev.all.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "stf pode acabar com a prisão em segunda instância e beneficiar 169 mil presos!",
+        [
+          "ood.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "eu, praticamente, tripliquei o número de universitários no brasil",
+        [
+          "dev.all.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "იქ [ეუთოს დასკვნაში] პრაქტიკულად, საუბარი არის იმაზე, რომ შეირჩა არაკვალიფიციური კანდიდატები, საუბარია იმაზე, რომ [ხელისუფლებამ], პრაქტიკულად, წინასწარ გადაწყვიტა რომელი კანდიდატები უნდა ყოფილიყვნენ უზენაესი სასამართლოს მოსამართლეები",
+        [
+          "dev.all.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "hudson braga fez delação premiada que envolve seu nome [indio da costa]",
+        [
+          "test.all.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "sprawdzamy co na ten temat powiedział rafał trzaskowski. czy jego słowa są zgodne z prawdą?",
+        [
+          "test.all.tsv",
+          "train.all.tsv"
+        ]
+      ]
+    ],
+    "url_examples": [
+      [
+        "https://www.dogrulukpayi.com/yazar/furkan-demirbas",
+        [
+          "test.all.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "https://www.mahfiegilmez.com/2020/01/turkiye-ekonomisinin-son-17-yl.html",
+        [
+          "test.all.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "https://www.hurriyet.com.tr/ekonomi/tek-parti-iktidarinda-buyume-yuksek-114410",
+        [
+          "test.all.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "https://www.agi.it/fact-checking/migranti_salvini_spese_accoglienza-3990982/news/2018-06-05",
+        [
+          "ood.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "https://www.agi.it/fact-checking/migranti_spese_italia_europa-4022503/news/2018-06-13",
+        [
+          "ood.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "https://www.rnz.de/nachrichten/metropolregion_artikel,-hetze-gegen-asylbewerber-warum-fluechtlinge-nicht-kostenlos-bus-fahren-duerfen-update-_arid,480652.html",
+        [
+          "test.all.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "https://fr-fr.facebook.com/jornalpoligrafo/posts?ref=page_internal",
+        [
+          "dev.all.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "https://www.uol.com.br/tilt/noticias/redacao/2018/03/17/como-denunciar-conteudo-de-odio-nas-redes-sociais.htm",
+        [
+          "test.all.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "https://www.tse.jus.br/hotsites/catalogo-publicacoes/pdf/livro-digital-fake-news.pdf",
+        [
+          "dev.all.tsv",
+          "test.all.tsv",
+          "train.all.tsv"
+        ]
+      ],
+      [
+        "https://www.factual.ro/economie",
+        [
+          "dev.all.tsv",
+          "test.all.tsv",
+          "train.all.tsv"
+        ]
+      ]
+    ]
+  },
+  "common_train_dev_test_languages": [
+    "ar",
+    "de",
+    "es",
+    "hi",
+    "id",
+    "it",
+    "ka",
+    "pl",
+    "pt",
+    "ro",
+    "sr",
+    "ta",
+    "tr"
+  ],
+  "provisional_engineering_panel": {
+    "ar": {
+      "train.all.tsv": 1498,
+      "dev.all.tsv": 202,
+      "test.all.tsv": 299,
+      "ood.tsv": 0,
+      "zeroshot.tsv": 0
+    },
+    "hi": {
+      "train.all.tsv": 821,
+      "dev.all.tsv": 103,
+      "test.all.tsv": 163,
+      "ood.tsv": 378,
+      "zeroshot.tsv": 0
+    },
+    "id": {
+      "train.all.tsv": 2144,
+      "dev.all.tsv": 295,
+      "test.all.tsv": 436,
+      "ood.tsv": 635,
+      "zeroshot.tsv": 0
+    },
+    "tr": {
+      "train.all.tsv": 824,
+      "dev.all.tsv": 105,
+      "test.all.tsv": 161,
+      "ood.tsv": 610,
+      "zeroshot.tsv": 0
+    }
+  },
+  "gates": {
+    "has_stable_fact_id": false,
+    "has_parallel_versions_of_each_fact": false,
+    "evidence_fields_are_gold_relevance_judgments": false,
+    "can_independently_vary_query_evidence_answer_language_without_new_translation": false,
+    "safe_to_treat_all_five_evidence_snippets_as_relevant": false,
+    "license_present": true
+  }
+}

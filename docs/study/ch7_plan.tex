@@ -1,0 +1,172 @@
+\section{Study plan, checklist, and reading list}
+\label{ch:plan}
+
+\subsection{The four-hour version}
+
+Three hours forty-five minutes for the day before the Koehn meeting, assuming
+linear algebra from coursework and no transformers or analysis of variance.
+Chapter~\ref{ch:lfs} precedes the statistics on purpose.
+
+\begin{description}[leftmargin=3.2cm, style=nextline, itemsep=3pt]
+\item[0:00 to 0:15, vectors] Chapter~\ref{ch:ml}, why a hidden state is a vector. Exercise: cosine similarity and a first look at anisotropy.
+\item[0:15 to 0:50, the model] Chapter~\ref{ch:llm}: tokenization and fertility, embeddings and the residual stream, attention read once. Figure~\ref{fig:block}. Three facts: layer $0$ is the embedding output, every layer shares one $D$-dimensional space, pooling is part of the measurement.
+\item[0:50 to 1:05, translation data] Chapter~\ref{ch:mt}: parallel data, translationese, the MEXA paragraph. Figure~\ref{fig:g-r6}, rows read as resource tiers.
+\item[1:05 to 1:55, LFS] Chapter~\ref{ch:lfs} in full. Rederive the whiteboard table until $1.5/17.5 = 0.086$ comes unaided; type the exercise ``LFS from scratch'' and check its three printed lines. Figure~\ref{fig:grid}.
+\item[1:55 to 2:30, statistics] Chapter~\ref{ch:stats}: the decomposition and bootstrap subsections. Exercise: verify the decomposition and the null by simulation. Then Figure~\ref{fig:bootstrap}: say why models, not rows, are the unit.
+\item[2:30 to 3:00, results] Chapter~\ref{ch:figures}, the two paper figures. Figure~\ref{fig:g-p1}: axes, one line, the null line at $0.298$. Then Figure~\ref{fig:g-p2} and the ten numbers in \texttt{docs/KOEHN\_MEETING\_BRIEF\_2026-09-05.md}.
+\item[3:00 to 3:20, limits] Chapter~\ref{ch:lfs}: the boundary subsection and what LFS relates to. Figure~\ref{fig:collapse_trained}. Then the MEXA, pooling, and ANOVA answers in Chapter~\ref{ch:defense}.
+\item[3:20 to 3:30, aloud] The ten-second, thirty-second, and two-minute versions, then the whiteboard example cold, standing.
+\item[3:30 to 3:45, self-test] The ten questions below, answers written first.
+\end{description}
+
+\textbf{Skipped relative to the eight-hour plan, and why that is safe.}
+\begin{itemize}[itemsep=1pt]
+\item Chapter~\ref{ch:ml} regression, gradient descent, softmax, XOR, PCA: LFS trains nothing; in the meeting least squares is the one phrase ``after controlling for exposure, family, script, and fertility''.
+\item Chapter~\ref{ch:llm} attention exercise, MLP, normalization, training loop, logit lens: LFS reads the residual stream and never generates; Koehn's recorded questions concern pooling and the shape.
+\item Chapter~\ref{ch:mt} alignment history, the ``think in English'' list, the Aim~2 options: the brief scripts the one answer that needs them.
+\item Chapter~\ref{ch:stats} residualization and cluster-bootstrap exercises, REML, multiple comparisons: read the figures; the intervals are already computed.
+\item The eighteen report figures and the misalignment decomposition: the meeting opens on paper Figure~1 and stays there.
+\item The full question bank: the self-test replaces it; return to the bank if time remains.
+\end{itemize}
+
+\textbf{Self-test, fifteen minutes.}
+\begin{enumerate}[itemsep=1pt]
+\item LFS and its parts? $\SSl/(\SSl+\SSc)$: weighted spread of language means over that plus the sentence-mean spread; residual reported, not included.
+\item The whiteboard value? $1.5/17.5 = 0.086$; languages differ by a constant offset, sentences by far more.
+\item Why standardize jointly? Per-language standardizing subtracts the language means being measured.
+\item Pure-noise value here? $(L-1)/(L+N-2) = 0.298$ at 128 by 300; compare only at a fixed grid.
+\item Layer $0$, and why layers compare? Embedding output; the residual stream is a running sum, so all layers share one space.
+\item Dip depth range, tracking what? $0.039$ (BLOOM-1.7B) to $0.336$ (Qwen3-8B); recipe more than size.
+\item The behavioral result, with unit? Spearman $0.508$, model bootstrap $[0.19, 0.71]$, 19 models, 13 families, after controls.
+\item What LFS cannot see? Uniform shrinkage: norm 451 to 42, concept variance 13{,}791 to 699, LFS $0.445$ to $0.493$; hence raw components beside the ratio.
+\item MEXA in one line? Is the English translation a sentence's nearest neighbour among $N$ candidates; a published reference measure for a different question.
+\item Why resample models, not rows? Rows within a model are correlated and the claim is about models.
+\end{enumerate}
+
+\subsection{Three weeks to the paper, then the long arc}
+
+\begin{description}[leftmargin=2.9cm, style=nextline, itemsep=3pt]
+\item[Days 1 to 3: own the instrument] Chapter~\ref{ch:lfs}. Rederive the worked example and the null by hand; type the \texttt{lfs} exercise; open \texttt{results/grid/Qwen3-8B-Base/metrics.json} and explain the profile layer by layer. Read \texttt{reports/lfs\_math.pdf} and the paper draft Sections 3 and 5.
+\item[Days 3 to 6: the transformer] Chapter~\ref{ch:llm} and Chapter~\ref{ch:ml} Sections 1.4 to 1.7. Do the attention and XOR exercises. Read Jurafsky and Martin's transformer and LLM chapters; skim Vaswani et al.\ (2017); read the residual-stream section of Elhage et al.\ (2021); read nostalgebraist's logit-lens post and Timkey and van Schijndel (2021).
+\item[Days 6 to 10: statistics] Chapter~\ref{ch:stats}. Do the decomposition, null, residualization, and cluster-bootstrap exercises. Read one ANOVA chapter (any introductory text), Efron and Tibshirani chapters 6 and 7, and Gelman and Hill on fixed effects and clustered data.
+\item[Days 8 to 14: Koehn's literature] Chapter~\ref{ch:mt}. Read Koehn (2020) on the transformer, multilingual models, and evaluation; Federmann et al.\ (2022) NTREX; Conneau et al.\ (2018); Marchisio et al.\ (2020 to 2022); Kargaran et al.\ (2025) MEXA in full; Bandarkar et al.\ (2024) Belebele; Ahia et al.\ (2023); Briakou et al.\ (2023).
+\item[Days 10 to 16: the debate] Wendler et al.\ (2024); Shani and Basirat (2025); Tezuka and Inoue (2025); Zhao et al.\ (2024); Bafna et al.\ (2025); Dumas et al.\ (2025); Kornblith et al.\ (2019); Chang, Tu, and Bergen (2022). For each, one sentence on its claim and one on what LFS adds or contradicts.
+\item[Ongoing: foundations] Chapter~\ref{ch:ml} in full; Goodfellow, Bengio, and Courville chapters 2, 5, 6, 8, 10; Murphy's \emph{Probabilistic Machine Learning: An Introduction} on linear models and inference; a linear algebra refresher (Strang, or the \emph{Deep Learning} book chapter 2).
+\end{description}
+
+\subsection{Practice}
+
+Say the ten-second, thirty-second, and two-minute versions aloud once a day.
+Once a week, have someone read Chapter~\ref{ch:defense} questions in random
+order. Before the Koehn meeting, redo the whiteboard example cold. Every
+number you say should be one you can point to in the assessment document or
+the claims ledger.
+
+\subsection{The concept checklist}
+
+Tick each when you can explain it to a first-year student in two minutes
+without notes. Items marked $\star$ are the must-know set for defending
+LFS; the rest are what makes you credible and lets you answer the follow-up.
+
+\paragraph{Why learn at all.}
+$\star$ rules versus examples; $\star$ parameters, loss, optimization;
+$\star$ supervised, unsupervised, self-supervised, reinforcement;
+$\star$ where pretraining, post-training, and measurement sit.
+
+\paragraph{Machine learning basics.}
+model, parameters, loss; $\star$ vectors, dot product, norm, cosine; matrix
+as many dot products; $\star$ linear regression, least squares, residuals,
+$R^2$; $\star$ ridge; gradient, gradient descent, learning rate, batches,
+Adam; sigmoid, softmax, logits, cross-entropy, negative log-likelihood,
+perplexity; $\star$ train/validation/test, overfitting; regularization,
+early stopping, cross-validation; MLP, nonlinearity, backpropagation,
+autograd; embeddings; PCA, SVD, eigenvalues, effective rank, participation
+ratio; epochs, seeds, checkpoints, pretraining, fine-tuning, inference.
+
+\paragraph{Language models.}
+$\star$ next-token prediction; $\star$ tokenization, BPE, vocabulary,
+fertility; embedding matrix; positional information (rotary); $\star$
+residual stream; $\star$ hidden state per layer, layer 0; attention (query,
+key, value, scores, causal mask, heads); MLP block; LayerNorm/RMSNorm,
+pre-norm; $\star$ massive activations, anisotropy; unembedding, logits, tied
+embeddings; teacher forcing; perplexity; training loop, Adam, schedules;
+$\star$ base versus instruct, SFT, RLHF/DPO; greedy versus sampling,
+temperature; $\star$ fp16/bf16/fp32; $\star$ mean versus last-token pooling;
+$\star$ logit lens and its validity limit; linear probes; activation
+patching; CKA; scaling versus recipe.
+
+\paragraph{Machine translation and multilingual NLP.}
+SMT versus NMT versus LLM; $\star$ parallel and n-way parallel corpora;
+sentence alignment; $\star$ NTREX, FLORES, WMT; documents and purged splits;
+$\star$ translationese and direction; BLEU, chrF, COMET; contamination;
+chance floors; $\star$ resource tiers, families, scripts; curse of
+multilinguality; cross-lingual transfer; incidental bilingualism; tokenizer
+fairness; cross-lingual word-embedding alignment, Procrustes, MUSE, hubness,
+CSLS; sentence embeddings, LASER/LaBSE; $\star$ MEXA, AaR, Information
+Parity; $\star$ the ``think in English'' debate and its papers; Aim 2
+methods (parallel data, code-switching, alignment losses, adversarial,
+preference); Belebele, INCLUDE, Global-MMLU, MGSM.
+
+\paragraph{Statistics of measurement.}
+$\star$ variance and sums of squares; $\star$ one-way and two-way ANOVA;
+$\star$ balance and orthogonality; $\star$ degrees of freedom; mean squares;
+expected mean squares; variance components; REML; $\star$ standardization
+and invariances; $\star$ Pearson versus Spearman; $\star$ confounding;
+$\star$ residualization; $\star$ fixed effects; logit transform above a
+floor; cluster-robust errors; $\star$ bootstrap; $\star$ cluster and crossed
+bootstrap; $\star$ unit of generalization; effective sample size;
+leave-one-out; Benjamini--Hochberg; $\star$ preregistration; minimum
+detectable effect; construct and predictive validity; reliability,
+ceilings, Spearman--Brown; $\star$ Goodhart's law.
+
+\paragraph{Linear algebra and interpretability tools.}
+projection; orthogonal matrices and rotations; Procrustes; PCA/SVD;
+whitening; effective rank; Gini; ridge regression; linear probes; activation
+patching; CKA; logit lens.
+
+\paragraph{LFS itself.}
+balanced grid; fp32 mean pooling; joint z-scoring; grand, language, sentence
+means; $\SSl$, $\SSc$, $\SSr$ and the multipliers; the ratio; the residual's
+role; the decomposition proof; boundedness; scale invariance; rotation
+invariance; the null and its three consequences; near size-independence; dip
+depth, interior minimum, endpoint recovery; values above 0.5; additive
+boundary and the misalignment decomposition; variance share versus separability;
+collapse blind spot and the profile fix; content transfer versus benchmarks;
+observation versus intervention; the family and the no-averaging rule; MEXA
+as a different question.
+
+\subsection{Reading list with what to take from each}
+
+\begin{description}[leftmargin=0pt, style=nextline, itemsep=2pt]
+\item[Jurafsky and Martin, \emph{Speech and Language Processing}, 3rd ed.\ draft (free online)] transformers, LLMs, MT chapters: the vocabulary and the standard pictures.
+\item[Koehn, \emph{Neural Machine Translation} (2020)] the transformer from an MT perspective, multilingual models, evaluation. Read for framing as much as content.
+\item[Koehn, \emph{Statistical Machine Translation} (2010)] chapters on parallel data and evaluation; skim for history.
+\item[Goodfellow, Bengio, Courville, \emph{Deep Learning} (free online)] ch.\ 2 linear algebra, 5 ML basics, 6 MLPs, 8 optimization, 10 sequence models.
+\item[Murphy, \emph{Probabilistic Machine Learning: An Introduction} (free online)] linear models, logistic regression, inference basics.
+\item[Efron and Tibshirani, \emph{An Introduction to the Bootstrap}] chapters 6 and 7; then any short note on cluster bootstrap.
+\item[Gelman and Hill, \emph{Data Analysis Using Regression and Multilevel/Hierarchical Models}] fixed effects, clustered data, why the unit matters.
+\item[Searle, Casella, McCulloch, \emph{Variance Components}] the balanced two-way chapter, for REML.
+\item[Vaswani et al.\ 2017] attention is all you need. Read Sections 3 and 4.
+\item[Elhage et al.\ 2021, \emph{A Mathematical Framework for Transformer Circuits}] the residual-stream section only.
+\item[nostalgebraist 2020] the logit lens post; then Wendler et al.\ 2024.
+\item[Timkey and van Schijndel 2021; Sun et al.\ 2024] rogue dimensions and massive activations.
+\item[Kargaran et al.\ 2025 (MEXA)] read fully; know the exact scoring rule and the reported correlations.
+\item[Conneau et al.\ 2018; Artetxe et al.\ 2018; Marchisio et al.\ 2020--2022] cross-lingual embedding alignment and Koehn's group's contributions.
+\item[Shani and Basirat 2025; Tezuka and Inoue 2025; Zhao et al.\ 2024; Bafna et al.\ 2025; Dumas et al.\ 2025] the layerwise-sharing debate.
+\item[Kornblith et al.\ 2019 (CKA); Chang, Tu, Bergen 2022] representational similarity and multilingual geometry.
+\item[Federmann et al.\ 2022 (NTREX); Bandarkar et al.\ 2024 (Belebele); Romanou et al.\ 2025 (INCLUDE)] the datasets.
+\item[Ahia et al.\ 2023; Petrov et al.\ 2023] tokenizer fertility and fairness.
+\item[Briakou, Cherry, Foster 2023] incidental bilingualism drives translation ability.
+\item[Nosek et al.\ 2018; Strathern 1997] preregistration; Goodhart's law.
+\end{description}
+
+\subsection{Project documents to know by location}
+
+\begin{description}[leftmargin=0pt, style=nextline, itemsep=1pt]
+\item[\texttt{docs/AIM1\_ASSESSMENT\_FOR\_ICLR\_2026-09-04.md}] sub-aim verdicts, every number with its artifact.
+\item[\texttt{paper/iclr2027/main.tex}, \texttt{claims\_ledger.csv}] the paper and the map from numbers to artifacts and jobs.
+\item[\texttt{docs/AIM1\_NEXT\_EXPERIMENTS\_2026-09-05.md}] the candidate experiments, costs, and frozen predictions.
+\item[\texttt{code/pilot\_metrics.py}] the canonical estimator.
+\item[\texttt{docs/DISCREPANCY\_LEDGER.md}] every correction, with mechanism. Reviewers reward it when you volunteer it.
+\item[\texttt{proposal/NSF\_Proposal\_on\_Multilingual\_LLMs.pdf}] Section 3.1, pages 6 to 8: the questions this work answers.
+\end{description}

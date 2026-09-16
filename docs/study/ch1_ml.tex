@@ -1,0 +1,284 @@
+\section{Machine learning from zero}
+\label{ch:ml}
+
+\subsection{Why learn from data at all}
+
+A program is a set of rules written by a person. For many tasks nobody can
+write the rules. Nobody can list the rules that turn a German sentence into
+an English one, or that say which word comes next in a paragraph, or that
+tell a cat from a dog in pixels. What we do have, in enormous quantity, is
+\emph{examples}: sentences with their translations, text with the word that
+actually came next, pictures with labels.
+
+Machine learning turns examples into a function by search. You fix a family
+of functions with adjustable numbers (the \emph{parameters}), you write down a
+score for how wrong a candidate function is on the examples (the
+\emph{loss}), and you search for the parameter values that make the score
+small (\emph{optimization}). ``Training'' is that search. It is the only
+known way to get a translator that handles sentences no one anticipated,
+because the rules come from the data, not from a person.
+
+The price is the subject of this whole project. First, the function is only
+as good as the data: a corpus that is mostly English produces a model that
+is mostly English, whatever its size. Second, you cannot read the rules off
+the parameters. A trained model is billions of numbers, and nobody can tell
+by inspection what it learned about Persian. That is why measurement
+instruments exist. LFS is one: it does not train anything, it measures what
+training produced.
+
+\subsection{The kinds of learning}
+
+\begin{figure}[h]\centering\includegraphics[width=0.95\linewidth]{fig_ml_types.png}
+\caption{The kinds of learning, where an LLM's stages sit, and where LFS sits: outside learning, as measurement of what was learned.}\label{fig:types}\end{figure}
+
+\begin{description}[leftmargin=3.2cm, style=nextline, itemsep=3pt]
+\item[Supervised learning] Every example comes with the answer: a sentence
+and its translation, a question and its correct option, an image and its
+label. The model learns a map from input to answer, and the loss compares its
+answer to the given one. Classical machine translation and the Belebele
+scoring in this project are supervised in form.
+\item[Unsupervised learning] No answers, only inputs. The goal is structure:
+which examples cluster together, which directions carry the most variation
+(PCA), how the data are distributed. The variance decomposition behind LFS
+is unsupervised analysis of this kind, applied to a model's hidden states.
+\item[Self-supervised learning] The trick that made LLMs possible: manufacture
+the answer from the data itself. For text, hide the next word and ask the
+model to predict it. Every position in every document becomes a labeled
+example for free, so training can use trillions of tokens. LLM pretraining
+is self-supervised; the resulting \emph{base model} is a next-token
+predictor.
+\item[Reinforcement learning] No fixed answers; the model acts, receives a
+reward, and adjusts to get more reward. Used in post-training (RLHF, DPO)
+to turn a base model into an assistant. The proposal's Aim 2 mentions
+preference training of this kind for multilinguality.
+\item[Measurement] Not learning. LFS, MEXA, probes, and the logit lens
+examine what a trained model contains. The moment a measurement becomes a
+training signal it becomes part of the loss, and Goodhart's law applies;
+Chapter~\ref{ch:lfs} shows what happened when LFS was tried as one.
+\end{description}
+
+Everything below fits one sentence: you decide the \emph{shape} of the
+function (a line, a network), the data decides its \emph{parameters}, and a
+\emph{loss} says how badly any candidate does. A 70-billion-parameter
+language model fits that sentence too.
+
+\subsection{Vectors, matrices, and why a hidden state is a vector}
+
+A vector $\mathbf{x} \in \R^D$ is a list of $D$ numbers. Two operations carry
+this whole project.
+
+\textbf{Dot product.} $\mathbf{x}\cdot\mathbf{y} = \sum_d x_d y_d$. It is
+large when the vectors point the same way.
+
+\textbf{Norm and cosine.} $\|\mathbf{x}\| = \sqrt{\mathbf{x}\cdot\mathbf{x}}$
+is the length. Cosine similarity, $\cos(\mathbf{x},\mathbf{y}) =
+\mathbf{x}\cdot\mathbf{y} / (\|\mathbf{x}\|\|\mathbf{y}\|)$, is the dot
+product after removing length; it lies in $[-1, 1]$ and is what retrieval
+metrics such as MEXA compare.
+
+A matrix $W \in \R^{m\times n}$ turns a vector in $\R^n$ into one in $\R^m$:
+$W\mathbf{x}$ is $m$ dot products, one per row. A neural network is a chain
+of such multiplications with simple nonlinear functions in between. A
+\emph{hidden state} is just the vector that sits between two of those
+multiplications; in a language model it has $D$ coordinates (1024 for
+Qwen3-0.6B, 4096 for Llama-3.1-8B) and there is one per token per layer.
+
+\begin{exercise}{cosine similarity and a first look at anisotropy}
+\begin{lstlisting}
+import numpy as np
+rng = np.random.default_rng(0)
+def cos(a, b): return a @ b / (np.linalg.norm(a) * np.linalg.norm(b))
+x, y = rng.normal(size=1024), rng.normal(size=1024)
+print(cos(x, y))            # near 0: random high-dimensional vectors are nearly orthogonal
+big = np.zeros(1024); big[7] = 40.0   # one huge shared coordinate ("massive activation")
+print(cos(x + big, y + big))          # near 1: one coordinate makes everything look similar
+\end{lstlisting}
+The second print is the whole reason LFS standardizes coordinates before
+measuring anything (Chapter~\ref{ch:lfs}).
+\end{exercise}
+
+\subsection{Linear regression and least squares}
+
+Predict $y$ from $x$ with a line, $\hat y = w x + b$. The residual for one
+point is $y_i - \hat y_i$. The least-squares choice of $(w, b)$ minimizes
+$\sum_i (y_i - \hat y_i)^2$, the sum of squared residuals. Figure~\ref{fig:linreg}
+shows the fit and the residuals. $R^2$ is the fraction of the variance of
+$y$ that the line explains: $1 - \sum_i (y_i-\hat y_i)^2 / \sum_i (y_i - \bar
+y)^2$.
+
+\begin{figure}[h]\centering\includegraphics[width=0.7\linewidth]{fig_ml_linreg.png}
+\caption{Least squares picks the line that makes the gray residuals as small as possible in the squared sense.}\label{fig:linreg}\end{figure}
+
+With several inputs the same idea is $\hat{\mathbf{y}} = X\mathbf{w}$ and the
+closed form is $\mathbf{w} = (X^\top X)^{-1} X^\top \mathbf{y}$. Adding a
+penalty $\lambda\|\mathbf{w}\|^2$ gives \emph{ridge regression}, which keeps
+weights small when inputs are many or correlated. The English-hub test in the
+paper is ridge regression from one language's representations to another's.
+
+\begin{exercise}{least squares two ways}
+\begin{lstlisting}
+x = np.linspace(0, 10, 50); y = 1.2 * x + 2 + rng.normal(0, 1.5, 50)
+X = np.column_stack([x, np.ones_like(x)])
+w_closed = np.linalg.lstsq(X, y, rcond=None)[0]
+r2 = 1 - ((y - X @ w_closed)**2).sum() / ((y - y.mean())**2).sum()
+print(w_closed, r2)
+\end{lstlisting}
+Keep this; the next exercise recovers the same $\mathbf{w}$ by gradient descent.
+\end{exercise}
+
+\subsection{Gradient descent}
+
+For most models there is no closed form, so we descend. The gradient
+$\nabla_\theta L$ is the vector of partial derivatives of the loss with
+respect to each parameter; it points uphill. Gradient descent repeats
+$\theta \leftarrow \theta - \eta\,\nabla_\theta L(\theta)$ with a small
+\emph{learning rate} $\eta$ (Figure~\ref{fig:gd}). Too small and it crawls; too
+large and it overshoots. Using a random \emph{batch} of examples per step
+gives stochastic gradient descent; Adam adapts the step per parameter and is
+what language models are trained with.
+
+\begin{figure}[h]\centering\includegraphics[width=0.66\linewidth]{fig_ml_gd.png}
+\caption{Each step moves against the slope; steps shrink automatically as the slope flattens.}\label{fig:gd}\end{figure}
+
+\begin{exercise}{gradient descent for the same line}
+\begin{lstlisting}
+w = np.zeros(2); eta = 0.01
+for step in range(5000):
+    pred = X @ w
+    grad = 2 * X.T @ (pred - y) / len(y)     # derivative of mean squared error
+    w -= eta * grad
+print(w, w_closed)                           # should agree to a few decimals
+\end{lstlisting}
+Change \texttt{eta} to 0.1 and to 0.0001 and watch what happens.
+\end{exercise}
+
+\subsection{Classification: sigmoid, softmax, cross-entropy}
+
+To predict a category, turn a score (a \emph{logit}) into a probability. For
+two classes the sigmoid $\sigma(z) = 1/(1+e^{-z})$ does it; for $V$ classes
+the softmax $p_v = e^{z_v} / \sum_u e^{z_u}$ does (Figure~\ref{fig:softmax}).
+The loss is the negative log-probability of the true class, called
+cross-entropy or negative log-likelihood (NLL): $-\log p_{\text{true}}$. It is
+zero when the model is certain and right, and grows without bound as the
+model assigns the truth less probability.
+
+\begin{figure}[h]\centering\includegraphics[width=0.85\linewidth]{fig_ml_logistic.png}
+\caption{Left: sigmoid. Right: softmax over a tiny vocabulary. A language model does the right-hand thing over 150{,}000 tokens at every position.}\label{fig:softmax}\end{figure}
+
+This is exactly the language-model objective: the classes are vocabulary
+tokens, the input is the text so far, and the loss is the NLL of the next
+token. Perplexity is $\exp(\text{mean NLL})$; a perplexity of 20 means the
+model is, on average, as uncertain as a fair choice among 20 tokens.
+
+\begin{exercise}{softmax, cross-entropy, and a gradient check}
+\begin{lstlisting}
+def softmax(z): z = z - z.max(); e = np.exp(z); return e / e.sum()
+def nll(z, true): return -np.log(softmax(z)[true])
+z = rng.normal(size=5); t = 2
+# analytic gradient of NLL wrt logits is p - onehot(true)
+g = softmax(z).copy(); g[t] -= 1
+eps = 1e-5; num = np.array([(nll(z + eps*np.eye(5)[i], t) - nll(z - eps*np.eye(5)[i], t)) / (2*eps) for i in range(5)])
+print(np.abs(g - num).max())     # ~1e-10: the analytic gradient is right
+\end{lstlisting}
+The subtraction of \texttt{z.max()} is numerical hygiene; it prevents overflow,
+the same class of problem that made fp16 pooling fail on massive activations.
+\end{exercise}
+
+\subsection{Generalization: the only trustworthy score is on held-out data}
+
+A model can fit its training data perfectly and be useless. Split data into
+\emph{training} (fit), \emph{validation} (choose settings), and \emph{test}
+(report once). Figure~\ref{fig:overfit} shows the classic picture: as
+capacity grows, training error keeps falling while held-out error turns
+around. Regularization (ridge penalties, early stopping, dropout) trades a
+little training fit for better held-out behavior.
+
+\begin{figure}[h]\centering\includegraphics[width=0.9\linewidth]{fig_ml_overfit.png}
+\caption{Left: three polynomials on the same points. Right: training versus held-out error as capacity grows.}\label{fig:overfit}\end{figure}
+
+Two project habits are this principle applied to research itself. The
+misalignment decomposition scores each map on \emph{held-out} sentences, and it
+found that the flexible nonlinear map had been overfitting to same-document
+leakage. And preregistration is early stopping for the analyst: decide the
+test before you see the data.
+
+\begin{exercise}{watch overfitting happen}
+Fit polynomials of degree 1 to 12 to 15 noisy points from $\sin(2\pi x)$ with
+\texttt{np.polyfit}; compute training error and error on 200 fresh points;
+plot both against degree. Then repeat with 150 training points and note how
+the turnaround moves.
+\end{exercise}
+
+\subsection{Neural networks in one picture}
+
+A multilayer perceptron (MLP) is $\hat{\mathbf y} = W_2\,\phi(W_1 \mathbf x +
+\mathbf b_1) + \mathbf b_2$ where $\phi$ is a nonlinearity applied
+elementwise (ReLU $\max(0,z)$, or the smoother GELU). Without $\phi$ the two
+matrices would collapse into one; the nonlinearity is what lets the network
+represent anything (Figure~\ref{fig:mlp}). Training is gradient descent on
+all the weights; \emph{backpropagation} is the chain rule applied
+layer by layer to get the gradient efficiently, and libraries do it for you
+(autograd).
+
+\begin{figure}[h]\centering\includegraphics[width=0.72\linewidth]{fig_ml_mlp.png}
+\caption{An MLP: two matrix multiplications with a nonlinearity between them. Each transformer block contains one of these, applied to every token position independently.}\label{fig:mlp}\end{figure}
+
+\begin{exercise}{a two-layer network on XOR, gradients by hand}
+\begin{lstlisting}
+X = np.array([[0,0],[0,1],[1,0],[1,1]], float); y = np.array([0,1,1,0], float)
+W1 = rng.normal(0, 1, (2, 8)); b1 = np.zeros(8); W2 = rng.normal(0, 1, 8); b2 = 0.0
+for step in range(5000):
+    h_pre = X @ W1 + b1; h = np.maximum(0, h_pre)          # ReLU
+    z = h @ W2 + b2; p = 1 / (1 + np.exp(-z))               # sigmoid output
+    loss = -np.mean(y*np.log(p+1e-9) + (1-y)*np.log(1-p+1e-9))
+    dz = (p - y) / 4                                        # dLoss/dz
+    dW2 = h.T @ dz; db2 = dz.sum()
+    dh = np.outer(dz, W2) * (h_pre > 0)                     # chain rule through ReLU
+    dW1 = X.T @ dh; db1 = dh.sum(0)
+    for P, g in ((W1, dW1), (W2, dW2)): P -= 0.5 * g
+    b1 -= 0.5 * db1; b2 -= 0.5 * db2
+print(np.round(p, 2))       # approaches [0, 1, 1, 0]
+\end{lstlisting}
+Remove the ReLU (\texttt{h = h\_pre}) and confirm the network can no longer
+solve XOR: a linear model cannot.
+\end{exercise}
+
+\subsection{Embeddings, PCA, and effective rank}
+
+An \emph{embedding} turns a discrete thing (a word, a token, a language) into
+a vector so that geometry can carry meaning: similar things get nearby
+vectors. Token embeddings are the first layer of a language model.
+
+To look at a cloud of vectors, use principal component analysis (PCA): center
+the data, compute the covariance, take its eigenvectors. The top eigenvectors
+are the directions of largest variance; the eigenvalues say how much variance
+each carries. The singular value decomposition (SVD) computes the same thing
+directly from the data matrix. From the spectrum you get the \emph{effective
+rank}: how many directions really carry variance (entropy of the normalized
+spectrum, exponentiated, or the participation ratio $(\sum\lambda)^2/\sum\lambda^2$).
+The paper uses these to show that a collapsed model lost dimensions even when
+its LFS ratio looked fine.
+
+\begin{exercise}{PCA and effective rank of a synthetic representation cloud}
+\begin{lstlisting}
+Z = rng.normal(size=(500, 64)) @ np.diag(np.r_[np.linspace(5, 1, 8), 0.1*np.ones(56)])
+Zc = Z - Z.mean(0)
+lam = np.linalg.eigvalsh(Zc.T @ Zc / len(Zc))[::-1]
+w = lam / lam.sum()
+print("participation ratio:", lam.sum()**2 / (lam**2).sum())
+print("entropy rank:", np.exp(-(w[w>0] * np.log(w[w>0])).sum()))
+\end{lstlisting}
+Both should say ``about 8'': the cloud lives in 8 real directions plus noise.
+\end{exercise}
+
+\subsection{Vocabulary you will hear in every meeting}
+
+\begin{description}[leftmargin=2.2cm, style=nextline, itemsep=1pt]
+\item[parameters / weights] the numbers the data chooses; \emph{hyperparameters} are the ones you choose (learning rate, size).
+\item[epoch, batch, step] one pass over the data; a slice of it; one gradient update.
+\item[pretraining] training a base model on raw text with the next-token loss; a \emph{checkpoint} is a saved set of weights.
+\item[fine-tuning] continuing training on a smaller, targeted dataset; \emph{instruction tuning} is fine-tuning on prompt--response pairs.
+\item[inference] running the trained model; \emph{forward pass} is one evaluation of the network.
+\item[seed] the random-number starting point; three seeds means three independent training runs.
+\item[in-distribution / held-out] data like the training data / data deliberately kept away from every choice you made.
+\end{description}

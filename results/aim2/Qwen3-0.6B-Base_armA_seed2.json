@@ -1,0 +1,38 @@
+{
+ "arm": "A",
+ "config": {
+  "lm": 0.0,
+  "align": 0.0,
+  "cvp": 0.0,
+  "lfs": 0.0,
+  "train": false
+ },
+ "model": "Qwen/Qwen3-0.6B-Base",
+ "optimizer": "adafactor",
+ "layer": 8,
+ "languages": [
+  "eng",
+  "deu",
+  "hin",
+  "swa"
+ ],
+ "seed": 2,
+ "steps": 400,
+ "lr": 1e-05,
+ "cvp_floor": 0.9,
+ "batch_lfs_pure_noise_value": 0.3,
+ "concepts_per_batch": 8,
+ "max_len": 48,
+ "wallclock_s": 2.5,
+ "log": [
+  {
+   "step": 0,
+   "loss": 0.0,
+   "lm_loss": 3.9656338691711426,
+   "batch_lfs": 0.4975926876068115,
+   "cvp": 1.000000238418579,
+   "effective_rank": 3.379936695098877,
+   "concept_var": 10732.15625
+  }
+ ]
+}

@@ -1,0 +1,15 @@
+{
+  "n_models": 14,
+  "n_model_layers": 69,
+  "minimum_saved_layers_per_model": 4,
+  "maximum_saved_layers_per_model": 5,
+  "n_axes": 195072,
+  "median_spearman_lfs_vs_mean_cosine": -0.7999999999999999,
+  "models_abs_rho_cosine_over_0_7": 8,
+  "median_spearman_lfs_vs_top_eigen_share": -0.75,
+  "models_abs_rho_eigen_over_0_7": 7,
+  "median_language_heavy_axis_fraction": 1.0,
+  "minimum_language_heavy_axis_fraction": 0.996337890625,
+  "maximum_language_heavy_axis_fraction": 1.0,
+  "warning": "all correlations use only the frozen coarse saved layers and are descriptive"
+}

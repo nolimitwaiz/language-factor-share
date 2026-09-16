@@ -1,0 +1,105 @@
+{
+ "tag": "salamandra-2b",
+ "dip": 6,
+ "n_pairs": 300,
+ "languages": {
+  "de": {
+   "native": {
+    "language_share": 0.037403300713223425,
+    "matching": 0.56,
+    "tail": -0.21500976079638565,
+    "n": 300
+   },
+   "translated": {
+    "language_share": 0.054836663021460376,
+    "matching": 0.59,
+    "tail": -0.36543078740177726,
+    "n": 300
+   }
+  },
+  "ru": {
+   "native": {
+    "language_share": 0.06242451106017432,
+    "matching": 0.5533333333333333,
+    "tail": -0.5928832521341112,
+    "n": 300
+   },
+   "translated": {
+    "language_share": 0.0894066160885534,
+    "matching": 0.5033333333333333,
+    "tail": -0.46818454661752157,
+    "n": 300
+   }
+  },
+  "zh": {
+   "native": {
+    "language_share": 0.9099126876745733,
+    "matching": 0.013333333333333334,
+    "tail": -0.7838868091974908,
+    "n": 300
+   },
+   "translated": {
+    "language_share": 0.9392843267819126,
+    "matching": 0.0,
+    "tail": -1.04734428047225,
+    "n": 300
+   }
+  },
+  "fi": {
+   "native": {
+    "language_share": 0.06592970875090805,
+    "matching": 0.38333333333333336,
+    "tail": -0.30751271492803184,
+    "n": 300
+   },
+   "translated": {
+    "language_share": 0.08834828311170509,
+    "matching": 0.41,
+    "tail": -0.21630756229816153,
+    "n": 300
+   }
+  },
+  "lt": {
+   "native": {
+    "language_share": 0.061602433922956785,
+    "matching": 0.5333333333333333,
+    "tail": -0.36455958953306794,
+    "n": 300
+   },
+   "translated": {
+    "language_share": 0.08987617941525228,
+    "matching": 0.3933333333333333,
+    "tail": -0.5191639552243403,
+    "n": 300
+   }
+  },
+  "gu": {
+   "native": {
+    "language_share": 0.965749116558081,
+    "matching": 0.0,
+    "tail": -1.2433822766114557,
+    "n": 300
+   },
+   "translated": {
+    "language_share": 0.978528415770044,
+    "matching": 0.0,
+    "tail": -0.9718981631837832,
+    "n": 300
+   }
+  },
+  "kk": {
+   "native": {
+    "language_share": 0.6073040367056649,
+    "matching": 0.0,
+    "tail": -1.1255894658268972,
+    "n": 300
+   },
+   "translated": {
+    "language_share": 0.6384477911924942,
+    "matching": 0.013333333333333334,
+    "tail": -0.9505351327425873,
+    "n": 300
+   }
+  }
+ }
+}

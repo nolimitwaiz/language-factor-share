@@ -1,0 +1,8 @@
+{
+ "run_id": "new_readings_Sailor-1.8B",
+ "script": "scripts/new_model_readings.py",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-09T03:38:39.719612+00:00",
+ "wall_s": 179.4
+}

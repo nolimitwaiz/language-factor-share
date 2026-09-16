@@ -1,0 +1,8 @@
+{
+ "run_id": "battery_geo",
+ "git": "",
+ "host": "e04",
+ "when": "2026-08-04T18:31:57.608398+00:00",
+ "wall_s": 910.5,
+ "script": "scripts/battery_geo.py"
+}

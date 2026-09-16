@@ -1,0 +1,10 @@
+{
+  "analysis_status": "measurement-only A1 reliability audit",
+  "downstream_outcomes_inspected": false,
+  "profile_version": "RMFS-profile-0.2-draft",
+  "input": "/home/wkhan12/multilingual-metrics/results/rmfs_profile_v02_14models.json",
+  "created_utc": "2026-08-16T22:36:55.536594+00:00",
+  "host": "c21",
+  "n_models": 14,
+  "n_heldout_blocks": 4
+}
